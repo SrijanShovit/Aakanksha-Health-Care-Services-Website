@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from './Components/Navbar'
+import Header from './Components/Navbar'
 import Footer from './Components/Footer'
 import Carousels from './Components/Carousels'
 import './App.css'
@@ -13,9 +13,9 @@ import {
 const App = () => {
   return (
     <>
-      <Navbar/>
+      <Header/>
       <Carousels/>
-      {/* <Footer/> */}
+       <Footer/> 
     </>
   )
 }

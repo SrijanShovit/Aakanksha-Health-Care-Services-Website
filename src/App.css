@@ -8,10 +8,56 @@
 
 /* <-------------------------Navbar styling starts-------------------------------> */
 
+.subheader{
+  margin-top: 86px;
+}
+.iconDiv{
+ width: 20px;
+ display: inline-block;
+}
+
+.bg-my-cyan{
+   background-color:#32aeb1 ;
+}
+.logo{
+  height:60px;
+  border-radius: 40px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color:white !important;
+}
 
 .searchbox{
-  width: 50vw;
+  width: 50% !important;;
 }
+.zipcode{
+  width:30%;
+}
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+@media (min-width: 992px){
+  .navbar-expand-lg .navbar-nav .nav-link
+  {
+     padding-right: 3rem!important;
+     
+ }
+
+}
+
 
 /* <-------------------------Navbar styling ends-------------------------------> */
 
@@ -29,8 +75,20 @@
 
 /* <-------------------------Carousal styling ends-------------------------------> */
 
+/* <-------------------------Footer styling starts-------------------------------> */
+.footer  a{
+    color: black !important; 
+    text-decoration:none !important;
+}
+.footer hr{
+  width:100%;
+  height: 2px !important;
+}
+.social-media{
+ float: right;
+}
 
-
+/* <-------------------------Footer styling ends-------------------------------> */
 
 
 
