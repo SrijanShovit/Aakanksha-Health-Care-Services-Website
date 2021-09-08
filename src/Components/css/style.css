@@ -1,0 +1,32 @@
+body {
+    margin: 0 auto;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 14px;
+}
+.close{
+  position: absolute;
+  top:2px;
+  right:2px;
+  text-decoration: none;
+}
+.ip{
+  display: block;
+  padding: 10px;
+  margin:5px;
+  margin-left: 10px;
+  border: 2px groove lightblue;
+  border-radius: 15%;
+}
+.signup{
+  position:absolute;
+  right:5px;
+  text-shadow: 0 1px 2px black;
+  box-shadow: 0 1px 2px black;
+  z-index: 1;
+}
+.login{
+  position:absolute;
+  right:80px;
+  text-shadow: 0 2px 5px black;
+  z-index: 1;
+}
