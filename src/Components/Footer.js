@@ -56,16 +56,16 @@ const Footer = () => {
           <Col sm>
             <Row className="social-media">
               <Col>
-                <FaFacebook/>
+                <FaFacebook color="#3b5998"/>
               </Col>
               <Col>
-                 <FaLinkedin/>
+                 <FaLinkedin color="#0e76a8"/>
               </Col>
               <Col>
-                 <FaInstagramSquare/>
+                 <FaInstagramSquare color="#fb3958"/>
               </Col>
               <Col>
-                <FaTwitterSquare/>
+                <FaTwitterSquare color="#00acee"/>
               </Col>
             </Row>
           </Col>
