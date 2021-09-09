@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Mask",
+    "tag": "mask",
+    "price": 19,
+    "inCart": 0,
+    "description": "Antiviral face mask for men and women"
+  },
+  {
+    "id": 2,
+    "name": "Gloves",
+    "tag": "gloves",
+    "price": 19,
+    "inCart": 0,
+    "description": "Disposable hand glove"
+  },
+  {
+    "id": 3,
+    "name": "PPE Kit",
+    "tag": "ppe",
+    "price": 19,
+    "inCart": 0,
+    "description": "Medical Disposabel PPE kit"
+  },
+  {
+    "id": 4,
+    "name": "Protein Powder",
+    "tag": "nutriOne",
+    "price": 19,
+    "inCart": 0,
+    "description": "Natural WHEY protein"
+  },
+  {
+    "id": 5,
+    "name": "Protein Shakes",
+    "tag": "nutriTwo",
+    "price": 19,
+    "inCart": 0,
+    "description": "Whey protein shakes"
+  },
+  {
+    "id": 6,
+    "name": "Veggie Bowl",
+    "tag": "NutriThree",
+    "price": 19,
+    "inCart": 0,
+    "description": "6 Pcs Veg Bowl 5.5"
+  }
+]
