@@ -16,7 +16,7 @@ const AccordionSection = styled.div`
 
 
 const Wrap = styled.div`
-  background: #64C9CF;
+  background: #32aeb1;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -27,7 +27,7 @@ const Wrap = styled.div`
 
   h1 {
     padding: 0.75rem;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     text-decoration: underline;
 
   }
@@ -38,18 +38,19 @@ const Wrap = styled.div`
 `;
 
 const Dropdown = styled.div`
-  background: #fff;
+  background: #F7F6F2;
   color: #000;
   width: 100%;
   display: flex;
+  padding: 1% 2% 0 2%;
 
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid #000;
-  border-top: 1px solid #000;
+  border: 1px solid #000;
+
 
   p {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
 `;
 

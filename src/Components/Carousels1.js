@@ -1,8 +1,8 @@
 import React from 'react'
-import banner1 from '../Images/banner6.png'
+import banner1 from '../Images/banner1.jpg'
 
-import banner2 from '../Images/banner4.png'
-import banner3 from '../Images/banner5.png'
+import banner2 from '../Images/banner2.jpg'
+import banner3 from '../Images/banner3.jpg'
 
 const Carousels = () => {
     return (

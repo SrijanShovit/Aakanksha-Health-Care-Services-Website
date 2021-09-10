@@ -31,14 +31,14 @@ const Header = () => {
               <Nav.Link href="#link"><div className="iconDiv"><FaHospitalSymbol /></div>Health Camp</Nav.Link>
               <Nav.Link href="#link"><div className="iconDiv"><FaUserMd /></div>Doctors Consultation</Nav.Link>
               <Nav.Link href="#link"><div className="iconDiv"><FaShoppingCart /></div>Cart</Nav.Link>
-              <Nav.Link href="#link"><div className="iconDiv"><FaUser /></div>Login/Sign-up</Nav.Link>
             </Nav>
           </Navbar.Collapse>
       </Container>
    </Navbar>
-      
+
     </>
   );
 };
+
 
 export default Header;
