@@ -19,14 +19,21 @@ body {
 }
 .signup{
   position:absolute;
-  right:5px;
-  text-shadow: 0 1px 2px black;
-  box-shadow: 0 1px 2px black;
+  right:20px;
+  top: 95px;
+  text-shadow: 0 2px 5px white;
   z-index: 1;
+  background: inherit;
+  color: white !important;
+  margin-left: 2px;
 }
 .login{
   position:absolute;
   right:80px;
-  text-shadow: 0 2px 5px black;
+  top: 95px;
+  text-shadow: 0 2px 5px white;
   z-index: 1;
+  background: inherit;
+  color: white !important;
+  margin-right: 20px;
 }

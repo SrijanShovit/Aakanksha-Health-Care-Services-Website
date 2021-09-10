@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import './css/style.css'
+import { FaUser } from "react-icons/fa";
 
 const customStyles = {
   content: {
@@ -35,7 +36,7 @@ export default function Popup1() {
 
   return (
     <div>
-      <button className="btn btn-primary login" onClick={openModal}>Login</button>
+      <button className="btn active login" onClick={openModal}><FaUser />Login</button>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
