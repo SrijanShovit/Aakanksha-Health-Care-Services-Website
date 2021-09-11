@@ -128,3 +128,21 @@
   margin-bottom: 5px;
 }
 /* -------------------------Doctor Consultation Page styling ends--------------------  */
+/* -------------------------Healthcamp Page styling starts--------------------  */
+.card-img-top{
+  height: 250px;
+  border-radius: 5px 5px 0 0;
+}
+.card {
+/* Add shadows to create the "card" effect */
+box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
+transition: 0.3s;
+border-radius: 5px; /* 5px rounded corners */
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);
+
+}
+/* -------------------------Healthcamp Page styling starts--------------------  */
