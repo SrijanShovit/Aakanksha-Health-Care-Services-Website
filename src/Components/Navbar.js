@@ -28,7 +28,7 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto w3-animate-zoom">
               <Nav.Link className="navstyle" href="#home"><div className="iconDiv"><FaPills /></div>Knock Knock Medico</Nav.Link>
-              <Nav.Link className="navstyle" href="#link"><div className="iconDiv"><FaHospitalSymbol /></div>Health Camp</Nav.Link>
+              <Nav.Link className="navstyle" href="/camp"><div className="iconDiv"><FaHospitalSymbol /></div>Health Camp</Nav.Link>
               <Nav.Link className="navstyle" href="/doctors"><div className="iconDiv"><FaUserMd /></div>Doctors Consultation</Nav.Link>
               <Nav.Link className="navstyle" href="#link"><div className="iconDiv"><FaShoppingCart /></div>Cart</Nav.Link>
             </Nav>

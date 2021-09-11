@@ -3,6 +3,7 @@ import Home from './Pages/Home'
 import './App.css'
 import './Pages/Home'
 import Doctors from './Pages/Doctorconsultation'
+import Healthcamp from './Pages/Healthcamp'
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,6 +19,7 @@ const App = () => {
     <Route exact  path="/" component={Home} />
     <Route path="/doctors" component={Doctors} />
      {/* <Home /> */}
+     <Route path="/camp" component={Healthcamp} />
      </Switch>
      </Router>
     </>
