@@ -1,11 +1,8 @@
 import React from 'react'
-import Header from './Components/Navbar'
-import Footer from './Components/Footer'
-import Carousels from './Components/Carousels'
-import Popup from './Components/popup'
-import Popup1 from './Components/popuplogin'
-import Accordion from './Components/Accordion'
+import Home from './Pages/Home'
 import './App.css'
+import './Pages/Home'
+import Doctors from './Pages/Doctorconsultation'
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,12 +13,13 @@ import {
 const App = () => {
   return (
     <>
-      <Popup />
-      <Popup1 />
-      <Header/>
-      <Carousels/>
-      <Accordion />
-       <Footer/>
+    <Router>
+    <Switch>
+    <Route exact  path="/" component={Home} />
+    <Route path="/doctors" component={Doctors} />
+     {/* <Home /> */}
+     </Switch>
+     </Router>
     </>
   )
 }

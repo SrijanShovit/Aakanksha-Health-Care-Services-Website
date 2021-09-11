@@ -64,13 +64,9 @@
 
 /* <-------------------------Carousal styling starts-------------------------------> */
 
-/* .carousel-inner{ */
-  /* width: 100%!important; */
-  /* height: 40vh!important; */
-/* } */
+
 .carousel-item{
-  /* height: 50%; */
-  /* margin-top:25px; */
+  
   height: 100%!important;
   width: 100%;
   padding:1rem;
@@ -97,3 +93,21 @@
 
 
 
+/* -------------------------Doctor Consultation Page styling starts--------------------  */
+
+.seemore1{
+  color: azure!important;
+  cursor:default;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.seemore2{
+  color: azure !important;
+  background-color: rgb(29, 149, 230) !important;
+  border: none;
+  cursor:default;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+/* -------------------------Doctor Consultation Page styling ends--------------------  */

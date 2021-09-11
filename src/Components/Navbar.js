@@ -29,7 +29,7 @@ const Header = () => {
             <Nav className="me-auto">
               <Nav.Link href="#home"><div className="iconDiv"><FaPills /></div>Knock Knock Medico</Nav.Link>
               <Nav.Link href="#link"><div className="iconDiv"><FaHospitalSymbol /></div>Health Camp</Nav.Link>
-              <Nav.Link href="#link"><div className="iconDiv"><FaUserMd /></div>Doctors Consultation</Nav.Link>
+              <Nav.Link href="/doctors"><div className="iconDiv"><FaUserMd /></div>Doctors Consultation</Nav.Link>
               <Nav.Link href="#link"><div className="iconDiv"><FaShoppingCart /></div>Cart</Nav.Link>
             </Nav>
           </Navbar.Collapse>
