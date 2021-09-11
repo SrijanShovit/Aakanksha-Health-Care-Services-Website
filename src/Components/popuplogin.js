@@ -36,7 +36,7 @@ export default function Popup1() {
 
   return (
     <div>
-      <button className="btn active login" onClick={openModal}><FaUser />Login</button>
+      <button className="btn active login w3-animate-zoom" onClick={openModal}><FaUser />Login</button>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -46,7 +46,7 @@ export default function Popup1() {
       >
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Login</h2>
         <button className="close btn" onClick={closeModal}>X</button>
-        <form>
+        <form className="w3-animate-zoom">
           <input type="Email" Placeholder="Email" className="ip" required/>
           <input type="Password" Placeholder="Password" className="ip" required/>
           <button type="submit" className="btn btn-primary">Save and Close</button>

@@ -4,6 +4,7 @@
   padding:0px;
   margin: 0px;
   box-sizing: border-box;
+
 }
 
 /* <-------------------------Navbar styling starts-------------------------------> */
@@ -11,10 +12,17 @@
 .subheader{
   margin-top: 86px;
 }
+.navstyle:hover{transition: 0.8s;
+  transform: scale(0.9);
+  background-color: red;
+  outline: 1px solid white;
+}
 .iconDiv{
  width: 20px;
  display: inline-block;
+ transition: 0.8s;
 }
+.iconDiv:hover{transform: scale(2);}
 
 .bg-my-cyan{
    background-color:#32aeb1 ;
@@ -22,15 +30,19 @@
 .logo{
   height:70px;
   border-radius: 40px;
+  transition: 2s;
 }
+.logo:hover{transform: scale(-1);}
 
 .navbar-dark .navbar-nav .nav-link {
     color:white !important;
 }
 
 .searchbox{
-  width: 50% !important;;
+  width: 40% !important;
+  transition: 0.8s;
 }
+.searchbox:hover{width:50% !important; }
 .zipcode{
   width:30%;
 }
@@ -57,6 +69,11 @@
  }
 
 }
+/*login/signup */
+.signup:hover,.login:hover{transition: 1s;
+  transform: scale(1.1);
+  background-color: red;
+  outline: 1px solid white;}
 
 
 /* <-------------------------Navbar styling ends-------------------------------> */
