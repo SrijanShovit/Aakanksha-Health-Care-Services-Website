@@ -12,6 +12,12 @@
 .subheader{
   margin-top: 86px;
 }
+.navstyle{
+  text-decoration: none;
+  list-style-type: none;
+  color:white;
+  padding: 8px;
+}
 .navstyle:hover{transition: 0.8s;
   transform: scale(0.9);
   background-color: red;
