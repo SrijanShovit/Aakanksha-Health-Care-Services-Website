@@ -33,10 +33,11 @@ app.use('/product', productRoute);
 
 app.post('/register', (req, res) => {
   const username = req.body.username;
+  const email = req.body.email;
   const password = req.body.password;
   db.query(
-    'INSERT INTO user(username,password) VALUES(?,?)',
-    [username, password],
+    'INSERT INTO user(username,email,password) VALUES(?,?,?)',
+    [username, email, password],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -48,11 +49,11 @@ app.post('/register', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-  const username = req.body.username;
   const password = req.body.password;
+  const email = req.body.email;
   db.query(
-    'SELECT * FROM user WHERE username=? AND password=?',
-    [username, password],
+    'SELECT * FROM user WHERE email=? AND password=?',
+    [email, password],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -60,7 +61,7 @@ app.post('/login', (req, res) => {
       if (result.length > 0) {
         res.send(result);
       } else {
-        res.send({ message: 'Wrong username/password' });
+        res.send({ message: 'Wrong email/password' });
       }
     }
   );
