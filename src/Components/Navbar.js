@@ -2,7 +2,7 @@ import React from "react";
 import { IconContext } from "react-icons";
 import { FaSearch,FaPills,FaHospitalSymbol,FaUserMd,FaShoppingCart,FaUser } from "react-icons/fa";
 import logo from "../Images/logo.jfif";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link,NavLink } from "react-router-dom";
 import {Container,Navbar,Nav} from "react-bootstrap";
 import "../App.css"
 const Header = () => {
@@ -10,12 +10,12 @@ const Header = () => {
     <>
       <Navbar  bg="my-cyan" variant="dark" expand="lg" fixed="top">
         <Container>
-          <Navbar.Brand href="#home">
-            <img className="logo w3-animate-zoom" src={logo}/></Navbar.Brand>
-            <div class="input-group searchbox">
-            <input type="text" class="form-control w3-animate-zoom" placeholder="Zipcode | Search medicine , Camps , Health Brands"/>
-            <div class="input-group-append">
-              <button class="btn btn-secondary w3-animate-zoom" type="button">
+          <Navbar.Brand>
+            <NavLink to="/"><img className="logo w3-animate-zoom" src={logo}/></NavLink></Navbar.Brand>
+            <div className="input-group searchbox">
+            <input type="text" className="form-control w3-animate-zoom" placeholder="Zipcode | Search medicine , Camps , Health Brands"/>
+            <div className="input-group-append">
+              <button className="btn btn-secondary w3-animate-zoom" type="button">
                 <FaSearch/>
               </button>
             </div>
@@ -27,10 +27,10 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto w3-animate-zoom">
-              <Nav.Link className="navstyle" href="#home"><div className="iconDiv"><FaPills /></div>Knock Knock Medico</Nav.Link>
-              <Nav.Link className="navstyle" href="/camp"><div className="iconDiv"><FaHospitalSymbol /></div>Health Camp</Nav.Link>
-              <Nav.Link className="navstyle" href="/doctors"><div className="iconDiv"><FaUserMd /></div>Doctors Consultation</Nav.Link>
-              <Nav.Link className="navstyle" href="#link"><div className="iconDiv"><FaShoppingCart /></div>Cart</Nav.Link>
+              <NavLink className="navstyle" to="#link"><div className="iconDiv"><FaPills /></div>Knock Knock Medico</NavLink>
+              <NavLink className="navstyle" to="/camp"><div className="iconDiv"><FaHospitalSymbol /></div>Health Camp</NavLink>
+              <NavLink className="navstyle" to="/doctors"><div className="iconDiv"><FaUserMd /></div>Doctors Consultation</NavLink>
+              <NavLink className="navstyle" to="#link"><div className="iconDiv"><FaShoppingCart /></div>Cart</NavLink>
             </Nav>
           </Navbar.Collapse>
       </Container>
