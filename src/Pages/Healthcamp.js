@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card,Button, Container,CardGroup} from "react-bootstrap";
+import {Button, Container} from "react-bootstrap";
 import Header from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Popup from '../Components/popup'

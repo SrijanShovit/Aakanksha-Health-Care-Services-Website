@@ -43,7 +43,10 @@
 .navbar-dark .navbar-nav .nav-link {
     color:white !important;
 }
-
+.welTittle{
+  visibility: hidden;
+  color:white;
+  }
 .searchbox{
   width: 40% !important;
   transition: 0.8s;
@@ -66,6 +69,11 @@
   text-align: center;
   pointer-events: none;
   color: #aaa;
+}
+.btn-link {
+  
+  color:white!important;
+  text-decoration: none!important;
 }
 @media (min-width: 992px){
   .navbar-expand-lg .navbar-nav .nav-link
