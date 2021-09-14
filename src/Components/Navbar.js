@@ -1,17 +1,29 @@
 import React from "react";
-import { IconContext } from "react-icons";
-import { FaSearch,FaPills,FaHospitalSymbol,FaUserMd,FaShoppingCart,FaUser } from "react-icons/fa";
-import logo from "../Images/logo.jfif";
-import { BrowserRouter as Router, Switch, Route, Link,NavLink } from "react-router-dom";
-import {Container,Navbar,Nav} from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import { If } from 'rc-if-else';
+import {Container,Navbar,Nav,Button} from "react-bootstrap";
 import "../App.css"
+import { FaSearch,FaPills,FaHospitalSymbol,FaUserMd,FaShoppingCart } from "react-icons/fa";
+import logo from "../Images/logo.jfif";
+
+
 const Header = () => {
+  function logout()
+  {
+    window.sessionStorage.clear();
+    window.location.reload();
+  }
   return (
     <>
       <Navbar  bg="my-cyan" variant="dark" expand="lg" fixed="top">
         <Container>
           <Navbar.Brand>
-            <NavLink to="/"><img className="logo w3-animate-zoom" src={logo}/></NavLink></Navbar.Brand>
+            <NavLink to="/"><img className="logo w3-animate-zoom" src={logo} alt="logo"/></NavLink></Navbar.Brand>
+            <If condition={window.sessionStorage.getItem("username")}>
+              <h5 className="welTittle" style={{ visibility:"visible" }}>
+                  Welcome {window.sessionStorage.getItem("username")}
+              </h5>
+            </If>
             <div className="input-group searchbox">
             <input type="text" className="form-control w3-animate-zoom" placeholder="Zipcode | Search medicine , Camps , Health Brands"/>
             <div className="input-group-append">
@@ -20,6 +32,11 @@ const Header = () => {
               </button>
             </div>
         </div>
+        <If condition={window.sessionStorage.getItem("username")}>
+            <Button className="btn-logout" variant="link" onClick={logout}>
+                Logout
+            </Button>
+          </If>
         </Container>
     </Navbar>
     <Navbar  className="subheader" bg="my-cyan" variant="dark" expand="lg" >
