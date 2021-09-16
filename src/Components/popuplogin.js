@@ -40,7 +40,6 @@ export default function Popup1() {
     setIsOpen(false);
   }
   const login=()=>{
-    console.log("inside login");
     Axios.post('http://localhost:5000/auth/login',{
         email:email,
         password:password
