@@ -1,9 +1,11 @@
-const Sequelize = require('sequelize');
+const mongoose = require('mongoose');
 
-const sequelize = new Sequelize('healthcaredb', 'root', 'password', {
-  dialect: 'mysql',
-  host: 'localhost',
-  logging: false,
-});
+const db = mongoose.connect(
+  'mongodb+srv://shubham:test1234@cluster0.jicuf.mongodb.net/healthcaredb?retryWrites=true&w=majority',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
-module.exports = sequelize;
+module.exports = db;

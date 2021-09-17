@@ -1,21 +1,19 @@
 const Product = require('../models/Product');
 const asyncHandler = require('../middlewares/asyncHandler');
 
-exports.addProduct = asyncHandler(async (req, res, next) => {
-  const product = await Product.bulkCreate(req.body);
+exports.addProducts = asyncHandler(async (req, res, next) => {
+  const product = await Product.create(req.body);
 
-  res.json({
+  res.status(200).json({
     product,
-    status: 200,
   });
 });
 
 exports.getProducts = asyncHandler(async (req, res, next) => {
-  const products = await Product.findAll({ where: req.query });
+  const products = await Product.find(req.query);
 
-  res.json({
+  res.status(200).json({
     numberOfProducts: products.length,
     products,
-    status: 200,
   });
 });

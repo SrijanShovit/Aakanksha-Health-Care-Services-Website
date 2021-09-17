@@ -1,25 +1,16 @@
-const Sequelize = require('sequelize');
-const sequelize = require('../utils/database');
+const mongoose = require('mongoose');
 
-const Camp = sequelize.define('camp', {
-  id: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  name: {
-    type: Sequelize.STRING, 
-    allowNull: false,
-  },
-  image_name: Sequelize.STRING,
-  city: Sequelize.STRING,
-  latitude:Sequelize.DOUBLE,
-  longitude:Sequelize.DOUBLE,
-  description: {
-    type: Sequelize.STRING,
-  },
-  
+// import mongoose double dataType
+require('mongoose-double')(mongoose);
+const SchemaTypes = mongoose.Schema.Types;
+
+const CampSchema = new mongoose.Schema({
+  name: String,
+  imageUrl: String,
+  city: String,
+  latitude: SchemaTypes.Double,
+  longitude: SchemaTypes.Double,
+  description: String,
 });
 
-module.exports = Camp;
+module.exports = mongoose.model('camp', CampSchema);
