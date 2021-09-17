@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import {Container,Navbar,Nav} from "react-bootstrap";
 import "../App.css"
 const Header = () => {
+
+ 
   return (
     <>
       <Navbar  bg="my-cyan" variant="dark" expand="lg" fixed="top">
@@ -13,7 +15,7 @@ const Header = () => {
           <Navbar.Brand href="#home">
             <img className="logo" src={logo}/></Navbar.Brand>
             <div class="input-group searchbox">
-            <input type="text" class="form-control" placeholder="Zipcode | Search medicine , Camps , Health Brands"/>
+            <input type="text" class="form-control" id="search-txt" placeholder="Zipcode | Search medicine , Camps , Health Brands" />
             <div class="input-group-append">
               <button class="btn btn-secondary" type="button">
                 <FaSearch/>

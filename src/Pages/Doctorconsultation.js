@@ -7,6 +7,21 @@ import doctor1 from '../Images/doctor1.jpg'
 import doctor2 from '../Images/doctor2.jpg'
 
 const Doctorconsultation = () => {
+//     let search = document.getElementById(props.search);
+//     search.addEventListener("input", () =>{
+//       let inputVal = search.value;
+  
+//       let text = document.getElementsByClassName("card-body")
+//       Array.from(text).forEach(function(element){
+//         let amongSearchedTxt = element.getElementsByTagName("p")[0].innerText;
+  
+//         if (amongSearchedTxt.includes(inputVal)){
+//           element.style.display = "block"
+//         }else{
+//           element.style.display = "none"
+//         }
+//       })
+//     })
     return (
         <>
             <Popup />
