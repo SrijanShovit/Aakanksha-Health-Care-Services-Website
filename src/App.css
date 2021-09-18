@@ -159,4 +159,7 @@ border-radius: 5px; /* 5px rounded corners */
 box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);
 
 }
-/* -------------------------Healthcamp Page styling starts--------------------  */
+.descDiv{
+ height:145px;
+}
+/* -------------------------Healthcamp Page styling starts ends--------------------  */
