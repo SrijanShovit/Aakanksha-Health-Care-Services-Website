@@ -1,5 +1,6 @@
 const asyncHandler = require('../middlewares/asyncHandler');
 const User = require('../models/User');
+const sendTokenResponse = require('../middlewares/sendTokenResponse');
 
 exports.register = asyncHandler(async (req, res, next) => {
   let username = req.body.username,
@@ -16,7 +17,7 @@ exports.register = asyncHandler(async (req, res, next) => {
   }
   user = await User.create({ username, email, password });
   // password should'nt be given as response, so delete it from user object
-  delete user.password;
+  user.password = undefined;
 
   res.status(200).json({
     message: 'User registered successfully!',
@@ -32,7 +33,7 @@ exports.login = asyncHandler(async (req, res, next) => {
   let user = await User.findOne({ email }).select('+password');
 
   // if user not found or password is wrong
-  if (!user || user.password != password) {
+  if (!user || !(await user.matchPassword(password))) {
     res.status(401).json({
       message: 'Wrong login credentials',
     });
@@ -41,8 +42,10 @@ exports.login = asyncHandler(async (req, res, next) => {
 
   // password should not be given in response, so remove it from user object
   user.password = undefined;
-  res.status(200).json({
-    message: 'Login Successfull',
-    user,
-  });
+  sendTokenResponse(user, res, 200);
+});
+
+exports.logout = asyncHandler(async (req, res, next) => {
+  res.cookie('token', '', { maxAge: 1 });
+  res.status(200).json({ message: 'Logged out successfully.' });
 });

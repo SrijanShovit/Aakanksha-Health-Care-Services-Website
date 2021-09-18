@@ -1,10 +1,14 @@
 const express = require('express');
 require('colors');
-const db = require('./utils/database');
+const db = require('./config/database');
 const cors = require('cors');
 const app = express();
+const cookieParser = require('cookie-parser');
 
 app.use(cors());
+
+// cookie parser
+app.use(cookieParser());
 
 // body-parser
 app.use(express.json());
