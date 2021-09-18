@@ -1,63 +1,51 @@
-import React from 'react';
-import {Button, Container} from "react-bootstrap";
+import React ,{useState,useEffect}from 'react';
+import {Button, Container,Card,Row,Col} from "react-bootstrap";
 import Header from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Popup from '../Components/popup'
 import Popup1 from '../Components/popuplogin'
-import camp1 from '../Images/camp1.jpg'
-import camp2 from '../Images/camp2.jpg'
-import camp3 from '../Images/camp3.jpg'
+import Axios from 'axios';
 const Healthcamp = () => {
-    
+    const [data, setData] = useState([]);
+       useEffect(() => {
+        const fetchData = async () => {
+            Axios.get('http://localhost:5000/camp/getCampDetail',)
+            .then((response)=>{
+               setData(response.data.camps);
+            })
+        };
+        fetchData();
+      }, [setData]);
     return (
     <div>
         <Popup />
         <Popup1 />
         <Header /> 
-       
         <Container className="pt-5">
-          <div class="card-group">
-                <div class="card mx-5 my-5">
-                    <img src={camp1} class="card-img-top" alt="..."/>
-                    <div class="card-body">
-                        <h5 class="card-title">Free Medical Camp</h5>
-                        <h5>Delhi,India</h5>
-                    <div className="d-grid gap-2">
-                        <Button variant="primary" >
-                            Go to Location
-                        </Button>
-                    </div>
-                    </div>
-                </div>
-                <div class="card mx-5 my-5">
-                    <img src={camp2} class="card-img-top" alt="..."/>
-                    <div class="card-body">
-                        <h5 class="card-title">Village Diva Medical Camp</h5>
-                        <h5>Delhi,India</h5>
-                        <div className="d-grid gap-2">
-                            <Button variant="primary" >
+           <Row xs={1} md={3} className="g-4">
+               {data.map(item => (
+                    <Col>
+                        <Card>
+                            <Card.Img variant="top" src={item.imageUrl} />
+                            <Card.Body>
+                                <Card.Title>{item.name}</Card.Title>
+                                <Card.Text>
+                                <div className="descDiv">{item.description}</div>
+                                <span>{item.city}</span>
+                                </Card.Text>
+                                <Button variant="primary" >
                                 Go to Location
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card mx-5 my-5">
-                    <img src={camp3} class="card-img-top" alt="..."/>
-                    <div class="card-body">
-                        <h5 class="card-title">Cammunity Health Camp</h5>
-                        <h5>Delhi,India</h5>
-                        <div className="d-grid gap-2">
-                            <Button variant="primary" >
-                                Go to Location
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                </Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
+           </Row>
         </Container>
         <Footer/>
     </div>
     );
+    
 }
+
 export default Healthcamp;
