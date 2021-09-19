@@ -46,11 +46,12 @@ const Dropdown = styled.div`
 
   justify-content: center;
   align-items: center;
-  border: 1px solid #000;
+  
 
 
   p {
     font-size: 1.1rem;
+
   }
 `;
 
@@ -68,13 +69,13 @@ const Accordion = () => {
 
   return (
     <IconContext.Provider value={{ color: '#fff', size: '20px' }}>
-      <AccordionSection>
+      <AccordionSection className="w3-animate-zoom">
 
           {Data.map((item, index) => {
             return (
               <>
                 <Wrap onClick={() => toggle(index)} key={index}>
-                  <h1>{item.question}</h1>
+                  <h1 >{item.question}</h1>
                   <span>{clicked === index ? <FiMinus /> : <FiPlus />}</span>
                 </Wrap>
                 {clicked === index ? (

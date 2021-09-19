@@ -1,8 +1,10 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Modal from 'react-modal';
 import './css/style.css'
 import { FaUser } from "react-icons/fa";
-
+import Axios from 'axios';
+import { Button } from 'react-bootstrap';
+import { If } from 'rc-if-else';
 const customStyles = {
   content: {
     top: '50%',
@@ -18,6 +20,10 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 export default function Popup() {
+  const [username,setUsername]=useState(); 
+  const [email,setEmail]=useState(); 
+  const [password,setPassword]=useState();
+  const [status,setStatus]=useState();
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -32,11 +38,22 @@ export default function Popup() {
 
   function closeModal() {
     setIsOpen(false);
+    window.location.reload();
   }
+  const register=()=>{
+    console.log(username);
+   Axios.post('http://localhost:5000/auth/register',{
+       username:username,
+       password:password,
+       email:email
 
+   }).then((response)=>{
+      setStatus(response.data.message);
+   })
+}
   return (
     <div>
-      <button className="btn signup active" onClick={openModal}><FaUser />Signup</button>
+      <button className="btn signup active  w3-animate-zoom" onClick={openModal}><FaUser />Signup</button>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -46,12 +63,24 @@ export default function Popup() {
       >
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Signup</h2>
         <button className="close btn" onClick={closeModal}>X</button>
-        <p>Create a new account</p>
-        <form>
-          <input type="text" Placeholder="Full Name" className="ip" required/>
-          <input type="Email" Placeholder="Email" className="ip" required/>
-          <input type="Password" Placeholder="Set Password" className="ip" required/>
-          <button type="submit" className="btn btn-primary">Save and Close</button>
+
+        
+        <If condition={status}>
+          <h6>
+            {status}
+          </h6>
+        </If>
+        <form className="w3-animate-zoom">
+          <input type="text" Placeholder="Full Name" className="ip" onChange={(event)=>{
+            setUsername(event.target.value);
+        }} required  />
+          <input type="Email" Placeholder="Email" className="ip"  onChange={(event)=>{
+            setEmail(event.target.value);
+        }} required  />
+          <input type="Password" Placeholder="Set Password" className="ip"  onChange={(event)=>{
+            setPassword(event.target.value);
+        }} required  />
+          <Button  variant="primary" onClick={register}>Submit</Button>
 
         </form>
       </Modal>
