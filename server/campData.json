@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Blood Donation Camp",
+    "city": "Patna",
+    "latitude": 24.33,
+    "longitude": 26.99,
+    "description": "Blood cannot be manufactured in factories; it can only come from generous donors. To cater to this demand, we are organizing a blood donation with an unparalleled objective of solving the problem of blood shortage in India",
+    "imageUrl": "../images/camp1.jpg"
+  },
+  {
+    "name": "Rural health camp",
+    "city": "Mumbai",
+    "latitude": 19.076,
+    "longitutude": 72.8777,
+    "description": "Right from children to senior citizens, everyone came in to get a health checkup. ",
+    "imageUrl": "../images/camp2.jpg"
+  },
+  {
+    "name": "Pediatric camp ",
+    "city": "Pune",
+    "latitude": 18.5204,
+    "longitude": 73.8567,
+    "description": "It really is amazing how different extremes can find a way to survive in this city. But at the same time, it is heartbreaking to see how they live... they have no money, no food, no access to basic health and sanitation facilities and are uneducated and addicted to harmful substances",
+    "imageUrl": "../images/camp3.jpg"
+  }
+]
