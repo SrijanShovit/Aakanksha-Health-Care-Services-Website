@@ -9,7 +9,7 @@ const sendTokenResponse = asyncHandler(async (user, res, statusCode) => {
   res
     .cookie('token', token, options)
     .status(statusCode)
-    .json({ message: 'Logged In Successfully' });
+    .json({ message: 'Logged In Successfully', user });
 });
 
 module.exports = sendTokenResponse;
