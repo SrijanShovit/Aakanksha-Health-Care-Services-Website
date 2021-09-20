@@ -21,7 +21,7 @@ exports.register = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     message: 'User registered successfully!',
-    user,
+    user
   });
 });
 
