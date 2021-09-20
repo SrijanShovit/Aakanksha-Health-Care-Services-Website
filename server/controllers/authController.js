@@ -34,7 +34,7 @@ exports.login = asyncHandler(async (req, res, next) => {
 
   // if user not found or password is wrong
   if (!user || !(await user.matchPassword(password))) {
-    res.status(401).json({
+    res.status(200).json({
       message: 'Wrong login credentials',
     });
     return next();
