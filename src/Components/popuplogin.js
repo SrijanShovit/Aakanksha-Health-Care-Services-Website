@@ -39,21 +39,29 @@ export default function Popup1() {
   function closeModal() {
     setIsOpen(false);
   }
-  const login=()=>{
+  const login=()=>
+ {
     Axios.post('http://localhost:5000/auth/login',{
         email:email,
         password:password
 
     }).then((response)=>{
-       if (response.data.user.username) {
-            console.log("inside else if");
-            setLoginStatus(response.data.user.username); 
-            window.sessionStorage.setItem('username',response.data.user.username); 
-            closeModal();
-            {window.location.reload()}
+        if(response.data.message)
+        {
+          setLoginStatus(response.data.message); 
+        }
+        else{
+          if (response.data.user.username) 
+          {
+              setLoginStatus(response.data.user.username); 
+              window.sessionStorage.setItem('username',response.data.user.username); 
+              closeModal();
+              {window.location.reload()}
           }
-        })
-     }
+
+        }
+      })
+  }
    /*code for login ends here */
   return (
     <div>
@@ -66,6 +74,7 @@ export default function Popup1() {
         contentLabel="Example Modal"
       >
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Login</h2>
+        <h6>{loginStatus}</h6>
         <button className="close btn" onClick={closeModal}>X</button>
         <form className="w3-animate-zoom">
           <input type="Email" Placeholder="Email" className="ip" onChange={(event)=>{
