@@ -8,15 +8,19 @@ body {
   top:2px;
   right:2px;
   text-decoration: none;
+
 }
 .ip{
   display: block;
   padding: 10px;
-  margin:5px;
-  margin-left: 10px;
-  border: 2px groove lightblue;
-  border-radius: 15%;
+  margin:10px auto;
+  border-radius: 20px;
+  border:1px solid white;
+  width: 75%;
+  outline: none;
+  transition: 1.5s;
 }
+.ip:hover{width: 100%;}
 .signup{
   position:absolute;
   right:20px;
@@ -36,4 +40,5 @@ body {
   background: inherit;
   color: white !important;
   margin-right: 20px;
+
 }
