@@ -13,6 +13,10 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    backgroundColor:"dodgerblue",
+    opacity:"0.8",
+    width:"50%",
+
   },
 };
 
@@ -33,7 +37,7 @@ export default function Popup() {
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
+    subtitle.style.color = 'white';
   }
 
   function closeModal() {
@@ -80,7 +84,11 @@ export default function Popup() {
           <input type="Password" Placeholder="Set Password" className="ip"  onChange={(event)=>{
             setPassword(event.target.value);
         }} required  />
-          <Button  variant="primary" onClick={register}>Submit</Button>
+          <Button style={{outline:"none",
+          border:"1px solid white",backgroundColor:"transparent",
+          borderRadius:"20px"
+
+        }}  variant="primary" onClick={register}>Submit</Button>
 
         </form>
       </Modal>
