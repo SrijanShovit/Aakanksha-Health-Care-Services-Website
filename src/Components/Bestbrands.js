@@ -3,13 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 import {makeStyles} from '@material-ui/core';
 import { Container } from '@material-ui/core';
 
-// import brand1 from "../../public/images/brand/brand-1.png"
-// import brand2 from "../../public/images/brand/brand-2.jpg"
-// import brand3 from "../../public/images/brand/brand-3.png"
-// import brand4 from "../../public/images/brand/brand-4.png"
-// import brand5 from "../../public/images/brand/brand-5.jpg"
-// import brand6 from "../../public/images/brand/brand-6.jpg"
-// import brand7 from "../../public/images/brand/brand-7.jpg"
+
 
 import brand1 from "./brand/brand-1.png"
 import brand2 from "./brand/brand-2.jpg"
