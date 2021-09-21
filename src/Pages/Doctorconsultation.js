@@ -5,13 +5,14 @@ import Popup from '../Components/popup'
 import Popup1 from '../Components/popuplogin'
 import doctor1 from '../Images/doctor1.jpg'
 import doctor2 from '../Images/doctor2.jpg'
-
+import InfoModal from "../Components/Bookapp/detailsForm"
 const Doctorconsultation = () => {
     return (
         <>
             <Popup />
             <Popup1 />
             <Header />
+
             <div className="container-fluid  w-100 ">
                 <div className="row">
 
@@ -36,13 +37,12 @@ const Doctorconsultation = () => {
 
                                 <p className="card-text description">
                                     Senior Neurologist,<br/> Apollo Hospital,Kankarbagh,Patna-800020
-                                    
+
                                 </p>
                             </div>
 
                             <div align="right">
-
-                                <button type="button" className="btn btn-warning seemore1 mx-3 my-2">Book Appointment</button>
+                            <InfoModal/>
 
                             </div>
 
@@ -73,7 +73,8 @@ const Doctorconsultation = () => {
 
                             <div align="right">
 
-                            <button type="button" className="btn btn-warning seemore1 mx-3 my-2">Book Appointment</button>
+                            <InfoModal/>
+
 
                             </div>
 
@@ -102,7 +103,8 @@ const Doctorconsultation = () => {
 
                             <div align="right">
 
-                            <button type="button" className="btn btn-warning seemore1 mx-3 my-2">Book Appointment</button>
+                            <InfoModal/>
+
 
                             </div>
 
@@ -131,7 +133,8 @@ const Doctorconsultation = () => {
 
                             <div align="right">
 
-                            <button type="button" className="btn btn-warning seemore1 mx-3 my-2">Book Appointment</button>
+                            <InfoModal/>
+
 
                             </div>
 
@@ -141,7 +144,7 @@ const Doctorconsultation = () => {
                     </div>
                 </div>
             </div>
-            <Footer/> 
+            <Footer/>
 
         </>
     )
