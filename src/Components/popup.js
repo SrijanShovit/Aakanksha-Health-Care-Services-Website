@@ -13,6 +13,10 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    backgroundColor:"dodgerblue",
+    opacity:"0.8",
+    width:"50%",
+
   },
 };
 
@@ -35,7 +39,7 @@ export default function Popup() {
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
+    subtitle.style.color = 'white';
   }
 
   function closeModal() {
@@ -86,9 +90,12 @@ export default function Popup() {
           confirmPassword(event.target.value);
       }} required  />
       <input type="text" minlength="10" maxlength="10" Placeholder="Phone Number" className="ip"  onChange={(event)=>{
-        setNumber(event.target.value);
-    }} required  />
-          <Button  variant="primary" onClick={register}>Submit</Button>
+        setNumber(event.target.value);  }} required  />
+          <Button style={{outline:"none",
+          border:"1px solid white",backgroundColor:"transparent",
+          borderRadius:"20px"
+
+        }}  variant="primary" onClick={register}>Submit</Button>
 
         </form>
       </Modal>

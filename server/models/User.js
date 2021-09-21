@@ -1,17 +1,34 @@
-const Sequelize = require('sequelize');
-const sequelize = require('../utils/database');
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
-const User = sequelize.define('user', {
-  id: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
+const UserSchema = new mongoose.Schema({
+  username: String,
+  email: String,
+  password: { type: String, select: false, trim: true },
+  profilePicUrl: String,
+  cartItems: {
+    type: [{ productDetails: Object, quantity: { type: Number, default: 1 } }],
+    _id: false,
   },
-  username: Sequelize.STRING,
-  email: Sequelize.STRING,
-  password: Sequelize.STRING,
-  profilePicUrl: Sequelize.STRING,
 });
 
-module.exports = User;
+// hash password before saving
+UserSchema.pre('save', async function (next) {
+  this.password = await bcrypt.hash(this.password, bcrypt.genSaltSync());
+  next();
+});
+
+UserSchema.methods.matchPassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
+
+// generate json web token
+const maxAge = 3 * 24 * 60 * 60;
+UserSchema.methods.getJwtToken = async function () {
+  return jwt.sign({ id: this._id }, 'secret', {
+    expiresIn: maxAge,
+  });
+};
+
+module.exports = mongoose.model('user', UserSchema);

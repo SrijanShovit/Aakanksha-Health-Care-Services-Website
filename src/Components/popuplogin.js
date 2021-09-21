@@ -13,6 +13,9 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    width:'50%',
+    backgroundColor:'dodgerblue',
+    opacity:'0.8',
   },
 };
 
@@ -33,27 +36,35 @@ export default function Popup1() {
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
+    subtitle.style.color = 'white';
   }
 
   function closeModal() {
     setIsOpen(false);
   }
-  const login=()=>{
+  const login=()=>
+ {
     Axios.post('http://localhost:5000/auth/login',{
         email:email,
         password:password
 
     }).then((response)=>{
-       if (response.data.user.username) {
-            console.log("inside else if");
-            setLoginStatus(response.data.user.username); 
-            window.sessionStorage.setItem('username',response.data.user.username); 
-            closeModal();
-            {window.location.reload()}
+        if(response.data.message)
+        {
+          setLoginStatus(response.data.message); 
+        }
+        else{
+          if (response.data.user.username) 
+          {
+              setLoginStatus(response.data.user.username); 
+              window.sessionStorage.setItem('username',response.data.user.username); 
+              closeModal();
+              {window.location.reload()}
           }
-        })
-     }
+
+        }
+      })
+  }
    /*code for login ends here */
   return (
     <div>
@@ -65,7 +76,8 @@ export default function Popup1() {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Login</h2>
+        <h2 style={{color:"white"}} ref={(_subtitle) => (subtitle = _subtitle)}>Login</h2>
+        <h6>{loginStatus}</h6>
         <button className="close btn" onClick={closeModal}>X</button>
         <form className="w3-animate-zoom">
           <input type="Email" Placeholder="Email" className="ip" onChange={(event)=>{
@@ -74,7 +86,11 @@ export default function Popup1() {
           <input type="Password" Placeholder="Password" className="ip" onChange={(event)=>{
                 setPassword(event.target.value);
             }} required/>
-          <Button  variant="primary" onClick={login}>Submit</Button>
+          <Button style={{outline:"none",
+          border:"1px solid white",backgroundColor:"transparent",
+          borderRadius:"20px"
+
+        }}  variant="primary" onClick={login}>Submit</Button>
 
         </form>
       </Modal>

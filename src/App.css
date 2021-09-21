@@ -18,11 +18,11 @@
   color:white;
   padding: 8px;
 }
-.navstyle:hover{transition: 0.8s;
+/*.navstyle:hover{transition: 0.8s;
   transform: scale(0.9);
   background-color: red;
   outline: 1px solid white;
-}
+}*/
 .iconDiv{
  width: 20px;
  display: inline-block;
@@ -86,8 +86,9 @@
 /*login/signup */
 .signup:hover,.login:hover{transition: 1s;
   transform: scale(1.1);
-  background-color: red;
-  outline: 1px solid white;}
+  border-radius: 20px;
+  border:1px solid white;
+  outline:none;}
 
 
 /* <-------------------------Navbar styling ends-------------------------------> */
@@ -106,7 +107,11 @@
 
 
 /* <-------------------------Carousal styling ends-------------------------------> */
-
+/*<-------------------------home product starts------------------------------->*/
+.productImg{
+  height:150px;
+}
+/*<-------------------------home product ends------------------------------->*/
 /* <-------------------------Footer styling starts-------------------------------> */
 .footer  a{
     color: black !important; 
@@ -159,4 +164,7 @@ border-radius: 5px; /* 5px rounded corners */
 box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);
 
 }
-/* -------------------------Healthcamp Page styling starts--------------------  */
+.descDiv{
+ height:145px;
+}
+/* -------------------------Healthcamp Page styling starts ends--------------------  */
