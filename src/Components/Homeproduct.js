@@ -35,10 +35,14 @@ const Homeproduct= () =>
             <Row xs={2} md={3} className="g-4">
                 {data.map(item => (
                     <Col >
-                        <img className="productImg" src={item.imageUrl}></img> 
+                        <img className="productImg" src={item.imageUrl}></img>
+                        <div><span>{item.name}</span></div>
+                        <div><span>Price:{item.price}$</span></div>
                     </Col>
+                    
                 ))}
             </Row>
+          
                 
             </Container>
         </div>
