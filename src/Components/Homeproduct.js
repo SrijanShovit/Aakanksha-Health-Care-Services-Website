@@ -1,11 +1,13 @@
 import React, { useState,useEffect } from "react";
-import { Button, Col, Container,Row,ButtonGroup } from "react-bootstrap";
+import { Button, Col, Container,Row,ButtonGroup,Spinner } from "react-bootstrap";
 import Axios from "axios"
 import { Link} from "react-router-dom";
 const Homeproduct= () => 
 {
     const [data,setData]=useState([]);
     const [category,setCategory]=useState();
+    const [loading,setloading]=useState(false);
+    const style = { position: "fixed", top: "50%", left: "50%" };
     const linkStyle = {
         margin: "1rem",
         textDecoration: "none",
@@ -30,6 +32,7 @@ const Homeproduct= () =>
             }).slice(0,6);
             setCategory(category)
             setData(updatedItem);
+            setloading(true);
           
         })
        
@@ -38,11 +41,11 @@ const Homeproduct= () =>
     return(
         <div>
             <Container className="p-3">
-                <ButtonGroup className="m-3">
+               <ButtonGroup className="m-3">
                     <Button variant="secondary" onClick={()=>getProduct('Nutrition')}>Nutritious Products</Button>
                     <Button variant="secondary"  onClick={()=>getProduct('safety')}>Safety Products</Button>
                 </ButtonGroup>
-                <Row xs={2} md={3} className="g-4  ">
+                {loading?<Row xs={2} md={3} className="g-4  ">
                     {data.map(item => (
                         <Col className="shadow-lg p-5 mb-5 bg-white rounded">
                             <div className="text-center"><img className="productImg" src={item.imageUrl} alt="productImage"></img></div>
@@ -51,7 +54,7 @@ const Homeproduct= () =>
                         </Col>
                         
                     ))}
-                </Row>
+                </Row>:<Spinner animation="border" style={style}/>}
                 <Row className="p-5 text-center">
                     <Col>
                         <Link to={{
@@ -61,9 +64,9 @@ const Homeproduct= () =>
                             }
                             
                         }}style={linkStyle}>View All</Link >
-                </Col>
+                   </Col>
                 </Row>
-          </Container>
+            </Container>
         </div>
     );
 

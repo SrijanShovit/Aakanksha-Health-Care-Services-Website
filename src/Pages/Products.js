@@ -1,24 +1,25 @@
 import React from 'react';
-/*import {Button, Container,Card,Row,Col} from "react-bootstrap";*/
 import Header from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Popup from '../Components/popup'
 import Popup1 from '../Components/popuplogin'
 import Axios from 'axios';
-import { Container,Row,Col,Button } from 'react-bootstrap';
+import { Container,Row,Col,Button,Spinner } from 'react-bootstrap';
 export default class  Products extends React.Component {
     
     constructor(props){
         super(props);
         this.state={
-            data:[]
+            data:[],
+            loading:false
         }
         this.getProduct = this.getProduct.bind(this)
+        this.style = { position: "fixed",  left: "50%" };
     }
-  
+    
     getProduct(category)
     {
-        console.log("inside getproduct",category);
+       
         Axios.get('http://localhost:5000/product')
         .then((response)=>
         {
@@ -30,6 +31,9 @@ export default class  Products extends React.Component {
             });
             this.setState({
                 data: updatedItem,
+            });
+            this.setState({
+                loading:true,
             });
           
         })
@@ -51,7 +55,8 @@ export default class  Products extends React.Component {
                 <Popup />
                 <Popup1 />
                 <Header />
-                <Container className="p-5"> 
+                <Container className="p-5">
+                {this.state.loading?  
                     <Row xs={2} md={3} className="g-4">
                         {this.state.data.map((item)=>{
                         return(
@@ -67,7 +72,7 @@ export default class  Products extends React.Component {
                         
                             ) ;
                         })}
-                    </Row>
+                    </Row>:<Spinner animation="border" style={this.style}/>}
                 </Container>
                 <Footer/>
            </>
