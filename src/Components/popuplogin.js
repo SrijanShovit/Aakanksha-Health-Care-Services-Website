@@ -49,7 +49,7 @@ export default function Popup1() {
         password:password
 
     }).then((response)=>{
-      console.log(response.data.user);
+     
         if(response.data.message)
         {
           setLoginStatus(response.data.message); 
