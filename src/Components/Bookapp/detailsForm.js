@@ -1,8 +1,9 @@
 import React,{useState} from 'react';
-import {Modal, Button} from 'react-bootstrap';
+import {Modal, Button, ButtonGroup} from 'react-bootstrap';
 import SideNavDetails from './sidenavDetails'
 import 'bootstrap/dist/css/bootstrap.css';
 import "./index.css"
+import { Radio, RadioGroup} from 'react-radio-group'
 export default function InfoModal() {
 
   const [show, setShow] = useState(false);
@@ -38,8 +39,15 @@ export default function InfoModal() {
     <input className='form-control inp' type='text' placeholder="Attendee's concern" />
     <label><b>Date:</b></label>
     <input className='form-control inp' type='Date' placeholder='Date'/>
-    <label><b>Time:</b></label>
-    <input className='form-control inp' type='time' placeholder='time'/>
+    <RadioGroup name="slot">
+    <label><b>Slot:</b></label>
+   <div className="radio-button-background">
+       <Radio value="Morning" className="radio-button" />Morning (9:00AM - 12:00PM)
+   </div>
+   <div className="radio-button-background">
+       <Radio value="Evening" className="radio-button" />Evening (4:00PM - 7:30PM)
+   </div>
+</RadioGroup>
   </form>
 </div>
         </div>
