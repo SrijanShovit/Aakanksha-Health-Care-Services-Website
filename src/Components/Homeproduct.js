@@ -1,11 +1,16 @@
 import React, { useState,useEffect } from "react";
 import { Button, Col, Container,Row,ButtonGroup } from "react-bootstrap";
 import Axios from "axios"
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 const Homeproduct= () => 
 {
     const [data,setData]=useState([]);
     const [category,setCategory]=useState();
+    const linkStyle = {
+        margin: "1rem",
+        textDecoration: "none",
+        color: 'black'
+      };
     useEffect(()=>{
         getProduct('Nutrition');
     }, [])
@@ -37,12 +42,12 @@ const Homeproduct= () =>
                     <Button variant="secondary" onClick={()=>getProduct('Nutrition')}>Nutritious Products</Button>
                     <Button variant="secondary"  onClick={()=>getProduct('safety')}>Safety Products</Button>
                 </ButtonGroup>
-                <Row xs={2} md={3} className="g-4 text-center">
+                <Row xs={2} md={3} className="g-4  ">
                     {data.map(item => (
-                        <Col >
-                            <img className="productImg" src={item.imageUrl} alt="productImage"></img>
-                            <div><span>{item.name}</span></div>
-                            <div><span>Price:{item.price}$</span></div>
+                        <Col className="shadow-lg p-5 mb-5 bg-white rounded">
+                            <div className="text-center"><img className="productImg" src={item.imageUrl} alt="productImage"></img></div>
+                            <div className="text-left"><span>{item.name}</span></div>
+                            <div className="text-left"><span>Price:{item.price}$</span></div>
                         </Col>
                         
                     ))}
@@ -54,7 +59,8 @@ const Homeproduct= () =>
                             state:{
                                 category:category
                             }
-                        }}>View All</Link>
+                            
+                        }}style={linkStyle}>View All</Link >
                 </Col>
                 </Row>
           </Container>
