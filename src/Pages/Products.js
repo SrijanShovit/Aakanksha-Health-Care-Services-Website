@@ -52,21 +52,23 @@ export default class  Products extends React.Component {
                 <Popup1 />
                 <Header />
                 <Container className="p-5"> 
-                <Row xs={2} md={3} className="g-4 text-center">
-                    {this.state.data.map((item)=>{
-                       return(
-                            <Col>
-                                <div><img className="productImg" src={item.imageUrl} alt="productImage"></img></div>
-                                <div><span>Product Name: {item.name}</span></div>
-                                <div><span>Description: {item.description}</span></div>
-                                <div><span>Price: {item.price}$</span></div>
-                                <Button variant="primary">Add to Cart</Button>
-                           </Col>
-                        ) ;
+                    <Row xs={2} md={3} className="g-4">
+                        {this.state.data.map((item)=>{
+                        return(
+                            <div className="shadow-lg p-5 mb-5 bg-white rounded">
+                                    <Col>
+                                        <div className="text-center"><img className="productImg" src={item.imageUrl} alt="productImage"></img></div>
+                                        <div className="text-left"><span>Product Name: {item.name}</span></div>
+                                        <div  className="text-left"><span>Description: {item.description}</span></div>
+                                        <div  className="text-left"><span>Price: {item.price}$</span></div>
+                                        <div className="text-center"><Button variant="primary">Add to Cart</Button></div>
+                                </Col>
+                            </div>
                         
-                    })}
-                     </Row>
-                    </Container>
+                            ) ;
+                        })}
+                    </Row>
+                </Container>
                 <Footer/>
            </>
         );
