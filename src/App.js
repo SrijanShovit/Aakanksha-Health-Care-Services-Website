@@ -3,6 +3,7 @@ import Home from './Pages/Home'
 import './App.css'
 import './Pages/Home'
 import Doctors from './Pages/Doctorconsultation'
+import Bestbrands from './Components/Bestbrands'
 import Healthcamp from './Pages/Healthcamp'
 import Notfound from './Pages/Notfound'
 import Products from './Pages/Products'
@@ -12,18 +13,24 @@ import {
   Route,
 } from "react-router-dom";
 
+
 const App = () => {
   return (
     <>
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route path="/doctors" component={Doctors} />
         <Route path="/camp" component={Healthcamp} />
         <Route path="/products" component={Products} />
         <Route component={Notfound} />
+      
+        
       </Switch>
     </Router>
+    < Bestbrands />
+   
     </>
   )
 }
