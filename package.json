@@ -16,6 +16,7 @@
     "react-icons": "^4.2.0",
     "react-modal": "^3.14.3",
     "react-multi-carousel": "^2.6.5",
+    "react-radio-group": "^3.0.3",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "styled-components": "^5.3.1",
