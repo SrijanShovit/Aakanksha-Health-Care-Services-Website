@@ -44,7 +44,7 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto w3-animate-zoom">
-              <NavLink className="navstyle" to="#link"><div className="iconDiv"><FaPills /></div>Knock Knock Medico</NavLink>
+              <NavLink className="navstyle" to="/medico"><div className="iconDiv"><FaPills /></div>Knock Knock Medico</NavLink>
               <NavLink className="navstyle" to="/camp"><div className="iconDiv"><FaHospitalSymbol /></div>Health Camp</NavLink>
               <NavLink className="navstyle" to="/doctors"><div className="iconDiv"><FaUserMd /></div>Doctors Consultation</NavLink>
               <NavLink className="navstyle" to="#link"><div className="iconDiv"><FaShoppingCart /></div>Cart</NavLink>
