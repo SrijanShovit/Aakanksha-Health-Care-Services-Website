@@ -1,20 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const verifyLogin = require('../middlewares/verifyLogin');
 const {
   addProducts,
-  getProducts,
   addToCart,
   removeFromCart,
   changeQuantity,
+  getProductDetail,
+  getCartItems,
 } = require('../controllers/productController');
 
-router.route('/').get(getProducts);
-router.route('/:productName/addToCart').get(verifyLogin, addToCart);
-router.route('/:productName/removeFromCart').get(verifyLogin, removeFromCart);
-router
-  .route('/:productName/changeQuantity/:quantity')
-  .get(verifyLogin, changeQuantity);
-router.route('/add').post(addProducts);
+router.route('/getProductDetail').post(getProductDetail);
+router.route('/addProducts').post(addProducts);
+router.route('/addToCart').post(addToCart);
+router.route('/removeFromCart').post(removeFromCart);
+router.route('/changeQuantity').post(changeQuantity);
+router.route('/getCartItems').post(getCartItems);
 
 module.exports = router;

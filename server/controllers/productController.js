@@ -10,8 +10,8 @@ exports.addProducts = asyncHandler(async (req, res, next) => {
   });
 });
 
-exports.getProducts = asyncHandler(async (req, res, next) => {
-  let products = await Product.find(req.query);
+exports.getProductDetail = asyncHandler(async (req, res, next) => {
+  let products = await Product.find(req.body);
 
   res.status(200).json({
     numberOfProducts: products.length,
@@ -20,8 +20,20 @@ exports.getProducts = asyncHandler(async (req, res, next) => {
 });
 
 exports.addToCart = asyncHandler(async (req, res, next) => {
-  let productName = req.params.productName;
-  let product = await Product.findOne({ name: productName });
+  if (
+    !req.body.hasOwnProperty('productName') ||
+    !req.body.hasOwnProperty('email')
+  ) {
+    res.json({
+      message: 'All properties namely {productName, email} are required.',
+    });
+    return next();
+  }
+
+  let productName = req.body.productName,
+    email = req.body.email;
+  let product = await Product.findOne({ name: productName }),
+    user = await User.findOne({ email });
 
   if (!product) {
     res.status(400).json({
@@ -30,7 +42,13 @@ exports.addToCart = asyncHandler(async (req, res, next) => {
     return next();
   }
 
-  let user = await User.findById(req.user.id).select('cartItems');
+  if (!user) {
+    res.status(400).json({
+      message: `No user found with the email ${email}.`,
+    });
+    return next();
+  }
+
   let cartItems = user.cartItems;
   let found = false;
 
@@ -45,11 +63,11 @@ exports.addToCart = asyncHandler(async (req, res, next) => {
   // if product found in the cart, increase the quantity by 1
   if (found) {
     await User.findOneAndUpdate(
-      { _id: req.user.id, 'cartItems.productDetails._id': product._id },
+      { _id: user._id, 'cartItems.productDetails._id': product._id },
       { $inc: { 'cartItems.$.quantity': 1 } }
     );
   } else {
-    await User.findByIdAndUpdate(req.user.id, {
+    await User.findByIdAndUpdate(user._id, {
       $push: { cartItems: { productDetails: product } },
     });
   }
@@ -60,8 +78,21 @@ exports.addToCart = asyncHandler(async (req, res, next) => {
 });
 
 exports.removeFromCart = asyncHandler(async (req, res, next) => {
-  let productName = req.params.productName;
-  let product = await Product.findOne({ name: productName });
+  if (
+    !req.body.hasOwnProperty('productName') ||
+    !req.body.hasOwnProperty('email')
+  ) {
+    res.json({
+      message: 'All properties namely {productName, email} are required.',
+    });
+    return next();
+  }
+
+  let productName = req.body.productName,
+    email = req.body.email;
+  let product = await Product.findOne({ name: productName }),
+    user = await User.findOne({ email });
+
   if (!product) {
     res.status(400).json({
       message: `No product found with the name ${productName}.`,
@@ -69,7 +100,14 @@ exports.removeFromCart = asyncHandler(async (req, res, next) => {
     return next();
   }
 
-  await User.findByIdAndUpdate(req.user.id, {
+  if (!user) {
+    res.status(400).json({
+      message: `No user found with the email ${email}.`,
+    });
+    return next();
+  }
+
+  await User.findByIdAndUpdate(user._id, {
     $pull: { cartItems: { productDetails: product } },
   });
 
@@ -79,8 +117,23 @@ exports.removeFromCart = asyncHandler(async (req, res, next) => {
 });
 
 exports.changeQuantity = asyncHandler(async (req, res, next) => {
-  let productName = req.params.productName;
-  let product = await Product.findOne({ name: productName });
+  if (
+    !req.body.hasOwnProperty('productName') ||
+    !req.body.hasOwnProperty('email') ||
+    !req.body.hasOwnProperty('quantity')
+  ) {
+    res.json({
+      message:
+        'All properties namely {productName, email and quantity} are required.',
+    });
+    return next();
+  }
+
+  let productName = req.body.productName,
+    email = req.body.email;
+  let product = await Product.findOne({ name: productName }),
+    user = await User.findOne({ email });
+
   if (!product) {
     res.status(400).json({
       message: `No product found with the name ${productName}.`,
@@ -88,14 +141,44 @@ exports.changeQuantity = asyncHandler(async (req, res, next) => {
     return next();
   }
 
-  let quantity = req.params.quantity;
+  if (!user) {
+    res.status(400).json({
+      message: `No user found with the email ${email}.`,
+    });
+    return next();
+  }
+
+  let quantity = req.body.quantity;
 
   await User.findOneAndUpdate(
-    { _id: req.user.id, 'cartItems.productDetails._id': product._id },
+    { _id: user._id, 'cartItems.productDetails._id': product._id },
     { $set: { 'cartItems.$.quantity': quantity } }
   );
 
   res.status(200).json({
     message: `${productName} quantity changed.`,
+  });
+});
+
+exports.getCartItems = asyncHandler(async (req, res, next) => {
+  if (!req.body.hasOwnProperty('email')) {
+    res.json({
+      message: 'Please provide a user email.',
+    });
+    return next();
+  }
+
+  let email = req.body.email;
+  let user = await User.findOne({ email }).select('cartItems');
+
+  if (!user) {
+    res.status(400).json({
+      message: `No user found with the email ${email}.`,
+    });
+    return next();
+  }
+
+  res.status(200).json({
+    cartItems: user.cartItems,
   });
 });
