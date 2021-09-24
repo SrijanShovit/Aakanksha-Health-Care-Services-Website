@@ -4,14 +4,15 @@ import Footer from '../Components/Footer'
 import Popup from '../Components/popup'
 import Popup1 from '../Components/popuplogin'
 import Axios from 'axios';
-import { Container,Row,Col,Button,Spinner } from 'react-bootstrap';
+import { Container,Row,Col,Button,Spinner} from 'react-bootstrap';
 export default class  Products extends React.Component {
     
     constructor(props){
         super(props);
         this.state={
             data:[],
-            loading:false
+            loading:false,
+            
         }
         this.getProduct = this.getProduct.bind(this)
         this.style = { position: "fixed",  left: "50%" };
@@ -19,18 +20,16 @@ export default class  Products extends React.Component {
     
     getProduct(category)
     {
-       
-        Axios.get('http://localhost:5000/product')
+      
+        Axios.post('http://localhost:5000/product/getProductDetail',
+           {
+               category:category
+           })
         .then((response)=>
         {
-           const updatedItem=response.data.products.filter((item)=>{
-                return(
-                    item.category === category
-                    
-                  ); 
-            });
+          
             this.setState({
-                data: updatedItem,
+                data: response.data.products,
             });
             this.setState({
                 loading:true,
@@ -39,7 +38,7 @@ export default class  Products extends React.Component {
         })
        
     }
-   
+    
     componentDidMount() {
         window.addEventListener('load', this.getProduct(this.props.location.state.category));
      }
@@ -47,6 +46,8 @@ export default class  Products extends React.Component {
      componentWillUnmount() { 
        window.removeEventListener('load', this.getProduct(this.props.location.state.category))  
      } 
+
+  
     render()
     {
     
@@ -55,24 +56,25 @@ export default class  Products extends React.Component {
                 <Popup />
                 <Popup1 />
                 <Header />
-                <Container className="p-5">
-                {this.state.loading?  
-                    <Row xs={2} md={3} className="g-4">
-                        {this.state.data.map((item)=>{
-                        return(
-                            <div className="shadow-lg p-5 mb-5 bg-white rounded">
-                                    <Col>
-                                        <div className="text-center"><img className="productImg" src={item.imageUrl} alt="productImage"></img></div>
-                                        <div className="text-left"><span>Product Name: {item.name}</span></div>
-                                        <div  className="text-left"><span>Description: {item.description}</span></div>
-                                        <div  className="text-left"><span>Price: {item.price}$</span></div>
-                                        <div className="text-center"><Button variant="primary">Add to Cart</Button></div>
-                                </Col>
-                            </div>
-                        
-                            ) ;
-                        })}
-                    </Row>:<Spinner animation="border" style={this.style}/>}
+                <Container className="py-5">
+                   
+                        {this.state.loading?  
+                            <Row xs={1} md={3} className="g-4">
+                                {this.state.data.map((item)=>{
+                                    return(
+                                        <div className="shadow-lg p-5 mb-5  bg-white rounded">
+                                                <Col md="auto">
+                                                    <div className="text-center"><img className="productImg" src={item.imageUrl} alt="productImage"></img></div>
+                                                    <div className="text-left"><span>Product: {item.name}</span></div>
+                                                    <div  className="text-left"><span>Description: {item.description}</span></div>
+                                                    <div  className="text-left"><span>Price: {item.price}$</span></div>
+                                                    <div className="text-center p-3"><Button variant="primary">Add to Cart</Button></div>
+                                               </Col>
+                                        </div>) ;
+                                    })
+                                }
+                            </Row>:<Spinner animation="border" style={this.style}/>}
+                    
                 </Container>
                 <Footer/>
            </>

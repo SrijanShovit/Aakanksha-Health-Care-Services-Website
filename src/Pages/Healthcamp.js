@@ -11,7 +11,7 @@ const Healthcamp = () => {
     const style = { position: "fixed",  left: "50%" };
        useEffect(() => {
         const fetchData = async () => {
-            Axios.get('http://localhost:5000/camp/getCampDetail',)
+            Axios.post('http://localhost:5000/camp/getCampDetail',)
             .then((response)=>{
                setData(response.data.camps);
                setloading(true);

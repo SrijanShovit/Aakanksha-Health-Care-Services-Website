@@ -20,7 +20,7 @@ const Homeproduct= () =>
     const getProduct=(category)=>
     {
         
-        Axios.get('http://localhost:5000/product')
+        Axios.post('http://localhost:5000/product/getProductDetail')
         .then((response)=>
         {
            
