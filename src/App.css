@@ -61,7 +61,7 @@
 
 .has-search .form-control-feedback {
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   display: block;
   width: 2.375rem;
   height: 2.375rem;
@@ -71,7 +71,7 @@
   color: #aaa;
 }
 .btn-link {
-  
+
   color:white!important;
   text-decoration: none!important;
 }
@@ -79,7 +79,7 @@
   .navbar-expand-lg .navbar-nav .nav-link
   {
      padding-right: 3rem!important;
-     
+
  }
 
 }
@@ -98,11 +98,11 @@
 
 
 .carousel-item{
-  
+
   height: 100%!important;
   width: 100%;
   padding:1rem;
-  
+
 }
 
 
@@ -111,10 +111,11 @@
 .productImg{
   height:150px;
 }
+
 /*<-------------------------home product ends------------------------------->*/
 /* <-------------------------Footer styling starts-------------------------------> */
 .footer  a{
-    color: black !important; 
+    color: black !important;
     text-decoration:none !important;
 }
 .footer hr{

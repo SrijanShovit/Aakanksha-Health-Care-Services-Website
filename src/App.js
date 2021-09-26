@@ -5,12 +5,11 @@ import './Pages/Home'
 import Doctors from './Pages/Doctorconsultation'
 import Healthcamp from './Pages/Healthcamp'
 import Notfound from './Pages/Notfound'
+import Products from './Pages/Products'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  NavLink
 } from "react-router-dom";
 
 const App = () => {
@@ -21,6 +20,7 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route path="/doctors" component={Doctors} />
         <Route path="/camp" component={Healthcamp} />
+        <Route path="/products" component={Products} />
         <Route component={Notfound} />
       </Switch>
     </Router>

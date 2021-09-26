@@ -16,6 +16,7 @@ const customStyles = {
     width:'50%',
     backgroundColor:'dodgerblue',
     opacity:'0.8',
+
   },
 };
 
@@ -23,8 +24,8 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 export default function Popup1() {
-  
-  const [email,setEmail]=useState(); 
+
+  const [email,setEmail]=useState();
   const [password,setPassword]=useState();
   const [loginStatus,setLoginStatus]=useState();
   let subtitle;
@@ -49,15 +50,16 @@ export default function Popup1() {
         password:password
 
     }).then((response)=>{
+
         if(response.data.message)
         {
-          setLoginStatus(response.data.message); 
+          setLoginStatus(response.data.message);
         }
         else{
-          if (response.data.user.username) 
+          if (response.data.user.username)
           {
-              setLoginStatus(response.data.user.username); 
-              window.sessionStorage.setItem('username',response.data.user.username); 
+              setLoginStatus(response.data.user.username);
+              window.sessionStorage.setItem('username',response.data.user.username);
               closeModal();
               {window.location.reload()}
           }
