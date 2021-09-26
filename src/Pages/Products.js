@@ -50,21 +50,17 @@ export default class  Products extends React.Component {
     }
     //function for add product in cart
     addToCart=(e)=>{
-        console.log("inside");
         let name = e.currentTarget.getAttribute("name");
-        console.log("name is",name);
         const email=window.sessionStorage.getItem("email");
-        console.log( email);
         Axios.post('http://localhost:5000/product/addToCart',
-
         {
             email:email,
             productName:name
         }).then((response)=>
-     {
-        console.log(response)
+       {
+          console.log(response)
          
-     })
+       })
 
     }
     
@@ -88,7 +84,6 @@ export default class  Products extends React.Component {
     filterHandler(){
         var category=Object.keys(this.state.categorynames).filter((x)=>this.state.categorynames[x]);
         var price=this.state.price.split(',').map( n => parseInt(n, 10));
-        console.log(price);
         Axios.post('http://localhost:5000/product/getProductDetail',
            {
                category:category,

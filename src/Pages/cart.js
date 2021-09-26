@@ -15,7 +15,7 @@ export default function Cart() {
                email:email 
             })
             .then((response)=>{
-               setData(response.data.cartItems[0].productDetails);
+               setData(response.data.cartItems);
                
                //setloading(true);
                //console.log(response.data.cartItems[0].productDetails.name);
@@ -31,9 +31,9 @@ export default function Cart() {
         <Popup1 />
         <Header />
         <Container> 
-            {console.log(Object.values(data))}
+            {console.log("Object.values(data) is",Object.values(data))}
             {Object.values(data).map((item)=>{
-               return <div>{item.name}</div>
+               return <div>{item.productDetails.name}</div>
             })}
         </Container>
         <Footer/>
