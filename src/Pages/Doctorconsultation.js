@@ -11,13 +11,14 @@ import always from '../Images/24x7.jpg'
 import anytime from '../Images/anytime.png'
 import allcategory from '../Images/allcategory.jfif'
 
-
+import InfoModal from "../Components/Bookapp/detailsForm"
 const Doctorconsultation = () => {
     return (
         <>
             <Popup />
             <Popup1 />
             <Header />
+
             <div className="container-fluid  w-100 ">
                 <div className="row">
 
@@ -34,6 +35,7 @@ const Doctorconsultation = () => {
 
 
                         </div>
+
 
                         <div className="row" align="center">
                             <div className="col-lg-4 col-12  my-3">
@@ -62,10 +64,20 @@ const Doctorconsultation = () => {
                                     </h6>
                                    
                                 </div>
+
+                                <p className="card-text description">
+                                    Senior Neurologist,<br/> Apollo Hospital,Kankarbagh,Patna-800020
+
+                                </p>
+
                             </div>
                         </div>
 
+
                        
+
+                            <div align="right">
+                            <InfoModal/>
 
 
 
@@ -114,7 +126,9 @@ const Doctorconsultation = () => {
 
                                         <button type="button" className="btn btn-primary seemore1 mx-3 my-2">Book Appointment</button>
 
+
                                     </div>
+                            <InfoModal/>
 
 
                                 </div>
@@ -147,7 +161,12 @@ const Doctorconsultation = () => {
 
                                         <button type="button" className="btn btn-primary seemore1 mx-3 my-2">Book Appointment</button>
 
+
                                     </div>
+
+                            <InfoModal/>
+
+
 
 
 
@@ -189,6 +208,10 @@ const Doctorconsultation = () => {
                                     </div>
 
 
+                            <InfoModal/>
+
+
+
                                 </div>
                             </div>
                         </div>
@@ -200,6 +223,7 @@ const Doctorconsultation = () => {
                 </div>
             </div>
             <Footer />
+            
 
         </>
     )

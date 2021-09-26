@@ -1,6 +1,5 @@
 const asyncHandler = require('../middlewares/asyncHandler');
 const User = require('../models/User');
-const sendTokenResponse = require('../middlewares/sendTokenResponse');
 
 exports.register = asyncHandler(async (req, res, next) => {
   let username = req.body.username,
@@ -34,7 +33,7 @@ exports.login = asyncHandler(async (req, res, next) => {
 
   // if user not found or password is wrong
   if (!user || !(await user.matchPassword(password))) {
-    res.status(401).json({
+    res.status(200).json({
       message: 'Wrong login credentials',
     });
     return next();
@@ -42,10 +41,5 @@ exports.login = asyncHandler(async (req, res, next) => {
 
   // password should not be given in response, so remove it from user object
   user.password = undefined;
-  sendTokenResponse(user, res, 200);
-});
-
-exports.logout = asyncHandler(async (req, res, next) => {
-  res.cookie('token', '', { maxAge: 1 });
-  res.status(200).json({ message: 'Logged out successfully.' });
+  res.status(200).json({ user });
 });

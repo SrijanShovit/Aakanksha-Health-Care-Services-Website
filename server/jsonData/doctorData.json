@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Dr. Joanna",
+    "about": "Senior Neurologist",
+    "address": "Apollo Hospital,Kankarbagh,Patna-800020",
+    "imageUrl": ""
+  },
+  {
+    "name": "Dr. Kishore",
+    "about": "ENT Specialist",
+    "address": "IGIMS ,Raja Bazar,Patna-800020",
+    "imageUrl": ""
+  },
+  {
+    "name": "Dr. Peter Rodrick",
+    "about": "Physician",
+    "address": "Care and Cure ,Anishabad,Patna-800020",
+    "imageUrl": ""
+  },
+  {
+    "name": "Dr. O.P. Verma",
+    "about": "Heart Specialist",
+    "address": "AIIMS,Anishabad,Patna-800020",
+    "imageUrl": ""
+  }
+]
