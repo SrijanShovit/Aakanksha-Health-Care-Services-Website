@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Home from './Pages/Home'
 import './App.css'
 import './Pages/Home'
@@ -11,19 +11,23 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import Cart from './Pages/cart'
+
 
 const App = () => {
+  const [email,setEmail]=useState("");
   return (
     <>
     <Router>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/doctors" component={Doctors} />
-        <Route path="/camp" component={Healthcamp} />
-        <Route path="/products" component={Products} />
-        <Route component={Notfound} />
-      </Switch>
-    </Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/products" component={Products} />
+          <Route path="/doctors" component={Doctors} />
+          <Route path="/camp" component={Healthcamp} />
+          <Route path="/cart" component={Cart} />
+          <Route component={Notfound} />
+       </Switch>
+     </Router>
     </>
   )
 }
