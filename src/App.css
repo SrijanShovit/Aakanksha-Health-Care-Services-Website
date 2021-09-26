@@ -132,21 +132,100 @@
 
 /* -------------------------Doctor Consultation Page styling starts--------------------  */
 
+.aboutdoctorcon{
+  /* background-color:#32aeb1; */
+  /* height: 20vh; */
+  display:grid;
+  align-items: center;
+  place-items: center;
+  justify-content: center;
+  font-size:20px;
+  color: green;
+  text-shadow: 1px 0.5px 0.5px grey!important;
+ 
+}
+
+.doctorwelc{
+  height:20rem;
+}
+
+.avatar{
+  background-color:cyan;
+  height: 6rem;
+  width: 6rem;
+  border-radius:50%;
+  border: 2px solid cyan;
+}
 .seemore1{
   color: azure!important;
   cursor:default;
   margin-top: 5px;
   margin-bottom: 5px;
+  background-color:  #32aeb1 !important;
 }
 
+.seemore1 :hover{
+  background-color:black!important;
+}
+
+.seemore1 :after{
+  color: black !important;
+}
 .seemore2{
   color: azure !important;
-  background-color: rgb(29, 149, 230) !important;
+  background-color:#2bb0ee !important;
   border: none;
   cursor:default;
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+
+h3{
+  align-items: center;
+  justify-content: center;
+}
+
+
+.doctorpanel{
+  padding:5px;
+  background-color:#efeee9;
+}
+
+.card-title :hover{
+  text-decoration: underline!important;
+}
+.card-body :hover{
+  color:rgb(22, 69, 75)!important;
+  
+}
+
+.rightphotodoc{
+  padding-left: 25px;
+}
+.cardgroup {
+  box-shadow: 0 5px 18px 0 rgba(0,0,0.2,0.5);
+  height: 275px;
+  width: 275px;
+  border-radius: 10px;
+}
+
+ .doctorphoto:hover{
+   transition: all 1s ease-in-out;
+   animation: rotatefont 1s linear infinite alternate-reverse;
+ 
+}
+
+@keyframes rotatefont{
+  0%{
+      transform: scale(0.8);
+  }
+  100%{
+      transform: scale(1.0);
+  }
+}
+
+
 /* -------------------------Doctor Consultation Page styling ends--------------------  */
 /* -------------------------Healthcamp Page styling starts--------------------  */
 .card-img-top{
@@ -155,14 +234,14 @@
 }
 .card {
 /* Add shadows to create the "card" effect */
-box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
+box-shadow: 0 8px 8px 0 rgba(0,0,0,0.3);
 transition: 0.3s;
 border-radius: 5px; /* 5px rounded corners */
 }
 
 /* On mouse-over, add a deeper shadow */
 .card:hover {
-box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);
+box-shadow: 0 16px 16px 0 rgba(0,0,0,0.6);
 
 }
 .descDiv{
