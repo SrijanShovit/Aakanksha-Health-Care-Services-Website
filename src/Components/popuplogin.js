@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import Modal from 'react-modal';
 import Axios from 'axios';
 import './css/style.css'
@@ -24,8 +24,8 @@ Modal.setAppElement('#root');
 
 export default function Popup1() {
   
-  const [email,setEmail]=useState(); 
-  const [password,setPassword]=useState();
+ const [email,setEmail]=useState(); 
+ const [password,setPassword]=useState();
   const [loginStatus,setLoginStatus]=useState();
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -59,6 +59,7 @@ export default function Popup1() {
           {
               setLoginStatus(response.data.user.username); 
               window.sessionStorage.setItem('username',response.data.user.username); 
+              window.sessionStorage.setItem('email',response.data.user.email); 
               closeModal();
               {window.location.reload()}
           }

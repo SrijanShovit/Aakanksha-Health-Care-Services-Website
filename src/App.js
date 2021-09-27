@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Home from './Pages/Home'
 import './App.css'
 import './Pages/Home'
@@ -13,8 +13,11 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import Cart from './Pages/cart'
+
 
 const App = () => {
+  const [email,setEmail]=useState("");
   return (
     <>
     <Router>

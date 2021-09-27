@@ -54,7 +54,7 @@ const Header = () => {
                           }}><div className="iconDiv"><FaPills /></div>Knock Knock Medico</NavLink >
               <NavLink className="navstyle" to="/camp"><div className="iconDiv"><FaHospitalSymbol /></div>Health Camp</NavLink>
               <NavLink className="navstyle" to="/doctors"><div className="iconDiv"><FaUserMd /></div>Doctors Consultation</NavLink>
-              <NavLink className="navstyle" to="#link"><div className="iconDiv"><FaShoppingCart /></div>Cart</NavLink>
+              <NavLink className="navstyle" to="/cart"><div className="iconDiv"><FaShoppingCart /></div>Cart</NavLink>
             </Nav>
           </Navbar.Collapse>
       </Container>
