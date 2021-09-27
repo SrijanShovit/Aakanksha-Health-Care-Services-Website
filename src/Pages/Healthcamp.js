@@ -25,7 +25,7 @@ const Healthcamp = () => {
         <Popup />
         <Popup1 />
         <Header /> 
-        <Container className="pt-5">
+        {/* <Container className="pt-5">
            {loading? 
             <Row xs={1} md={3} className="g-4">
                {data.map(item => (
@@ -47,7 +47,7 @@ const Healthcamp = () => {
                 ))}
            </Row>:<Spinner animation="border" style={style}/>}
 
-        </Container>
+        </Container> */}
 
         <div className="container" align="center">
                         <div className="col-lg-12 col-12 my-2 card">
