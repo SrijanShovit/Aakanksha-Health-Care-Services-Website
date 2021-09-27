@@ -2,10 +2,10 @@
 background-color:#232323;
 height: 100%;
 overflow-x: hidden;
-padding-top: 20px;
+padding-top: 50px;
  display: flex;
   flex-direction: column;
-align-items: center;
+align-items:center;
 }
 .nextButton{
   position: absolute;
@@ -25,10 +25,6 @@ align-items: center;
   color:white;
   padding:10px;
 }
-.sidenavAnc{
-  text-decoration: none;
-  color: #fff;
-}
 .appheading{
   color:#4F0E0E;
   margin: auto;
@@ -39,4 +35,195 @@ align-items: center;
 }
 .radio-button-background:hover{
   color: blue;
+}
+.radio-button{
+  align-items: center;
+  margin: auto;
+  width :10%;
+}
+/* payment */
+
+.card {
+    max-width: 1000px;
+    margin: 2vh;
+}
+
+.card-top {
+    padding: 0.7rem 5rem;
+}
+
+.card-top a {
+    float: left;
+    margin-top: 0.7rem;
+}
+
+#logo {
+    font-family: 'Dancing Script';
+    font-weight: bold;
+    font-size: 1.6rem
+}
+
+.card-b {
+    padding: 0 5rem 5rem 5rem;
+    background-image: url("https://i.imgur.com/4bg1e6u.jpg");
+    background-size: cover;
+    background-repeat: no-repeat
+}
+
+@media(max-width:768px) {
+    .card-b {
+        padding: 0 1rem 1rem 1rem;
+
+        background-size: cover;
+        background-repeat: no-repeat
+    }
+
+    .card-top {
+        padding: 0.7rem 1rem
+    }
+}
+
+.row {
+    margin: 0
+}
+
+.upper {
+    padding: 1rem 0;
+    justify-content: space-between;
+}
+
+#three {
+    border-radius: 1rem;
+    width: 22px;
+    height: 22px;
+    margin-right: 3px;
+    border: 1px solid blue;
+    text-align: center;
+    display: inline-block
+}
+
+#payment {
+    margin: 0;
+    color: blue
+}
+
+.icons {
+    margin-left: auto
+}
+
+form span {
+    color: rgb(179, 179, 179)
+}
+
+form {
+    padding: 2vh 0
+}
+
+input {
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247)
+}
+
+input:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+.h {
+    font-size: 1.5rem
+}
+
+.left {
+    background-color: #ffffff;
+    padding: 2vh;
+    margin-left: 25%;
+}
+
+.left img {
+    width: 2rem
+}
+
+.left .col-4 {
+    
+}
+
+.right .item {
+    padding: 0.3rem 0
+}
+
+.right {
+    background-color: #ffffff;
+    padding: 2vh
+}
+
+.col-8 {
+    padding: 0 1vh
+}
+
+.lower {
+    line-height: 2
+}
+
+.buttonp {
+    background-color: rgb(23, 4, 189);
+    border-color: rgb(23, 4, 189);
+    color: white;
+    width: 100%;
+    font-size: 0.7rem;
+    margin: 4vh 0 1.5vh 0;
+    padding: 1.5vh;
+    border-radius: 0
+}
+
+.buttonp:focus {
+    box-shadow: none;
+    outline: none;
+    box-shadow: none;
+    color: white;
+    -webkit-box-shadow: none;
+    -webkit-user-select: none;
+    transition: none
+}
+
+.buttonp:hover {
+    color: white
+}
+
+a {
+    color: black
+}
+
+a:hover {
+    color: black;
+    text-decoration: none
+}
+
+input[type=checkbox] {
+    width: unset;
+    margin-bottom: unset
+}
+
+#cvv {
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0.575), rgba(255, 255, 255, 0.541)), url("https://img.icons8.com/material-outlined/24/000000/help.png");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: center
+}
+
+#cvv:hover {}
+.order{
+  margin-left: 20px;
+}
+/* upi */
+.scan{
+  text-align: center;
+}
+.centerqr{
+  margin-left: 35%;
+}
+.choice{
+  margin: 40%;
 }
