@@ -19,12 +19,15 @@ export default class  Products extends React.Component {
                 Nutrition:false,
                 safety:false
             },
-            price:[]
+            price:[],
+            count:0,
+            show:false
         }
         this.getProduct = this.getProduct.bind(this)
         this.addToCart = this.addToCart.bind(this)
         this.ckeckboxClickHandler=this.ckeckboxClickHandler.bind(this)
         this.filterHandler=this.filterHandler.bind(this)
+        
         this.style = { position: "fixed",  left: "50%" };
     }
     //function to get products  on page load
@@ -50,7 +53,13 @@ export default class  Products extends React.Component {
     }
     //function for add product in cart
     addToCart=(e)=>{
-        let name = e.currentTarget.getAttribute("name");
+        this.setState({
+            count: this.state.count + 1,
+            show:true
+        });
+        
+        console.log(this.state.count);
+       let name = e.currentTarget.getAttribute("name");
         const email=window.sessionStorage.getItem("email");
         Axios.post('http://localhost:5000/product/addToCart',
         {
@@ -80,10 +89,14 @@ export default class  Products extends React.Component {
             return selectedcategory[name]=checked;
         });
     }
+
     //function for filter data
     filterHandler(){
         var category=Object.keys(this.state.categorynames).filter((x)=>this.state.categorynames[x]);
-        var price=this.state.price.split(',').map( n => parseInt(n, 10));
+        if(this.state.price){
+            var price=this.state.price.split(',').map( n => parseInt(n, 10));
+        }
+       
         Axios.post('http://localhost:5000/product/getProductDetail',
            {
                category:category,
@@ -101,6 +114,7 @@ export default class  Products extends React.Component {
           
         })
     }
+ 
     render()
     {
         
@@ -110,6 +124,7 @@ export default class  Products extends React.Component {
                 <Popup1 />
                 <Header />
                 <Container className="py-5">
+                    
                    <Row>
                        <Col md="auto" >
                        <div className="p-5">
@@ -119,7 +134,7 @@ export default class  Products extends React.Component {
                             <RadioGroup name="price">
                                     <label><b>Price:</b></label>
                                     <div className="radio-button-background">
-                                        <Radio  className="radio-button" value={[10,50]} onChange={(e)=>this.setState({price:e.target.value})}/>10$-50$ 
+                                        <Radio  className="radio-button" value={[10,50]} onChange={(e)=>this.setState({price:e.target.value})} />10$-50$ 
                                     </div>
                                     <div className="radio-button-background">
                                         <Radio  className="radio-button" value={[50,100]} onChange={(e)=>this.setState({price:e.target.value})}/>50$-100$ 
@@ -131,6 +146,10 @@ export default class  Products extends React.Component {
                        </div>
                        </Col>
                        <Col>
+                       {this.state.show?
+                           <label className="p-2">{`${this.state.count} Products added to cart`}</label>:("")
+                       }
+                       
                         {this.state.loading?  
                             <Row xs={1} md={3} className="g-4">
                                 {this.state.data.map((item)=>{

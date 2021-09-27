@@ -169,3 +169,11 @@ box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);
  height:145px;
 }
 /* -------------------------Healthcamp Page styling starts ends--------------------  */
+/* -------------------------Cart Page styling starts --------------------  */
+.productImage{
+  width: 60px;
+  height:60px;
+}
+
+
+/* -------------------------Cart Page styling  ends--------------------  */
