@@ -75,7 +75,7 @@ const Healthcamp = () => {
 
                                         </p>
                                         <p style={{ padding: "3px" }}>
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio accusamus cum neque cumque veniam repellendus nihil corrupti, earum delectus laborum tempore perspiciatis autem exercitationem? Voluptas corrupti, ut laborum repudiandae nihil repellat quae inventore ad blanditiis delectus deleniti, provident vitae magnam voluptatum eius, dolor facilis tempora minus fuga. Quidem, facilis illum.
+                                            {/* Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio accusamus cum neque cumque veniam repellendus nihil corrupti, earum delectus laborum tempore perspiciatis autem exercitationem? Voluptas corrupti, ut laborum repudiandae nihil repellat quae inventore ad blanditiis delectus deleniti, provident vitae magnam voluptatum eius, dolor facilis tempora minus fuga. Quidem, facilis illum. */}
                                         </p>
                                     </div>
 
