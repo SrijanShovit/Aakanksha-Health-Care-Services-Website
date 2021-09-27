@@ -20,16 +20,19 @@ const Homeproduct= () =>
     const getProduct=(category)=>
     {
         
-        Axios.post('http://localhost:5000/product/getProductDetail')
+        Axios.post('http://localhost:5000/product/getProductDetail',{
+            category:category
+        })
         .then((response)=>
         {
            
-            const updatedItem=response.data.products.filter((item)=>{
+           const updatedItem=response.data.products.filter((item)=>{
                 return(
                     item.category === category
                     
                   ); 
             }).slice(0,6);
+            
             setCategory(category)
             setData(updatedItem);
             setloading(true);

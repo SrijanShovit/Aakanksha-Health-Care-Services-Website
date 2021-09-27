@@ -4,6 +4,7 @@ import { If } from 'rc-if-else';
 import {Container,Navbar,Nav,Button} from "react-bootstrap";
 import "../App.css"
 import { FaSearch,FaPills,FaHospitalSymbol,FaUserMd,FaShoppingCart } from "react-icons/fa";
+import { AiFillHome } from "react-icons/ai";
 import logo from "../Images/logo.jfif";
 
 
@@ -44,6 +45,7 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto w3-animate-zoom">
+              <NavLink className="navstyle" to="/"><div className="iconDiv"><AiFillHome /></div>Home</NavLink>
               <NavLink className="navstyle" to={{
                             pathname:"/products",
                             state:{
@@ -52,7 +54,7 @@ const Header = () => {
                           }}><div className="iconDiv"><FaPills /></div>Knock Knock Medico</NavLink >
               <NavLink className="navstyle" to="/camp"><div className="iconDiv"><FaHospitalSymbol /></div>Health Camp</NavLink>
               <NavLink className="navstyle" to="/doctors"><div className="iconDiv"><FaUserMd /></div>Doctors Consultation</NavLink>
-              <NavLink className="navstyle" to="#link"><div className="iconDiv"><FaShoppingCart /></div>Cart</NavLink>
+              <NavLink className="navstyle" to="/cart"><div className="iconDiv"><FaShoppingCart /></div>Cart</NavLink>
             </Nav>
           </Navbar.Collapse>
       </Container>
