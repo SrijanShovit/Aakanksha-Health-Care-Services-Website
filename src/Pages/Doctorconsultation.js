@@ -18,6 +18,7 @@ const Doctorconsultation = () => {
             <Popup />
             <Popup1 />
             <Header />
+
             <div className="container-fluid  w-100 ">
                 <div className="row">
 

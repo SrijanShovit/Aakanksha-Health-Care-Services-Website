@@ -13,6 +13,10 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    backgroundColor:"dodgerblue",
+    opacity:"0.8",
+    width:"50%",
+
   },
 };
 
@@ -20,10 +24,12 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 export default function Popup() {
-  const [username,setUsername]=useState(); 
-  const [email,setEmail]=useState(); 
+  const [username,setUsername]=useState();
+  const [email,setEmail]=useState();
   const [password,setPassword]=useState();
   const [status,setStatus]=useState();
+  const [number,setNumber]=useState();
+  const [confirm,confirmPassword]=useState();
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -33,7 +39,7 @@ export default function Popup() {
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
+    subtitle.style.color = 'white';
   }
 
   function closeModal() {
@@ -64,7 +70,7 @@ export default function Popup() {
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Signup</h2>
         <button className="close btn" onClick={closeModal}>X</button>
 
-        
+
         <If condition={status}>
           <h6>
             {status}
@@ -80,7 +86,16 @@ export default function Popup() {
           <input type="Password" Placeholder="Set Password" className="ip"  onChange={(event)=>{
             setPassword(event.target.value);
         }} required  />
-          <Button  variant="primary" onClick={register}>Submit</Button>
+        <input type="Password" Placeholder="Confirm Password" className="ip"  onChange={(event)=>{
+          confirmPassword(event.target.value);
+      }} required  />
+      <input type="text" minlength="10" maxlength="10" Placeholder="Phone Number" className="ip"  onChange={(event)=>{
+        setNumber(event.target.value);  }} required  />
+          <Button style={{outline:"none",
+          border:"1px solid white",backgroundColor:"transparent",
+          borderRadius:"20px"
+
+        }}  variant="primary" onClick={register}>Submit</Button>
 
         </form>
       </Modal>

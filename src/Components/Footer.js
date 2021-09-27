@@ -5,7 +5,7 @@ import { FaFacebook,FaLinkedin,FaInstagramSquare,FaTwitterSquare } from "react-i
 const Footer = () => {
     return (
     <>
-      <Container className="footer pt-4 w3-animate-zoom" fluid="lg">
+      <Container className="footer pt-4 w3-animate-zoom"  fluid="lg">
         <Row>
           <Col sm>
               <h6 className="text-uppercase font-weight-bold text-center">About</h6>

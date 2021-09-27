@@ -1,0 +1,42 @@
+.sidenav{
+background-color:#232323;
+height: 100%;
+overflow-x: hidden;
+padding-top: 20px;
+ display: flex;
+  flex-direction: column;
+align-items: center;
+}
+.nextButton{
+  position: absolute;
+  right:50px;
+}
+.appform{
+  position: absolute;
+}
+
+.inp{
+  display: flex;
+  margin: 10px;
+  width:100%;
+
+}
+.list{
+  color:white;
+  padding:10px;
+}
+.sidenavAnc{
+  text-decoration: none;
+  color: #fff;
+}
+.appheading{
+  color:#4F0E0E;
+  margin: auto;
+}
+.radio-button-background{
+  padding: 5px;
+  margin: 5px;
+}
+.radio-button-background:hover{
+  color: blue;
+}
