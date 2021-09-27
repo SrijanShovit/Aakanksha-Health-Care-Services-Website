@@ -27,6 +27,7 @@ const App = () => {
         <Route path="/doctors" component={Doctors} />
         <Route path="/camp" component={Healthcamp} />
         <Route path="/products" component={Products} />
+        <Route path="/cart" component={Cart} />
         <Route component={Notfound} />
       </Switch>
     </Router>
