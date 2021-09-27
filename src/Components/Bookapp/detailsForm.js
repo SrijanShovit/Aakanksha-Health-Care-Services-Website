@@ -4,6 +4,8 @@ import SideNavDetails from './sidenavDetails'
 import 'bootstrap/dist/css/bootstrap.css';
 import "./index.css"
 import { Radio, RadioGroup} from 'react-radio-group'
+import PaymentGateway from './Card'
+import UpiGateway from './upi'
 export default function InfoModal() {
 
   const [show, setShow] = useState(false);
@@ -16,29 +18,32 @@ export default function InfoModal() {
       <Modal   size='xl' show={show} onHide={handleClose}  >
         <Modal.Header>
         <div><h1 className='appheading'>Book an Appointment</h1></div>
+        <button className='btn' onClick={handleClose}>
+          X
+        </button>
         </Modal.Header>
         <Modal.Body>
         <div style={{display:"flex"}}>
-<div style={{width:"20%"}}>
+<div style={{width:"25%"}}>
 <SideNavDetails />
 </div>
-<div style={{width:"80%"}}>
+<div style={{width:"75%"}}>
   <form className='container'>
   <div style={{display:"flex", justifyContent:"space-between"}}>
 <div style={{width:"48%"}}>
 <label><b>First Name:</b></label>
-<input className='form-control inp' type='text' placeholder="First Name"/></div>
+<input className='form-control inp' type='text' placeholder="First Name" required/></div>
 <div style={{width:"50%"}}>
 <label><b>Last Name:</b></label>
-<input className='form-control inp' type='text' placeholder="Last Name"/>
+<input className='form-control inp' type='text' placeholder="Last Name" required/>
 </div>
   </div>
 
 
     <label><b>Reason:</b></label>
-    <input className='form-control inp' type='text' placeholder="Attendee's concern" />
+    <input className='form-control inp' type='text' placeholder="Attendee's concern" required/>
     <label><b>Date:</b></label>
-    <input className='form-control inp' type='Date' placeholder='Date'/>
+    <input className='form-control inp' type='Date' placeholder='Date' required/>
     <RadioGroup name="slot">
     <label><b>Slot:</b></label>
    <div className="radio-button-background">
@@ -54,12 +59,8 @@ export default function InfoModal() {
 
         </Modal.Body>
         <Modal.Footer>
-          <button className='btn btn-secondary' onClick={handleClose}>
-            Close
-          </button>
-          <button className='btn btn-primary' onClick={handleClose}>
-            Save Changes
-          </button>
+          <UpiGateway/>
+          <PaymentGateway/>
         </Modal.Footer>
       </Modal>
       </div>

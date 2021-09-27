@@ -11,7 +11,25 @@ exports.addProducts = asyncHandler(async (req, res, next) => {
 });
 
 exports.getProductDetail = asyncHandler(async (req, res, next) => {
-  let products = await Product.find(req.body);
+  let query = Product.find(req.body);
+
+  if (req.body.hasOwnProperty('priceRange')) {
+    if (req.body.priceRange.length != 2) {
+      res.json({
+        message: 'priceRange array should have 2 elements.',
+      });
+      return next();
+    }
+
+    let minPrice = req.body.priceRange[0],
+      maxPrice = req.body.priceRange[1];
+    query = query.find({
+      price: { $gte: minPrice },
+      price: { $lte: maxPrice },
+    });
+  }
+
+  let products = await query;
 
   res.status(200).json({
     numberOfProducts: products.length,
