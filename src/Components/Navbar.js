@@ -44,6 +44,7 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto w3-animate-zoom">
+              <NavLink className="navstyle" to="/medico"><div className="iconDiv"><FaPills /></div>Knock Knock Medico</NavLink>
               <NavLink className="navstyle" to={{
                             pathname:"/products",
                             state:{
