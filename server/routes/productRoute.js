@@ -6,7 +6,6 @@ const {
   removeFromCart,
   changeQuantity,
   getProductDetail,
-  getCartItems,
 } = require('../controllers/productController');
 
 router.route('/getProductDetail').post(getProductDetail);
@@ -14,6 +13,5 @@ router.route('/addProducts').post(addProducts);
 router.route('/addToCart').post(addToCart);
 router.route('/removeFromCart').post(removeFromCart);
 router.route('/changeQuantity').post(changeQuantity);
-router.route('/getCartItems').post(getCartItems);
 
 module.exports = router;

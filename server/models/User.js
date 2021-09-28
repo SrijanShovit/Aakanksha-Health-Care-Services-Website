@@ -5,9 +5,22 @@ const UserSchema = new mongoose.Schema({
   username: String,
   email: String,
   password: { type: String, select: false, trim: true },
+  number: String,
   profilePicUrl: String,
   cartItems: {
     type: [{ productDetails: Object, quantity: { type: Number, default: 1 } }],
+    _id: false,
+  },
+  appointments: {
+    type: [Object],
+    _id: false,
+  },
+  orders: {
+    type: [Object],
+    _id: false,
+  },
+  savedCards: {
+    type: [Object],
     _id: false,
   },
 });

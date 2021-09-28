@@ -1,4 +1,5 @@
 const Doctor = require('../models/Doctor');
+const User = require('../models/User');
 const asyncHandler = require('../middlewares/asyncHandler');
 
 exports.addDoctors = asyncHandler(async (req, res, next) => {
@@ -19,9 +20,12 @@ exports.getDoctorDetail = asyncHandler(async (req, res, next) => {
 });
 
 exports.addAppointment = asyncHandler(async (req, res, next) => {
-  if (!req.body.hasOwnProperty('doctorName') || req.body.doctorName === '') {
+  if (
+    !req.body.hasOwnProperty('doctorName') ||
+    !req.body.hasOwnProperty('email')
+  ) {
     res.json({
-      message: 'doctorName is required',
+      message: "Please give both doctorName and user's email also.",
     });
     return next();
   }
@@ -35,8 +39,8 @@ exports.addAppointment = asyncHandler(async (req, res, next) => {
   }
   req.body.doctorName = undefined;
 
-  doctor = await Doctor.findByIdAndUpdate(
-    doctor._id,
+  await User.findOneAndUpdate(
+    { email: req.body.email },
     {
       $push: { appointments: req.body },
     },
@@ -47,6 +51,5 @@ exports.addAppointment = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     message: 'Appointment added',
-    appointments: doctor,
   });
 });
