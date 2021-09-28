@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { Data } from './Data';
-import styled from 'styled-components';
-import { IconContext } from 'react-icons';
-import { FiPlus, FiMinus } from 'react-icons/fi';
-
-const AccordionSection = styled.div`
+//import { Data } from './Data';
+//import styled from 'styled-components';
+//import { IconContext } from 'react-icons';
+//import { FiPlus, FiMinus } from 'react-icons/fi';
+import { Container,Row,Col,Button,Spinner} from 'react-bootstrap';
+import location from '../Images/location.png'
+import support from '../Images/support.jpg'
+import doctor from '../Images/bookdoctor.png'
+import delivery from '../Images/delivery.jpg'
+/*const AccordionSection = styled.div`
 
 
   align-items: center;
@@ -53,10 +57,10 @@ const Dropdown = styled.div`
     font-size: 1.1rem;
 
   }
-`;
+`;*/
 
 const Accordion = () => {
-  const [clicked, setClicked] = useState(false);
+  /*const [clicked, setClicked] = useState(false);
 
   const toggle = index => {
     if (clicked === index) {
@@ -65,10 +69,38 @@ const Accordion = () => {
     }
 
     setClicked(index);
-  };
+  };*/
 
   return (
-    <IconContext.Provider value={{ color: '#fff', size: '20px' }}>
+    <Container>
+      <Row className="text-center pt-2 pb-5">
+          <Col>
+            <div>
+              <img src={support} className="featureImage"/>
+            </div>
+            <div>24 X 7 Support </div>
+          </Col>
+          <Col>
+            <div>
+              <img src={doctor} className="featureImage"/>
+            </div>
+            <div>Online Doctors Appointment </div>
+          </Col>
+          <Col>
+            <div>
+              <img src={delivery} className="featureImage"/>
+            </div>
+            <div>Doorstep Delivery </div>
+          </Col>
+          <Col>
+            <div>
+              <img src={location} className="featureImage"/>
+              <div>Location </div>
+            </div>
+          </Col>
+      </Row>
+    </Container>
+   /* <IconContext.Provider value={{ color: '#fff', size: '20px' }}>
       <AccordionSection className="w3-animate-zoom">
 
           {Data.map((item, index) => {
@@ -88,7 +120,7 @@ const Accordion = () => {
           })}
 
       </AccordionSection>
-    </IconContext.Provider>
+    </IconContext.Provider>*/
   );
 };
 

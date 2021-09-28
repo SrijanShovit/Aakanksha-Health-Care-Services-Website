@@ -72,7 +72,7 @@ export default function Cart() {
                                     <td>{item.productDetails.price}$</td>
                                     <td>{item.quantity*item.productDetails.price}$</td>
                                     <td>
-                                    <Button  variant="light" onClick={deleteCartProduct} name={item.productDetails.name}><FaRegWindowClose /></Button>
+                                    <Button  variant="light" onClick={deleteCartProduct} name={item.productDetails.name}>x</Button>
                                     
                                     </td>
                                 </tr>

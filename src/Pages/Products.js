@@ -53,13 +53,12 @@ export default class  Products extends React.Component {
     }
     //function for add product in cart
     addToCart=(e)=>{
+        e.target.style.backgroundColor = "green"
         this.setState({
             count: this.state.count + 1,
             show:true
         });
-        
-        console.log(this.state.count);
-       let name = e.currentTarget.getAttribute("name");
+        let name = e.currentTarget.getAttribute("name");
         const email=window.sessionStorage.getItem("email");
         Axios.post('http://localhost:5000/product/addToCart',
         {
@@ -131,6 +130,9 @@ export default class  Products extends React.Component {
                             <label><b>Select Category</b></label>
                             <div><input type="checkbox" name="Nutrition" onChange={this.ckeckboxClickHandler}/> Nutritious</div>
                             <div><input type="checkbox" name="safety" onChange={this.ckeckboxClickHandler}/> safety</div>
+                            <label><b>Select Brand</b></label>
+                            <div><input type="checkbox" /> Nestle</div>
+                            <div><input type="checkbox"/> Himalaya</div>
                             <RadioGroup name="price">
                                     <label><b>Price:</b></label>
                                     <div className="radio-button-background">
@@ -141,7 +143,7 @@ export default class  Products extends React.Component {
                                         
                                     </div>
                                    
-                                </RadioGroup>
+                            </RadioGroup>
                             <Button onClick={this.filterHandler}>Apply Filter</Button>
                        </div>
                        </Col>
