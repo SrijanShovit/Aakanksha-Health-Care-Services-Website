@@ -48,7 +48,7 @@ const Homeproduct= () =>
                     <Button variant="secondary" onClick={()=>getProduct('Nutrition')}>Nutritious Products</Button>
                     <Button variant="secondary"  onClick={()=>getProduct('safety')}>Safety Products</Button>
                 </ButtonGroup>
-                {loading?<Row xs={2} md={3} className="g-4  ">
+                {loading?<Row xs={1} md={3} className="g-4  ">
                     {data.map(item => (
                         <Col className="shadow-lg p-5 mb-5 bg-white rounded">
                             <div className="text-center"><img className="productImg" src={item.imageUrl} alt="productImage"></img></div>

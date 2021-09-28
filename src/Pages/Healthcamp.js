@@ -1,5 +1,5 @@
 import React ,{useState,useEffect}from 'react';
-import {Button, Container,Card,Row,Col,Spinner} from "react-bootstrap";
+import {Spinner} from "react-bootstrap";
 import Header from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Popup from '../Components/popup'
@@ -53,6 +53,7 @@ const Healthcamp = () => {
                 <div className="col-lg-12 col-12 my-2 card">
                     <div className="row mt-3">
                         {
+                            loading?
                             data.map( item => 
                                 (
                                     <>
@@ -77,7 +78,7 @@ const Healthcamp = () => {
                                         </div>
                                     </>
                                 )
-                            )
+                            ):<Spinner animation="border" style={style}/>
                        }
                     </div>
                 </div>

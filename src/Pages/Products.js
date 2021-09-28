@@ -53,6 +53,7 @@ export default class  Products extends React.Component {
     }
     //function for add product in cart
     addToCart=(e)=>{
+        e.target.classList.remove('seemore1');
         e.target.style.backgroundColor = "green"
         this.setState({
             count: this.state.count + 1,
@@ -144,7 +145,7 @@ export default class  Products extends React.Component {
                                     </div>
                                    
                             </RadioGroup>
-                            <Button onClick={this.filterHandler}>Apply Filter</Button>
+                            <Button className="seemore1" onClick={this.filterHandler}>Apply Filter</Button>
                        </div>
                        </Col>
                        <Col>
@@ -162,7 +163,7 @@ export default class  Products extends React.Component {
                                                     <div className="text-left"><span>Product: {item.name}</span></div>
                                                     <div  className="text-left"><span>Description: {item.description}</span></div>
                                                     <div  className="text-left"><span>Price: {item.price}$</span></div>
-                                                    <div className="text-center p-3"><Button variant="primary" onClick={this.addToCart} name={item.name}>Add to Cart</Button></div>
+                                                    <div className="text-center p-3"><Button className="seemore1" onClick={this.addToCart} name={item.name}>Add to Cart</Button></div>
                                                </Col>
                                         </div>) ;
                                     })
