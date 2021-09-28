@@ -73,7 +73,10 @@ const Accordion = () => {
 
   return (
     <Container>
-      <Row className="text-center pt-2 pb-5">
+       <hr className="bg-success hr-height" />
+       <h6 className="text-uppercase font-weight-bold text-center">Our Services</h6>
+     
+      <Row xs={2} md={4}className="text-center pt-2 pb-5">
           <Col>
             <div>
               <img src={support} className="featureImage"/>

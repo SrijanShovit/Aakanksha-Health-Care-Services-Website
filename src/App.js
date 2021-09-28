@@ -15,7 +15,7 @@ import Cart from './Pages/cart'
 
 
 const App = () => {
-  const [email,setEmail]=useState("");
+ 
   return (
     <>
     <Router>

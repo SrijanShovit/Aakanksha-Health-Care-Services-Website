@@ -3,8 +3,7 @@ import Header from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Popup from '../Components/popup'
 import Popup1 from '../Components/popuplogin'
-import { Container,Table,Spinner,Button} from 'react-bootstrap';
-import { FaRegWindowClose } from "react-icons/fa";
+import { Container,Table,Button} from 'react-bootstrap';
 import Axios from 'axios';
 export default function Cart() {
     var totalPrice=0;
@@ -14,12 +13,13 @@ export default function Cart() {
        
         const getCartData = async () => {
             
-            Axios.post('http://localhost:5000/product/getCartItems',
+            Axios.post('http://localhost:5000/user/getCartItems',
             {
                email:email 
             })
             .then((response)=>{
                setData(response.data.cartItems);
+               
             })
         };
         getCartData();
@@ -47,7 +47,7 @@ export default function Cart() {
             <Popup1 />
             <Header />
             <Container className="pt-5"> 
-                <Table striped bordered hover responsive="sm" >
+               <Table responsive="sm" >
                     <thead>
                         <tr>
                             <th> </th>
@@ -59,20 +59,21 @@ export default function Cart() {
                             <th></th>
                         </tr>
                     </thead>
+                    
                    {Object.values(data).map((item)=>{
                         totalPrice += item.quantity*item.productDetails.price
                         return (
-                        <>
+                        <>  
                             <tbody>
                                 <tr id={item.id}>
-                                    <td><img src={item.productDetails.imageUrl} className="productImage" alt="image"/></td>
+                                    <td><img src={item.productDetails.imageUrl} className="productImage" alt="imageproduct"/></td>
                                     <td>{item.productDetails.name}</td>
                                     <td>{item.productDetails.description}</td>
                                     <td>{item.quantity}</td>
                                     <td>{item.productDetails.price}$</td>
                                     <td>{item.quantity*item.productDetails.price}$</td>
                                     <td>
-                                    <Button  variant="light" onClick={deleteCartProduct} name={item.productDetails.name}>x</Button>
+                                    <Button  className="deleteBtn" onClick={deleteCartProduct} name={item.productDetails.name}>x</Button>
                                     
                                     </td>
                                 </tr>
@@ -84,7 +85,7 @@ export default function Cart() {
                 </Table>
                 <div align="end">
                     <div className="p-1"><b>Grand Total:</b>{totalPrice} $</div>
-                    <Button variant="primary" >Checkout</Button>
+                    <Button className="seemore1" >Checkout</Button>
                 </div>
             </Container>
             <Footer/>

@@ -18,6 +18,10 @@
   color:white;
   padding: 8px;
 }
+.navstyle:hover{
+  text-decoration: none;
+  color:white;
+}
 /*.navstyle:hover{transition: 0.8s;
   transform: scale(0.9);
   background-color: red;
@@ -124,6 +128,12 @@
 }
 .social-media{
  float: right;
+}
+@media (max-width: 480px){
+  .social-media{
+    float: left;
+   }
+
 }
 
 /* <-------------------------Footer styling ends-------------------------------> */
@@ -253,9 +263,22 @@ box-shadow: 0 16px 16px 0 rgba(0,0,0,0.6);
   width: 60px;
   height:60px;
 }
-
+.deleteBtn{
+  color:black!important;
+  background-color: #fff !important;
+  border-color: #fff !important;
+}
+tbody, td, tfoot, th, thead, tr {
+  border-color: black!important;
+ 
+}
 
 /* -------------------------Cart Page styling  ends--------------------  */
+/* -------------------------Feature styling --------------------  */
 .featureImage{
   width:100px;
 }
+.hr-height{
+height:2px;
+}
+/* -------------------------Feature  styling  ends--------------------  */
