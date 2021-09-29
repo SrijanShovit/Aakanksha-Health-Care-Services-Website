@@ -1,37 +1,137 @@
 [
   {
-    "name": "Weight gainer",
-    "category": "Fitness",
-    "price": 19,
-    "description": "Weight gainer for beginners",
-    "imageUrl": "https://drive.google.com/file/d/16FvvzBnYRctujGVgW8nOEVlqAijlOcbL/view?usp=sharing"
+    "name": "Mask",
+    "category": "safety",
+    "brand": "Apollo",
+    "price": 18,
+    "imageUrl": "../images/mask.jpg",
+    "description": "give full protection",
+    "__v": 0
   },
   {
-    "name": "Protein powder",
-    "category": "Fitness",
+    "name": "Gloves",
+    "category": "safety",
+    "brand": "Apollo",
     "price": 19,
-    "description": "Natural WHEY protein",
-    "imageUrl": "https://drive.google.com/file/d/1Jm-khmX6OFqwxJNPGtv-gmd47GeN1AUe/view?usp=sharing"
+    "imageUrl": "../images/gloves.jpg",
+    "description": "for your safety",
+    "__v": 0
   },
   {
     "name": "Protein shakes",
-    "category": "Fitness",
-    "price": 19,
-    "description": "Whey protein shakes",
-    "imageUrl": "https://drive.google.com/file/d/1IqUT-SjmZGmJDPoIB3lEFP1gKrRTCOaE/view?usp=sharing"
-  },
-  {
-    "name": "Boost for men",
     "category": "Nutrition",
-    "price": 19,
-    "description": "Energy drinks for men",
-    "imageUrl": "https://drive.google.com/file/d/1Dq_zqvoGUHS3sGxdhOST52lWPCjV39K8/view?usp=sharing"
+    "brand": "Muscleblaze",
+    "price": 18,
+    "imageUrl": "../images/protein.jpg",
+    "description": "Whey protein shakes",
+    "__v": 0
   },
   {
     "name": "Womens horlicks",
     "category": "Nutrition",
+    "brand": "Horlicks",
     "price": 19,
+    "imageUrl": "../images/horlicks.jpg",
     "description": "Horlicks for women",
-    "imageUrl": "https://drive.google.com/file/d/126Y4fI0UMAKu4kOMVmTe2L-tTdzJd1Xf/view?usp=sharing"
+    "__v": 0
+  },
+  {
+    "name": "Boost for men",
+    "category": "Nutrition",
+    "brand": "Boost",
+    "price": 19,
+    "imageUrl": "../images/boost.jpg",
+    "description": "Energy drinks for men",
+    "__v": 0
+  },
+  {
+    "name": "Womens horlicks",
+    "category": "Nutrition",
+    "brand": "Horlicks",
+    "price": 19,
+    "imageUrl": "../images/horlicks.jpg",
+    "description": "Horlicks for women",
+    "__v": 0
+  },
+  {
+    "name": "Womens horlicks",
+    "category": "Nutrition",
+    "brand": "Horlicks",
+    "price": 19,
+    "imageUrl": "../images/horlicks.jpg",
+    "description": "Horlicks for women",
+    "__v": 0
+  },
+  {
+    "name": "Womens horlicks",
+    "category": "Nutrition",
+    "brand": "Horlicks",
+    "price": 19,
+    "imageUrl": "../images/horlicks.jpg",
+    "description": "Horlicks for women",
+    "__v": 0
+  },
+  {
+    "name": "Womens horlicks",
+    "category": "Nutrition",
+    "brand": "Horlicks",
+    "price": 19,
+    "imageUrl": "../images/horlicks.jpg",
+    "description": "Horlicks for women",
+    "__v": 0
+  },
+  {
+    "name": "Womens horlicks",
+    "category": "Nutrition",
+    "brand": "Horlicks",
+    "price": 19,
+    "imageUrl": "../images/horlicks.jpg",
+    "description": "Horlicks for women",
+    "__v": 0
+  },
+  {
+    "name": "Womens horlicks",
+    "category": "Nutrition",
+    "brand": "Horlicks",
+    "price": 19,
+    "imageUrl": "../images/horlicks.jpg",
+    "description": "Horlicks for women",
+    "__v": 0
+  },
+  {
+    "name": "Womens horlicks",
+    "category": "Nutrition",
+    "brand": "Horlicks",
+    "price": 19,
+    "imageUrl": "../images/horlicks.jpg",
+    "description": "Horlicks for women",
+    "__v": 0
+  },
+  {
+    "name": "Womens horlicks",
+    "category": "Nutrition",
+    "brand": "Horlicks",
+    "price": 19,
+    "imageUrl": "../images/horlicks.jpg",
+    "description": "Horlicks for women",
+    "__v": 0
+  },
+  {
+    "name": "Womens horlicks",
+    "category": "Nutrition",
+    "brand": "Horlicks",
+    "price": 19,
+    "imageUrl": "../images/horlicks.jpg",
+    "description": "Horlicks for women",
+    "__v": 0
+  },
+  {
+    "name": "Womens horlicks",
+    "category": "Nutrition",
+    "brand": "Horlicks",
+    "price": 19,
+    "imageUrl": "../images/horlicks.jpg",
+    "description": "Horlicks for women",
+    "__v": 0
   }
 ]
