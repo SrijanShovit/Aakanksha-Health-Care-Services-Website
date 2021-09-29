@@ -263,14 +263,22 @@ box-shadow: 0 16px 16px 0 rgba(0,0,0,0.6);
   width: 60px;
   height:60px;
 }
-.deleteBtn{
+.deleteBtn {
   color:black!important;
   background-color: #fff !important;
   border-color: #fff !important;
+  border:none;
+}
+.deleteBtn:focus {
+  outline:none !important;
+  box-shadow: none!important;
 }
 tbody, td, tfoot, th, thead, tr {
   border-color: black!important;
  
+}
+table input{
+  width:30px
 }
 
 /* -------------------------Cart Page styling  ends--------------------  */
