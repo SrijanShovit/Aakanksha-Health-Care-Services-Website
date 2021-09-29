@@ -1,7 +1,7 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React,{useState} from "react";
+import { Link, NavLink } from "react-router-dom";
 import { If } from 'rc-if-else';
-import {Container,Navbar,Nav,Button,Dropdown} from "react-bootstrap";
+import {Container,Navbar,Nav,Dropdown} from "react-bootstrap";
 import "../App.css"
 import { FaSearch,FaPills,FaHospitalSymbol,FaUserMd,FaShoppingCart } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
@@ -9,6 +9,7 @@ import logo from "../Images/logo.jfif";
 
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
   function logout()
   {
     window.sessionStorage.clear();
@@ -33,9 +34,11 @@ const Header = () => {
                 <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                    {window.sessionStorage.getItem("username")}
                 </Dropdown.Toggle>
-
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Change Password</Dropdown.Item>
+                  <Dropdown.Item href="/updateProfile">Update Profile</Dropdown.Item>
+                  <Dropdown.Item href="#/action-1">
+                    Order</Dropdown.Item>
+                  <Dropdown.Divider />
                   <Dropdown.Item href="#/action-2" onClick={logout}>Logout</Dropdown.Item>
                  </Dropdown.Menu>
             </Dropdown>

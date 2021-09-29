@@ -4,6 +4,7 @@ import Axios from 'axios';
 import './css/style.css'
 import { FaUser } from "react-icons/fa";
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const customStyles = {
   content: {
@@ -24,12 +25,16 @@ Modal.setAppElement('#root');
 
 export default function Popup1() {
   
- const [email,setEmail]=useState(); 
- const [password,setPassword]=useState();
+  const [email,setEmail]=useState(); 
+  const [password,setPassword]=useState();
   const [loginStatus,setLoginStatus]=useState();
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
-
+  const linkStyle = {
+    margin: "1rem",
+    textDecoration: "none",
+    color: "#fff"
+  };
   function openModal() {
     setIsOpen(true);
   }
@@ -93,6 +98,7 @@ export default function Popup1() {
           borderRadius:"20px"
 
         }}  variant="primary" onClick={login}>Submit</Button>
+        <Link to="/forgetpassword" style={linkStyle}>Forget Password </Link>
 
         </form>
       </Modal>
