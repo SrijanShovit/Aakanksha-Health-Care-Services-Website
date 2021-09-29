@@ -290,3 +290,17 @@ table input{
 height:2px;
 }
 /* -------------------------Feature  styling  ends--------------------  */
+/* -------------------------update info  page styling --------------------  */
+@media (max-width: 480px){
+  .container-width{
+    width: 100% !important;
+  }
+
+
+}
+@media (min-width: 480px){
+  .container-width{
+    width: 50% !important;
+  }
+}
+/* -------------------------update info  page styling  ends--------------------  */
