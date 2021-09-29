@@ -19,17 +19,16 @@ export default function Cart() {
             })
             .then((response)=>{
                setData(response.data.cartItems);
-               
             })
         };
         getCartData();
        
-      },[setData]);
-
-     function deleteCartProduct(e)
-     {
+    },[setData]);
+   //function for delete cart item
+    function deleteCartProduct(e)
+    {
         let name = e.currentTarget.getAttribute("name");
-        console.log(name,email);
+       
         Axios.post('http://localhost:5000/product/removeFromCart',
         {
             email:email,
@@ -40,7 +39,39 @@ export default function Cart() {
           {window.location.reload()}
         })
        
-      }
+    }
+    //function for increment quantity
+    function incrementQuan(e){
+            let name = e.currentTarget.getAttribute("name"); 
+            let quantity = parseInt(e.currentTarget.getAttribute("quantity"))+1; 
+            Axios.post('http://localhost:5000/product/changeQuantity',
+            {
+                email:email,
+                productName:name,
+                quantity:quantity
+            }).then((response)=>
+            {
+            console.log(response.data.message)
+            {window.location.reload()}
+           
+            })
+        }
+        //function for decrement quantity
+        function decrementQuan(e){
+            let name = e.currentTarget.getAttribute("name"); 
+            let quantity = parseInt(e.currentTarget.getAttribute("quantity"))-1; 
+            Axios.post('http://localhost:5000/product/changeQuantity',
+            {
+                email:email,
+                productName:name,
+                quantity:quantity
+            }).then((response)=>
+            {
+            console.log(response.data.message)
+            {window.location.reload()}
+           
+            })
+        }
     return (
         <div>
             <Popup />
@@ -61,7 +92,8 @@ export default function Cart() {
                     </thead>
                     
                    {Object.values(data).map((item)=>{
-                        totalPrice += item.quantity*item.productDetails.price
+                        totalPrice += item.quantity*item.productDetails.price;
+                      
                         return (
                         <>  
                             <tbody>
@@ -69,12 +101,15 @@ export default function Cart() {
                                     <td><img src={item.productDetails.imageUrl} className="productImage" alt="imageproduct"/></td>
                                     <td>{item.productDetails.name}</td>
                                     <td>{item.productDetails.description}</td>
-                                    <td>{item.quantity}</td>
+                                    <td>
+                                    <Button  className="deleteBtn text-danger"  name={item.productDetails.name} onClick={incrementQuan} quantity={item.quantity}>+</Button>
+                                         <input  type="text" className="m-auto" value={item.quantity} />
+                                    <Button  className="deleteBtn text-danger"  name={item.productDetails.name} onClick={decrementQuan} quantity={item.quantity}>-</Button>
+                                    </td>
                                     <td>{item.productDetails.price}$</td>
                                     <td>{item.quantity*item.productDetails.price}$</td>
                                     <td>
-                                    <Button  className="deleteBtn" onClick={deleteCartProduct} name={item.productDetails.name}>x</Button>
-                                    
+                                       <Button  className="deleteBtn text-danger" onClick={deleteCartProduct} name={item.productDetails.name}>x</Button>
                                     </td>
                                 </tr>
                             
@@ -84,7 +119,7 @@ export default function Cart() {
                     })}
                 </Table>
                 <div align="end">
-                    <div className="p-1"><b>Grand Total:</b>{totalPrice} $</div>
+                    <div className="p-1"><b>Grand Total: </b>{totalPrice}$</div>
                     <Button className="seemore1" >Checkout</Button>
                 </div>
             </Container>
