@@ -1,6 +1,7 @@
 const Doctor = require('../models/Doctor');
 const User = require('../models/User');
 const asyncHandler = require('../middlewares/asyncHandler');
+const checkFields = require('../middlewares/checkFields');
 
 exports.addDoctors = asyncHandler(async (req, res, next) => {
   let doctor = await Doctor.create(req.body);
@@ -20,12 +21,10 @@ exports.getDoctorDetail = asyncHandler(async (req, res, next) => {
 });
 
 exports.addAppointment = asyncHandler(async (req, res, next) => {
-  if (
-    !req.body.hasOwnProperty('doctorName') ||
-    !req.body.hasOwnProperty('email')
-  ) {
+  let message = checkFields(req.body, ['doctorName', 'email']);
+  if (message.length > 0) {
     res.json({
-      message: "Please give both doctorName and user's email also.",
+      message,
     });
     return next();
   }

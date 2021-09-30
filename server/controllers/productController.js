@@ -1,6 +1,7 @@
 const Product = require('../models/Product');
 const User = require('../models/User');
 const asyncHandler = require('../middlewares/asyncHandler');
+const checkFields = require('../middlewares/checkFields');
 
 exports.addProducts = asyncHandler(async (req, res, next) => {
   let product = await Product.create(req.body);
@@ -38,12 +39,10 @@ exports.getProductDetail = asyncHandler(async (req, res, next) => {
 });
 
 exports.addToCart = asyncHandler(async (req, res, next) => {
-  if (
-    !req.body.hasOwnProperty('productName') ||
-    !req.body.hasOwnProperty('email')
-  ) {
+  let message = checkFields(req.body, ['email', 'productName']);
+  if (message.length > 0) {
     res.json({
-      message: 'All properties namely {productName, email} are required.',
+      message,
     });
     return next();
   }
@@ -96,12 +95,10 @@ exports.addToCart = asyncHandler(async (req, res, next) => {
 });
 
 exports.removeFromCart = asyncHandler(async (req, res, next) => {
-  if (
-    !req.body.hasOwnProperty('productName') ||
-    !req.body.hasOwnProperty('email')
-  ) {
+  let message = checkFields(req.body, ['email', 'productName']);
+  if (message.length > 0) {
     res.json({
-      message: 'All properties namely {productName, email} are required.',
+      message,
     });
     return next();
   }
@@ -135,14 +132,10 @@ exports.removeFromCart = asyncHandler(async (req, res, next) => {
 });
 
 exports.changeQuantity = asyncHandler(async (req, res, next) => {
-  if (
-    !req.body.hasOwnProperty('productName') ||
-    !req.body.hasOwnProperty('email') ||
-    !req.body.hasOwnProperty('quantity')
-  ) {
+  let message = checkFields(req.body, ['email', 'productName', 'quantity']);
+  if (message.length > 0) {
     res.json({
-      message:
-        'All properties namely {productName, email and quantity} are required.',
+      message,
     });
     return next();
   }
