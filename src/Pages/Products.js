@@ -19,6 +19,13 @@ export default class  Products extends React.Component {
                 Nutrition:false,
                 safety:false
             },
+            brandnames:{
+                Boost:false,
+                Horlicks:false,
+                Muscleblaze:false,
+                Apollo:false
+
+            },
             price:[],
             count:0,
             show:false
@@ -88,11 +95,16 @@ export default class  Products extends React.Component {
             var selectedcategory=e.categorynames;
             return selectedcategory[name]=checked;
         });
+        this.setState((e)=>{
+            var selectedbrand=e.brandnames;
+            return selectedbrand[name]=checked;
+        });
     }
 
     //function for filter data
     filterHandler(){
         var category=Object.keys(this.state.categorynames).filter((x)=>this.state.categorynames[x]);
+        var brand=Object.keys(this.state.brandnames).filter((x)=>this.state.brandnames[x]);
         if(this.state.price){
             var price=this.state.price.split(',').map( n => parseInt(n, 10));
         }
@@ -100,7 +112,8 @@ export default class  Products extends React.Component {
         Axios.post('http://localhost:5000/product/getProductDetail',
            {
                category:category,
-               priceRange:price
+               priceRange:price,
+               brand:brand
            })
         .then((response)=>
         {
@@ -132,8 +145,11 @@ export default class  Products extends React.Component {
                             <div><input type="checkbox" name="Nutrition" onChange={this.ckeckboxClickHandler}/> Nutritious</div>
                             <div><input type="checkbox" name="safety" onChange={this.ckeckboxClickHandler}/> safety</div>
                             <label><b>Select Brand</b></label>
-                            <div><input type="checkbox" /> Nestle</div>
-                            <div><input type="checkbox"/> Himalaya</div>
+                            <div><input type="checkbox"  name="Apollo"  onChange={this.ckeckboxClickHandler}/> Apollo </div>
+                            <div><input type="checkbox"  name="Muscleblaze"  onChange={this.ckeckboxClickHandler}/> Muscleblaze</div>
+                            <div><input type="checkbox"  name="Boost"  onChange={this.ckeckboxClickHandler}/> Boost</div>
+                            <div><input type="checkbox"  name="Horlicks"  onChange={this.ckeckboxClickHandler}/> Horlicks</div>
+
                             <RadioGroup name="price">
                                     <label><b>Price:</b></label>
                                     <div className="radio-button-background">
