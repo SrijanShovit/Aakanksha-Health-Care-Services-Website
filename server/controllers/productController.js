@@ -12,13 +12,18 @@ exports.addProducts = asyncHandler(async (req, res, next) => {
 });
 
 exports.getProductDetail = asyncHandler(async (req, res, next) => {
-  if (req.body.category.length == 0) {
-    delete req.body.category;
+  if (req.body.hasOwnProperty('brand')) {
+    if (req.body.brand.length == 0) {
+      delete req.body.brand;
+    }
   }
 
-  if (req.body.brand.length == 0) {
-    delete req.body.brand;
+  if (req.body.hasOwnProperty('category')) {
+    if (req.body.category.length == 0) {
+      delete req.body.category;
+    }
   }
+
   let query = Product.find(req.body);
 
   if (req.body.hasOwnProperty('priceRange')) {
