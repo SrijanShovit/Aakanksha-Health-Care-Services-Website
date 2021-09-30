@@ -29,11 +29,13 @@ export default class  Products extends React.Component {
             },
             price:[],
             count:0,
-            show:false
+            show:false,
+            resposesmsg:""
         }
         this.getProduct = this.getProduct.bind(this)
         this.addToCart = this.addToCart.bind(this)
-        this.ckeckboxClickHandler=this.ckeckboxClickHandler.bind(this)
+        this.categoryCheckHandlker=this.categoryCheckHandlker.bind(this)
+        this.brandCheckHandlker=this.brandCheckHandlker.bind(this)
         this.filterHandler=this.filterHandler.bind(this)
         
         this.style = { position: "fixed",  left: "50%" };
@@ -90,23 +92,28 @@ export default class  Products extends React.Component {
      } 
 
     //function to get clicked checkbox value
-    ckeckboxClickHandler=(e)=>{
+    categoryCheckHandlker=(e)=>{
         var {name,checked}=e.target;
         this.setState((e)=>{
             var selectedcategory=e.categorynames;
             return selectedcategory[name]=checked;
         });
+        
+    }
+    brandCheckHandlker=(e)=>{
+        var {name,checked}=e.target;
         this.setState((e)=>{
             var selectedbrand=e.brandnames;
             return selectedbrand[name]=checked;
         });
-    }
 
+    }
     //function for filter data
     filterHandler(){
         var category=Object.keys(this.state.categorynames).filter((x)=>this.state.categorynames[x]);
         var brand=Object.keys(this.state.brandnames).filter((x)=>this.state.brandnames[x]);
-        if(this.state.price){
+
+        if(this.state.price>0){
             var price=this.state.price.split(',').map( n => parseInt(n, 10));
         }
        
@@ -118,7 +125,10 @@ export default class  Products extends React.Component {
            })
         .then((response)=>
         {
-          
+            
+            this.setState({
+                resposesmsg:response.data.message
+            });
             this.setState({
                 data: response.data.products,
             });
@@ -142,36 +152,35 @@ export default class  Products extends React.Component {
                 </Link>
                     
                 <Container className="py-5">
-                
+                    
                    <Row>
-                       
+                   <h6 className="text-center">{this.state.resposesmsg}</h6>
                        <Col md="auto" >
-                           
-                       <div className="p-5">
-                           
-                           
-                            <label><b>Select Category</b></label>
-                            <div><input type="checkbox" name="Nutrition" onChange={this.ckeckboxClickHandler}/> Nutritious</div>
-                            <div><input type="checkbox" name="safety" onChange={this.ckeckboxClickHandler}/> safety</div>
-                            <label><b>Select Brand</b></label>
-                            <div><input type="checkbox"  name="Apollo"  onChange={this.ckeckboxClickHandler}/> Apollo </div>
-                            <div><input type="checkbox"  name="Muscleblaze"  onChange={this.ckeckboxClickHandler}/> Muscleblaze</div>
-                            <div><input type="checkbox"  name="Boost"  onChange={this.ckeckboxClickHandler}/> Boost</div>
-                            <div><input type="checkbox"  name="Horlicks"  onChange={this.ckeckboxClickHandler}/> Horlicks</div>
+                           <div className="p-5">
 
-                            <RadioGroup name="price">
-                                    <label><b>Price:</b></label>
-                                    <div className="radio-button-background">
-                                        <Radio  className="radio-button" value={[10,50]} onChange={(e)=>this.setState({price:e.target.value})} />10$-50$ 
-                                    </div>
-                                    <div className="radio-button-background">
-                                        <Radio  className="radio-button" value={[50,100]} onChange={(e)=>this.setState({price:e.target.value})}/>50$-100$ 
-                                        
-                                    </div>
-                                   
-                            </RadioGroup>
-                            <Button className="seemore1" onClick={this.filterHandler}>Apply Filter</Button>
-                       </div>
+                                <label><b>Select Category</b></label>
+                                <div><input type="checkbox" name="Nutrition" onChange={this.categoryCheckHandlker}/> Nutritious</div>
+                                <div><input type="checkbox" name="safety" onChange={this.categoryCheckHandlker}/> safety</div>
+                                <label><b>Select Brand</b></label>
+                                <div><input type="checkbox"  name="Apollo"  onChange={this.brandCheckHandlker}/> Apollo </div>
+                                <div><input type="checkbox"  name="Muscleblaze"  onChange={this.brandCheckHandlker}/> Muscleblaze</div>
+                                <div><input type="checkbox"  name="Boost"  onChange={this.brandCheckHandlker}/> Boost</div>
+                                <div><input type="checkbox"  name="Horlicks"  onChange={this.brandCheckHandlker}/> Horlicks</div>
+
+                                <RadioGroup name="price">
+                                        <label><b>Price:</b></label>
+                                        <div className="radio-button-background">
+                                            <Radio  className="radio-button" value={[10,50]} onChange={(e)=>this.setState({price:e.target.value})} />10$-50$ 
+                                        </div>
+                                        <div className="radio-button-background">
+                                            <Radio  className="radio-button" value={[50,100]} onChange={(e)=>this.setState({price:e.target.value})}/>50$-100$ 
+                                            
+                                        </div>
+                                    
+                                </RadioGroup>
+
+                                <Button className="seemore1" onClick={this.filterHandler}>Apply Filter</Button>
+                           </div>
                        </Col>
                        <Col>
                        {this.state.show?
