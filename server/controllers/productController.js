@@ -12,6 +12,13 @@ exports.addProducts = asyncHandler(async (req, res, next) => {
 });
 
 exports.getProductDetail = asyncHandler(async (req, res, next) => {
+  if (req.body.category.length == 0) {
+    delete req.body.category;
+  }
+
+  if (req.body.brand.length == 0) {
+    delete req.body.brand;
+  }
   let query = Product.find(req.body);
 
   if (req.body.hasOwnProperty('priceRange')) {
@@ -34,6 +41,10 @@ exports.getProductDetail = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     numberOfProducts: products.length,
+    message:
+      products.length == 0
+        ? 'No products found.'
+        : `${products.length} products found`,
     products,
   });
 });
