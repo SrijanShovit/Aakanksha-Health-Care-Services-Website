@@ -4,8 +4,9 @@ import Footer from '../Components/Footer'
 import Popup from '../Components/popup'
 import Popup1 from '../Components/popuplogin'
 import Axios from 'axios';
-import { Container,Row,Col,Button,Spinner} from 'react-bootstrap';
-import { Radio, RadioGroup} from 'react-radio-group'
+import { Container,Row,Col,Button,Spinner,CardImg,Card} from 'react-bootstrap';
+import { Radio, RadioGroup} from 'react-radio-group';
+import {Link} from 'react-router-dom'
 
 export default class  Products extends React.Component {
     
@@ -123,11 +124,19 @@ export default class  Products extends React.Component {
                 <Popup />
                 <Popup1 />
                 <Header />
-                <Container className="py-5">
+                <Link className='btn btn-dark mt-2 ' to='/'>
+                    Go Back     
+                </Link>
                     
+                <Container className="py-5">
+                
                    <Row>
+                       
                        <Col md="auto" >
+                           
                        <div className="p-5">
+                           
+                           
                             <label><b>Select Category</b></label>
                             <div><input type="checkbox" name="Nutrition" onChange={this.ckeckboxClickHandler}/> Nutritious</div>
                             <div><input type="checkbox" name="safety" onChange={this.ckeckboxClickHandler}/> safety</div>
@@ -157,15 +166,15 @@ export default class  Products extends React.Component {
                             <Row xs={1} md={3} className="g-4">
                                 {this.state.data.map((item)=>{
                                     return(
-                                        <div className="shadow-lg p-5 mb-5  bg-white rounded">
-                                                <Col md="auto">
-                                                    <div className="text-center"><img className="productImg" src={item.imageUrl} alt="productImage"></img></div>
+                                        <Col sm={12} md={4} lg={3} xl={3}>
+                                                <Card className="my-3 p-3 rounded m-3">
+                                                    <Card.Img className="productImg" src={item.imageUrl} alt="productImage"/>
                                                     <div className="text-left"><span>Product: {item.name}</span></div>
                                                     <div  className="text-left"><span>Description: {item.description}</span></div>
                                                     <div  className="text-left"><span>Price: {item.price}$</span></div>
                                                     <div className="text-center p-3"><Button className="seemore1" onClick={this.addToCart} name={item.name}>Add to Cart</Button></div>
-                                               </Col>
-                                        </div>) ;
+                                               </Card>
+                                        </Col>) ;
                                     })
                                 }
                     
