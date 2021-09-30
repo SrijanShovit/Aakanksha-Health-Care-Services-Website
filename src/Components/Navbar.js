@@ -36,6 +36,7 @@ const Header = () => {
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item href="/updateProfile">Update Profile</Dropdown.Item>
+                  <Dropdown.Item href="/changepassword">Change Password</Dropdown.Item>
                   <Dropdown.Item href="#/action-1">
                     Order</Dropdown.Item>
                   <Dropdown.Divider />
