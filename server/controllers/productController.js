@@ -1,6 +1,7 @@
 const Product = require('../models/Product');
 const User = require('../models/User');
 const asyncHandler = require('../middlewares/asyncHandler');
+const checkFields = require('../middlewares/checkFields');
 
 exports.addProducts = asyncHandler(async (req, res, next) => {
   let product = await Product.create(req.body);
@@ -11,6 +12,18 @@ exports.addProducts = asyncHandler(async (req, res, next) => {
 });
 
 exports.getProductDetail = asyncHandler(async (req, res, next) => {
+  if (req.body.hasOwnProperty('brand')) {
+    if (req.body.brand.length == 0) {
+      delete req.body.brand;
+    }
+  }
+
+  if (req.body.hasOwnProperty('category')) {
+    if (req.body.category.length == 0) {
+      delete req.body.category;
+    }
+  }
+
   let query = Product.find(req.body);
 
   if (req.body.hasOwnProperty('priceRange')) {
@@ -33,17 +46,19 @@ exports.getProductDetail = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     numberOfProducts: products.length,
+    message:
+      products.length == 0
+        ? 'No products found.'
+        : `${products.length} products found`,
     products,
   });
 });
 
 exports.addToCart = asyncHandler(async (req, res, next) => {
-  if (
-    !req.body.hasOwnProperty('productName') ||
-    !req.body.hasOwnProperty('email')
-  ) {
+  let message = checkFields(req.body, ['email', 'productName']);
+  if (message.length > 0) {
     res.json({
-      message: 'All properties namely {productName, email} are required.',
+      message,
     });
     return next();
   }
@@ -96,12 +111,10 @@ exports.addToCart = asyncHandler(async (req, res, next) => {
 });
 
 exports.removeFromCart = asyncHandler(async (req, res, next) => {
-  if (
-    !req.body.hasOwnProperty('productName') ||
-    !req.body.hasOwnProperty('email')
-  ) {
+  let message = checkFields(req.body, ['email', 'productName']);
+  if (message.length > 0) {
     res.json({
-      message: 'All properties namely {productName, email} are required.',
+      message,
     });
     return next();
   }
@@ -135,14 +148,10 @@ exports.removeFromCart = asyncHandler(async (req, res, next) => {
 });
 
 exports.changeQuantity = asyncHandler(async (req, res, next) => {
-  if (
-    !req.body.hasOwnProperty('productName') ||
-    !req.body.hasOwnProperty('email') ||
-    !req.body.hasOwnProperty('quantity')
-  ) {
+  let message = checkFields(req.body, ['email', 'productName', 'quantity']);
+  if (message.length > 0) {
     res.json({
-      message:
-        'All properties namely {productName, email and quantity} are required.',
+      message,
     });
     return next();
   }
