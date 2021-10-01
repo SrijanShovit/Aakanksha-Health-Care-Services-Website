@@ -1,7 +1,6 @@
 import React, { useState,useEffect } from "react";
 import { Button, Col, Container,Row,ButtonGroup,Spinner,Card,ListGroup,ListGroupItem } from "react-bootstrap";
 import Axios from "axios"
-import styled from "styled-components";
 import { Link} from "react-router-dom";
 const Homeproduct= () => 
 {
@@ -32,7 +31,7 @@ const Homeproduct= () =>
                     item.category === category
                     
                   ); 
-            }).slice(0,6);
+            }).slice(0,8);
             
             setCategory(category)
             setData(updatedItem);
@@ -56,17 +55,13 @@ const Homeproduct= () =>
                             <Card className="my-3 p-3 rounded m-3">
                                 <Card.Img src={item.imageUrl} alt="productImage" variant="top"/>
                                 <ListGroup variant="flush">
-                                <ListGroupItem>
-                                    <div className="productname"><span>{item.name}</span></div>
-
-                                </ListGroupItem>
+                                    <ListGroupItem>
+                                        <div className="productname"><span>{item.name}</span></div>
+                                   </ListGroupItem>
                                 
-                                <ListGroupItem>
-                                <div className="productprice">Price:<strong>{item.price}$</strong></div>
-
-                                </ListGroupItem>
-                                
-
+                                    <ListGroupItem>
+                                    <div className="productprice">Price:<strong>{item.price}$</strong></div>
+                                    </ListGroupItem>
                                 </ListGroup>
                                 
                                 
@@ -85,7 +80,7 @@ const Homeproduct= () =>
                             
                         }}>
                             <Button 
-                                variant="info">
+                               className="seemore1">
                                 <p>View All</p>
                              
                             </Button>

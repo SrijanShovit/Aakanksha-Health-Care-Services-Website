@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import { If } from 'rc-if-else';
 import {Container,Navbar,Nav,Dropdown} from "react-bootstrap";
 import "../App.css"
@@ -9,18 +9,19 @@ import logo from "../Images/logo.jfif";
 
 
 const Header = () => {
-  const [open, setOpen] = useState(false);
+ 
   function logout()
   {
     window.sessionStorage.clear();
     window.location.reload();
   }
+
   return (
     <>
       <Navbar  bg="my-cyan" variant="dark" expand="lg" fixed="top">
         <Container>
           <Navbar.Brand>
-            <NavLink to="/"><img className="logo w3-animate-zoom" src={logo} alt="logo"/></NavLink></Navbar.Brand>
+            <NavLink to="/"><img className="logo" src={logo} alt="logo"/></NavLink></Navbar.Brand>
             <div className="input-group searchbox">
               <input type="text" className="form-control w3-animate-zoom" placeholder="Zipcode | Search medicine , Camps , Health Brands"/>
               <div className="input-group-append">
@@ -29,21 +30,22 @@ const Header = () => {
                 </button>
               </div>
            </div>
-        <If condition={window.sessionStorage.getItem("username")}>
-            <Dropdown    style={{ visibility:"visible" }}>
-                <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                   {window.sessionStorage.getItem("username")}
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item href="/updateProfile">Update Profile</Dropdown.Item>
-                  <Dropdown.Item href="/changepassword">Change Password</Dropdown.Item>
-                  <Dropdown.Item href="#/action-1">
-                    Order</Dropdown.Item>
-                  <Dropdown.Divider />
-                  <Dropdown.Item href="#/action-2" onClick={logout}>Logout</Dropdown.Item>
-                 </Dropdown.Menu>
-            </Dropdown>
-          </If>
+          <If condition={window.sessionStorage.getItem("username")}>
+              <Dropdown    style={{ visibility:"visible" }}>
+                  <Dropdown.Toggle  id="dropdown-basic">
+                  <div className="userDiv p-1" style={{ visibility:"visible" ,display:"inline-block",}}></div>
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="/updateProfile">{window.sessionStorage.getItem("username")}</Dropdown.Item>
+                    <Dropdown.Item href="/updateProfile">Update Profile</Dropdown.Item>
+                    <Dropdown.Item href="/changepassword">Change Password</Dropdown.Item>
+                    <Dropdown.Item href="#/action-1">
+                      Order</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item href="#/action-2" onClick={logout}>Logout</Dropdown.Item>
+                  </Dropdown.Menu>
+              </Dropdown>
+            </If>
         </Container>
     </Navbar>
     <Navbar  className="subheader" bg="my-cyan" variant="dark" expand="lg" >
