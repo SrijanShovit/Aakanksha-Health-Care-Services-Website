@@ -44,7 +44,7 @@ const Footer = () => {
     
         </Row>
         <Row>
-        <hr className="bg-success mb-4 mt-0 d-inline-block mx-auto"  /> 
+        <Container><hr className="bg-success" /></Container>
           <Col  sm >
             <p>Terms and conditions</p>
           </Col> 

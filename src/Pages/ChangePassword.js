@@ -43,7 +43,7 @@ const ChangePassword = () => {
              <Header/>
              <Container className="p-5 container-width">
               <h5 className="text-center">Change Password</h5>   
-             <Form>
+             <Form className="border border-info p-5">
                     
                     <Form.Group className="mb-3">
                         <Form.Label>Current Password</Form.Label>

@@ -42,6 +42,7 @@
   border-radius: 40px;
   transition: 2s;
 }
+
 .logo:hover{transform: scale(-1);}
 
 .navbar-dark .navbar-nav .nav-link {
@@ -87,14 +88,52 @@
  }
 
 }
+@media (max-width: 480px){
+  .logo{
+    height:40px;
+    
+  }
+  .subheader{
+    margin-top: 72px;
+  }
+
+}
 /*login/signup */
 .signup:hover,.login:hover{transition: 1s;
   transform: scale(1.1);
   border-radius: 20px;
   border:1px solid white;
   outline:none;}
-
-
+  .userDiv{
+    background-image: url("../src/Images/user.png");
+    background-repeat: no-repeat;
+    width:40px;
+    height:40px;
+    border-radius: 50%;
+  }
+  .dropdown .btn{
+    background: transparent !important;
+    outline:0 !important;
+    border: none !important;
+  }
+  .dropdown .btn:active {
+    outline:0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow:none !important;
+  }
+  .dropdown .btn:hover   .btn:focus{
+    outline: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow:none !important;
+  }
+  .dropdown    .btn:focus{
+    outline: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow:none !important;
+  }
 /* <-------------------------Navbar styling ends-------------------------------> */
 
 

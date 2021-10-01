@@ -15,7 +15,7 @@ const UpdateProfile = () => {
              <Header/>
              <Container className="p-5 container-width">
               <h5 className="text-center">Update Information</h5>   
-             <Form>
+             <Form className="border border-info p-5">
                     <Row className="mb-3 ">
                         <Form.Group as={Col} >
                         <Form.Label>User Name</Form.Label>
