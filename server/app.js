@@ -3,6 +3,7 @@ require('colors');
 const db = require('./config/database');
 const cors = require('cors');
 const app = express();
+const errorHandler = require('./middlewares/errorHandler');
 
 app.use(cors());
 
@@ -34,3 +35,5 @@ app.use('/auth', authRoute);
 app.use('/camp', campRoute);
 app.use('/doctor', doctorRoute);
 app.use('/user', userRoute);
+
+app.use(errorHandler);

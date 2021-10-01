@@ -2,6 +2,7 @@ const Doctor = require('../models/Doctor');
 const User = require('../models/User');
 const asyncHandler = require('../middlewares/asyncHandler');
 const checkFields = require('../middlewares/checkFields');
+const AppError = require('../utils/error');
 
 exports.addDoctors = asyncHandler(async (req, res, next) => {
   let doctor = await Doctor.create(req.body);
@@ -23,18 +24,20 @@ exports.getDoctorDetail = asyncHandler(async (req, res, next) => {
 exports.addAppointment = asyncHandler(async (req, res, next) => {
   let message = checkFields(req.body, ['doctorName', 'email']);
   if (message.length > 0) {
-    res.json({
-      message,
-    });
-    return next();
+    return next(new AppError(message));
   }
 
-  let doctor = await Doctor.findOne({ name: req.body.doctorName });
+  let user = await User.findOne({ email: req.body.email }),
+    doctor = await Doctor.findOne({ name: req.body.doctorName });
+
+  if (!user) {
+    return next(new AppError(`No user found with email ${req.body.email}`));
+  }
+
   if (!doctor) {
-    res
-      .status(200)
-      .json({ message: `No doctor found with name ${req.body.doctorName}` });
-    return next();
+    return next(
+      new AppError(`No doctor found with name ${req.body.doctorName}`)
+    );
   }
   req.body.doctorName = undefined;
 

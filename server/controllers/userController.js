@@ -1,29 +1,23 @@
 const asyncHandler = require('../middlewares/asyncHandler');
 const User = require('../models/User');
 const checkFields = require('../middlewares/checkFields');
+const AppError = require('../utils/error');
 
 exports.updateUserInfo = asyncHandler(async (req, res, next) => {
   req.body.password = undefined;
 
   let message = checkFields(req.body, ['email']);
   if (message.length > 0) {
-    res.json({
-      message,
-    });
-    return next();
+    return next(new AppError(message));
   }
 
-  let email = req.body.email;
-
-  let user = await User.findOneAndUpdate({ email }, req.body, {
-    new: true,
-  });
+  let email = req.body.email,
+    user = await User.findOneAndUpdate({ email }, req.body, {
+      new: true,
+    });
 
   if (!user) {
-    res.status(400).json({
-      message: `No user found with the email ${email}.`,
-    });
-    return next();
+    return next(new AppError(`No user found with the email ${email}.`));
   }
 
   res.json({
@@ -35,20 +29,14 @@ exports.updateUserInfo = asyncHandler(async (req, res, next) => {
 exports.getCartItems = asyncHandler(async (req, res, next) => {
   let message = checkFields(req.body, ['email']);
   if (message.length > 0) {
-    res.json({
-      message,
-    });
-    return next();
+    return next(new AppError(message));
   }
 
   let email = req.body.email;
   let user = await User.findOne({ email }).select('cartItems');
 
   if (!user) {
-    res.status(400).json({
-      message: `No user found with the email ${email}.`,
-    });
-    return next();
+    return next(new AppError(`No user found with the email ${email}.`));
   }
 
   res.status(200).json({
@@ -59,20 +47,14 @@ exports.getCartItems = asyncHandler(async (req, res, next) => {
 exports.getAppointments = asyncHandler(async (req, res, next) => {
   let message = checkFields(req.body, ['email']);
   if (message.length > 0) {
-    res.json({
-      message,
-    });
-    return next();
+    return next(new AppError(message));
   }
 
   let email = req.body.email;
   let user = await User.findOne({ email }).select('appointments');
 
   if (!user) {
-    res.status(400).json({
-      message: `No user found with the email ${email}.`,
-    });
-    return next();
+    return next(new AppError(`No user found with the email ${email}.`));
   }
 
   res.json({
@@ -81,29 +63,24 @@ exports.getAppointments = asyncHandler(async (req, res, next) => {
 });
 
 exports.changePassword = asyncHandler(async (req, res, next) => {
-  let message = checkFields(req.body, ['email']);
+  let message = checkFields(req.body, [
+    'email',
+    'currentPassword',
+    'newPassword',
+  ]);
   if (message.length > 0) {
-    res.json({
-      message,
-    });
-    return next();
+    return next(new AppError(message));
   }
 
   let email = req.body.email;
   let user = await User.findOne({ email }).select('password');
 
   if (!user) {
-    res.status(400).json({
-      message: `No user found with the email ${email}.`,
-    });
-    return next();
+    return next(new AppError(`No user found with the email ${email}.`));
   }
 
   if (!(await user.matchPassword(req.body.currentPassword))) {
-    res.json({
-      message: 'Wrong password.',
-    });
-    return next();
+    return next(new AppError('Wrong password.'));
   }
 
   user.password = req.body.newPassword;

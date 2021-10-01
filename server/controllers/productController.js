@@ -2,6 +2,7 @@ const Product = require('../models/Product');
 const User = require('../models/User');
 const asyncHandler = require('../middlewares/asyncHandler');
 const checkFields = require('../middlewares/checkFields');
+const AppError = require('../utils/error');
 
 exports.addProducts = asyncHandler(async (req, res, next) => {
   let product = await Product.create(req.body);
@@ -56,10 +57,7 @@ exports.getProductDetail = asyncHandler(async (req, res, next) => {
 exports.addToCart = asyncHandler(async (req, res, next) => {
   let message = checkFields(req.body, ['email', 'productName']);
   if (message.length > 0) {
-    res.json({
-      message,
-    });
-    return next();
+    return next(new AppError(message));
   }
 
   let productName = req.body.productName,
@@ -68,17 +66,11 @@ exports.addToCart = asyncHandler(async (req, res, next) => {
     user = await User.findOne({ email });
 
   if (!product) {
-    res.status(400).json({
-      message: `No product found with the name ${productName}.`,
-    });
-    return next();
+    return next(new AppError(`No product found with the name ${productName}.`));
   }
 
   if (!user) {
-    res.status(400).json({
-      message: `No user found with the email ${email}.`,
-    });
-    return next();
+    return next(new AppError(`No user found with the email ${email}.`));
   }
 
   let cartItems = user.cartItems;
@@ -124,17 +116,10 @@ exports.removeFromCart = asyncHandler(async (req, res, next) => {
     user = await User.findOne({ email });
 
   if (!product) {
-    res.status(400).json({
-      message: `No product found with the name ${productName}.`,
-    });
-    return next();
+    return next(new AppError(`No product found with the name ${productName}.`));
   }
-
   if (!user) {
-    res.status(400).json({
-      message: `No user found with the email ${email}.`,
-    });
-    return next();
+    return next(new AppError(`No user found with the email ${email}.`));
   }
 
   await User.findByIdAndUpdate(user._id, {
@@ -149,10 +134,7 @@ exports.removeFromCart = asyncHandler(async (req, res, next) => {
 exports.changeQuantity = asyncHandler(async (req, res, next) => {
   let message = checkFields(req.body, ['email', 'productName', 'quantity']);
   if (message.length > 0) {
-    res.json({
-      message,
-    });
-    return next();
+    return next(new AppError(message));
   }
 
   let productName = req.body.productName,
@@ -161,17 +143,11 @@ exports.changeQuantity = asyncHandler(async (req, res, next) => {
     user = await User.findOne({ email });
 
   if (!product) {
-    res.status(400).json({
-      message: `No product found with the name ${productName}.`,
-    });
-    return next();
+    return next(new AppError(`No product found with the name ${productName}.`));
   }
 
   if (!user) {
-    res.status(400).json({
-      message: `No user found with the email ${email}.`,
-    });
-    return next();
+    return next(new AppError(`No user found with the email ${email}.`));
   }
 
   let quantity = req.body.quantity;

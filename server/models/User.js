@@ -7,6 +7,8 @@ const UserSchema = new mongoose.Schema({
   email: String,
   password: { type: String, select: false, trim: true },
   number: String,
+  gender: ['male', 'female', 'other'],
+  DOB: String,
   profilePicUrl: String,
   cartItems: {
     type: [{ productDetails: Object, quantity: { type: Number, default: 1 } }],
@@ -16,11 +18,11 @@ const UserSchema = new mongoose.Schema({
     type: [Object],
     _id: false,
   },
-  orders: {
+  orderHistory: {
     type: [Object],
     _id: false,
   },
-  savedCards: {
+  ongoingOrders: {
     type: [Object],
     _id: false,
   },
