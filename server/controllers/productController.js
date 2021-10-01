@@ -37,8 +37,7 @@ exports.getProductDetail = asyncHandler(async (req, res, next) => {
     let minPrice = req.body.priceRange[0],
       maxPrice = req.body.priceRange[1];
     query = query.find({
-      price: { $gte: minPrice },
-      price: { $lte: maxPrice },
+      $and: [{ price: { $gte: minPrice } }, { price: { $lte: maxPrice } }],
     });
   }
 
