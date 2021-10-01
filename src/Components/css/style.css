@@ -42,3 +42,15 @@ body {
   margin-right: 20px;
 
 }
+.productname{
+  font-family: 'Patua One', cursive;
+  text-align: center;
+}
+.productprice{
+  font-family: 'Lato', sans-serif;
+  color: rgb(4, 49, 250);
+  
+}
+.productdiscripation{
+  font-family: 'Montserrat', sans-serif;
+}

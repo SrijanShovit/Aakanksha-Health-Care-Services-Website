@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
-import { Button, Col, Container,Row,ButtonGroup,Spinner, Card } from "react-bootstrap";
+import { Button, Col, Container,Row,ButtonGroup,Spinner,Card,ListGroup,ListGroupItem } from "react-bootstrap";
 import Axios from "axios"
+import styled from "styled-components";
 import { Link} from "react-router-dom";
 const Homeproduct= () => 
 {
@@ -54,8 +55,21 @@ const Homeproduct= () =>
                         <Col sm={12} md={4} lg={3} xl={3}>
                             <Card className="my-3 p-3 rounded m-3">
                                 <Card.Img src={item.imageUrl} alt="productImage" variant="top"/>
-                                <div className="text-left"><span>{item.name}</span></div>
-                                <div className="text-left"><span>Price:{item.price}$</span></div>
+                                <ListGroup variant="flush">
+                                <ListGroupItem>
+                                    <div className="productname"><span>{item.name}</span></div>
+
+                                </ListGroupItem>
+                                
+                                <ListGroupItem>
+                                <div className="productprice">Price:<strong>{item.price}$</strong></div>
+
+                                </ListGroupItem>
+                                
+
+                                </ListGroup>
+                                
+                                
                             </Card>
                         </Col>
                         
@@ -70,8 +84,8 @@ const Homeproduct= () =>
                             }
                             
                         }}>
-                            <Button type="button"
-                                style={linkStyle}style={{backgoundColor:"primary"}} >
+                            <Button 
+                                variant="info">
                                 <p>View All</p>
                              
                             </Button>
