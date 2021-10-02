@@ -163,7 +163,7 @@ exports.changeQuantity = asyncHandler(async (req, res, next) => {
 });
 
 exports.addOrder = asyncHandler(async (req, res, next) => {
-  let message = checkFields(req.body, ['email', 'orderDetails']);
+  let message = checkFields({ ...req.body }, ['email', 'orderDetails']);
   // if (message.length == 0) {
   //   message = checkFields(req.body.orderDetails, [
   //     'productDetails',
@@ -188,16 +188,21 @@ exports.addOrder = asyncHandler(async (req, res, next) => {
   //     }
   //   }
   // }
-
   if (message.length > 0) {
     return next(new AppError(message));
   }
 
-  let user = await User.findOneAndUpdate(
+  user = await User.findOneAndUpdate(
     { email: req.body.email },
     { $push: { ongoingOrders: req.body.orderDetails } },
     { new: true }
   ).select('ongoingOrders');
+
+  if (!user) {
+    return next(
+      new AppError(`No user found with the email ${req.body.email}.`)
+    );
+  }
 
   res.json({
     message: 'Order added successfully',
