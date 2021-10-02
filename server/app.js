@@ -3,6 +3,7 @@ require('colors');
 const db = require('./config/database');
 const cors = require('cors');
 const app = express();
+const errorHandler = require('./middlewares/errorHandler');
 
 app.use(cors());
 
@@ -26,9 +27,13 @@ const productRoute = require('./routes/productRoute');
 const authRoute = require('./routes/authRoute');
 const campRoute = require('./routes/campRoute');
 const doctorRoute = require('./routes/doctorRoute');
+const userRoute = require('./routes/userRoute');
 
 // Mount routers
 app.use('/product', productRoute);
 app.use('/auth', authRoute);
 app.use('/camp', campRoute);
 app.use('/doctor', doctorRoute);
+app.use('/user', userRoute);
+
+app.use(errorHandler);
