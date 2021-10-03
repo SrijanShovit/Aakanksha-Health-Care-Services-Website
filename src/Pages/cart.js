@@ -3,8 +3,12 @@ import Header from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Popup from '../Components/popup'
 import Popup1 from '../Components/popuplogin'
+import Delivery from '../Pages/Delivery'
 import { Container,Table,Button} from 'react-bootstrap';
 import Axios from 'axios';
+import {Link} from 'react-router-dom'
+
+
 export default function Cart() {
     var totalPrice=0;
     const [data,setData]=useState([]);
@@ -77,6 +81,25 @@ export default function Cart() {
             <Popup />
             <Popup1 />
             <Header />
+            {/* progressbar */}
+            <div className="container px-1 px-md-4 py-5 mx-auto">
+                <div className="card-progress">
+                    <div className="row d-flex justify-content-between px-3 top">
+                        
+                    </div> {/* Add class 'active' to progress */}
+                    <div className="row d-flex justify-content-center">
+                        <div className="col-12">
+                            <ul id="progressbar" className="text-center">
+                                <li className="active step0" />
+                                <li className="step0" />
+                                <li className="step0" />
+                                <li className="step0" />
+                            </ul>
+                        </div>
+                    </div>                
+                </div>
+            </div>
+            {/* progressbar */}
             <Container className="pt-5"> 
                <Table responsive="sm" >
                     <thead>
@@ -120,7 +143,8 @@ export default function Cart() {
                 </Table>
                 <div align="end">
                     <div className="p-1"><b>Grand Total: </b>{totalPrice}$</div>
-                    <Button className="seemore1" >Checkout</Button>
+                    <Link to="/delivery">  <Button className="seemore1" >Checkout</Button></Link>
+                  
                 </div>
             </Container>
             <Footer/>

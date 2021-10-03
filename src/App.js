@@ -10,6 +10,9 @@ import Location from './Pages/Location'
 import UpdateProfile from './Pages/updateProfile'
 import ForgetPassword from './Pages/ForgetPassword'
 import ChangePassword from './Pages/ChangePassword'
+import Delivery from './Pages/Delivery'
+import Payment from './Pages/Payment'
+import Confirmation from './Pages/Confirmation'
 import {
   BrowserRouter as Router,
   Switch,
@@ -30,6 +33,9 @@ const App = () => {
         <Route path="/camp" component={Healthcamp} />
         <Route path="/products" component={Products} />
         <Route path="/cart" component={Cart} />
+        <Route path="/delivery" component={Delivery} />
+        <Route path="/pay" component={Payment} />
+        <Route path="/confirm" component={Confirmation} />
         <Route path="/location" component={Location} />
         <Route path="/updateProfile" component={UpdateProfile} />
         <Route path="/forgetpassword" component={ForgetPassword} />
