@@ -23,7 +23,51 @@ const UserSchema = new mongoose.Schema({
     _id: false,
   },
   ongoingOrders: {
-    type: [Object],
+    type: [
+      {
+        productDetails: {
+          _id: false,
+          required: [true, 'Please provide productDetails in orderDetails.'],
+          type: [
+            {
+              productName: {
+                type: String,
+                required: [
+                  true,
+                  'Please provide productName of all products in productDetails',
+                ],
+              },
+              price: {
+                type: Number,
+                required: [
+                  true,
+                  'Please provide price of all products in productDetails',
+                ],
+              },
+              quantity: {
+                type: Number,
+                required: [
+                  true,
+                  'Please provide quantity of all products in productDetails',
+                ],
+              },
+              subPrice: {
+                type: Number,
+                required: [
+                  true,
+                  'Please provide subPrice of all products in productDetails',
+                ],
+              },
+            },
+          ],
+        },
+        totalPrice: {
+          type: Number,
+          required: [true, 'Please provide totalPrice'],
+        },
+        deliveryDate: String,
+      },
+    ],
     _id: false,
   },
   resetPasswordToken: String,
@@ -33,7 +77,7 @@ const UserSchema = new mongoose.Schema({
 // hash password before saving
 UserSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
-    next();
+    return next();
   }
   this.password = await bcrypt.hash(this.password, await bcrypt.genSalt(10));
   next();

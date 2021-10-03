@@ -161,3 +161,51 @@ exports.changeQuantity = asyncHandler(async (req, res, next) => {
     message: `${productName} quantity changed.`,
   });
 });
+
+exports.addOrder = asyncHandler(async (req, res, next) => {
+  let message = checkFields({ ...req.body }, ['email', 'orderDetails']);
+  // if (message.length == 0) {
+  //   message = checkFields(req.body.orderDetails, [
+  //     'productDetails',
+  //     'totalPrice',
+  //   ]);
+  //   if (message.length > 0) {
+  //     message += 'in productDetails';
+  //   }
+
+  //   if (message.length == 0) {
+  //     req.body.productDetails.forEach((product) => {
+  //       message = checkFields(product, [
+  //         'productName',
+  //         'price',
+  //         'quantity',
+  //         'subPrice',
+  //       ]);
+  //     });
+
+  //     if(message.length > 0) {
+
+  //     }
+  //   }
+  // }
+  if (message.length > 0) {
+    return next(new AppError(message));
+  }
+
+  user = await User.findOneAndUpdate(
+    { email: req.body.email },
+    { $push: { ongoingOrders: req.body.orderDetails } },
+    { new: true }
+  ).select('ongoingOrders');
+
+  if (!user) {
+    return next(
+      new AppError(`No user found with the email ${req.body.email}.`)
+    );
+  }
+
+  res.json({
+    message: 'Order added successfully',
+    ongoingOrders: user,
+  });
+});
