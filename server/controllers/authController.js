@@ -6,15 +6,12 @@ const crypto = require('crypto');
 const AppError = require('../utils/error');
 
 exports.register = asyncHandler(async (req, res, next) => {
-  let message = checkFields(req.body, ['email', 'username', 'password']);
+  let message = checkFields(req.body, ['email']);
   if (message.length > 0) {
     return next(new AppError(message));
   }
 
-  let username = req.body.username,
-    email = req.body.email,
-    password = req.body.password;
-  let user = await User.findOne({ email }); // return null if not found
+  let user = await User.findOne({ email: req.body.email }); // return null if not found
 
   // if user already registered
   if (user) {
@@ -24,7 +21,7 @@ exports.register = asyncHandler(async (req, res, next) => {
       )
     );
   }
-  user = await User.create({ username, email, password });
+  user = await User.create(req.body);
   // password should'nt be given as response, so delete it from user object
   user.password = undefined;
 

@@ -3,11 +3,23 @@ const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 
 const UserSchema = new mongoose.Schema({
-  username: String,
-  email: String,
-  password: { type: String, select: false, trim: true },
+  username: { type: String, required: [true, 'Please provide username.'] },
+  email: { type: String, required: [true, 'Please provide email.'] },
+  password: {
+    type: String,
+    select: false,
+    trim: true,
+    required: [true, 'Please provide password.'],
+  },
   number: String,
-  gender: ['male', 'female', 'other'],
+  gender: {
+    type: String,
+    enum: {
+      values: ['male', 'female', 'other'],
+      message:
+        'Please give one of these values for gender - {male, female, other}',
+    },
+  },
   DOB: String,
   profilePicUrl: String,
   cartItems: {
@@ -34,28 +46,28 @@ const UserSchema = new mongoose.Schema({
                 type: String,
                 required: [
                   true,
-                  'Please provide productName of all products in productDetails',
+                  'Please provide productName for all products in productDetails',
                 ],
               },
               price: {
                 type: Number,
                 required: [
                   true,
-                  'Please provide price of all products in productDetails',
+                  'Please provide price for all products in productDetails',
                 ],
               },
               quantity: {
                 type: Number,
                 required: [
                   true,
-                  'Please provide quantity of all products in productDetails',
+                  'Please provide quantity for all products in productDetails',
                 ],
               },
               subPrice: {
                 type: Number,
                 required: [
                   true,
-                  'Please provide subPrice of all products in productDetails',
+                  'Please provide subPrice for all products in productDetails',
                 ],
               },
             },
@@ -76,10 +88,16 @@ const UserSchema = new mongoose.Schema({
 
 // hash password before saving
 UserSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) {
-    return next();
+  this.runValidators = true;
+
+  if (this.isModified('password')) {
+    this.password = await bcrypt.hash(this.password, await bcrypt.genSalt(10));
   }
-  this.password = await bcrypt.hash(this.password, await bcrypt.genSalt(10));
+  next();
+});
+
+UserSchema.pre('findOneAndUpdate', async function (next) {
+  this.options.runValidators = true;
   next();
 });
 
