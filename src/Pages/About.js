@@ -15,7 +15,7 @@ const About = () => {
              <Popup1 />
              <Header/>
              <img className="aboutImg" src={about}></img>   
-             <Container className="p-5 container-width">
+             <Container className="p-5">
               <div>
                   <b>Health Care Services</b>
              </div>
