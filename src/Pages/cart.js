@@ -17,12 +17,13 @@ export default function Cart() {
        
         const getCartData = async () => {
             
-            Axios.post('http://localhost:5000/user/getCartItems',
+            Axios.post('http://localhost:5000/user/getUserInfo',
             {
-               email:email 
+               email:email ,
+               fields:["cartItems"]
             })
             .then((response)=>{
-               setData(response.data.cartItems);
+               setData(response.data.userInfo.cartItems);
             })
         };
         getCartData();
