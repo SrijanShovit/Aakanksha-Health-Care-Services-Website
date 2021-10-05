@@ -13,6 +13,7 @@ import ChangePassword from './Pages/ChangePassword'
 import Delivery from './Pages/Delivery'
 import Payment from './Pages/Payment'
 import Confirmation from './Pages/Confirmation'
+import About from './Pages/About'
 import {
   BrowserRouter as Router,
   Switch,
@@ -40,6 +41,7 @@ const App = () => {
         <Route path="/updateProfile" component={UpdateProfile} />
         <Route path="/forgetpassword" component={ForgetPassword} />
         <Route path="/changepassword" component={ChangePassword} />
+        <Route path="/about" component={About} />
         <Route component={Notfound} />
       </Switch>
     </Router>
