@@ -5,7 +5,7 @@ import { FaFacebook,FaLinkedin,FaInstagramSquare,FaTwitterSquare } from "react-i
 const Footer = () => {
     return (
     <>
-      <Container className="footer pt-4 w3-animate-zoom"  fluid="lg">
+      <div className="footer p-4 w3-animate-zoom bg-dark text-light"  fluid="lg">
         <Row>
           <Col sm>
               <h6 className="text-uppercase font-weight-bold text-center">About</h6>
@@ -13,11 +13,12 @@ const Footer = () => {
               <p className="mt-2">AAKANKSHA is an MSME consumer service E-commerce company started with the intention of making
                 people's life more comfortable. We provide a door-to-door delivery service facility .We provide a wide range
                 of services and products.</p>
+              <a href="/about">More.....</a>  
           </Col>
           <Col sm>
-              <h6 className="text-uppercase font-weight-bold text-center">Product</h6>
+              <h6 className="text-uppercase font-weight-bold text-center">Features</h6>
               <hr className="bg-success mb-1 mt-0 d-inline-block mx-auto" />
-              <ul className="list-unstyled">
+              <ul >
                 <li className="my-2"><a href="#">Medical Safety Product</a></li>
                 <li className="my-2"><a href="#">Nutritious Product</a></li>
                 <li className="my-2"> <a href="#">Top Medicine Brands</a></li>
@@ -26,7 +27,7 @@ const Footer = () => {
           <Col sm>
               <h6 className="text-uppercase font-weight-bold text-center">Useful links</h6>
               <hr className="bg-success mb-1 mt-0 d-inline-block mx-auto"  />
-              <ul className="list-unstyled">
+              <ul>
                 <li className="my-2"><a href="#">Knock Knock Medico</a></li>
                 <li className="my-2"><a href="#">Doctors' Consultation</a></li>
                 <li className="my-2"><a href="#">Medical Camp Location</a></li>
@@ -35,7 +36,7 @@ const Footer = () => {
           <Col sm>
           <h6 className="text-uppercase font-weight-bold text-center">Contact</h6>
                 <hr className="bg-success mb-1 mt-0 d-inline-block mx-auto"  />
-                <ul className="list-unstyled">
+                <ul>
                 <li className="my-2"> <i className="fa fa-home  mr-3" aria-hidden="true" /> Delhi,India</li>
                 <li className="my-2"><i className="fa fa-envelope" aria-hidden="true" /> helthcare@gmail.com</li>
                 <li className="my-2"><i className="fa fa-phone" aria-hidden="true" /> + 01 234 567 88</li>
@@ -70,7 +71,7 @@ const Footer = () => {
             </Row>
           </Col>
         </Row>
-     </Container>
+     </div>
      
     </>
     )

@@ -94,7 +94,7 @@
     
   }
   .subheader{
-    margin-top: 72px;
+    margin-top: 64px;
   }
 
 }
@@ -157,17 +157,19 @@
 
 /*<-------------------------home product ends------------------------------->*/
 /* <-------------------------Footer styling starts-------------------------------> */
+
 .footer  a{
-    color: black !important; 
+    color: #fff !important; 
     text-decoration:none !important;
 }
 .footer hr{
   width:100%;
-  height: 2px !important;
+  height: 5px !important;
 }
 .social-media{
  float: right;
 }
+
 @media (max-width: 480px){
   .social-media{
     float: left;
@@ -326,7 +328,7 @@ table input{
   width:100px;
 }
 .hr-height{
-height:2px;
+height:5px !important;
 }
 /* -------------------------Feature  styling  ends--------------------  */
 /* -------------------------update info  page styling --------------------  */
@@ -478,3 +480,7 @@ body {
   border-radius: 10px!important;
 }
 /* -------------------------delivary page styling ends--------------------  */
+.aboutImg{
+  width:100%;
+  height:200px;
+}
