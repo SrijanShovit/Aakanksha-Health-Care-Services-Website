@@ -39,15 +39,11 @@ exports.addAppointment = asyncHandler(async (req, res, next) => {
       new AppError(`No doctor found with name ${req.body.doctorName}`)
     );
   }
-  req.body.doctorName = undefined;
 
   await User.findOneAndUpdate(
     { email: req.body.email },
     {
       $push: { appointments: req.body },
-    },
-    {
-      new: true,
     }
   );
 
