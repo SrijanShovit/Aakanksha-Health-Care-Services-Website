@@ -5,7 +5,7 @@ import './css/style.css'
 import { FaUser } from "react-icons/fa";
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import { If } from 'rc-if-else';
 const customStyles = {
   content: {
     top: '50%',
@@ -29,6 +29,7 @@ export default function Popup1() {
   const [password,setPassword]=useState();
   const [loginStatus,setLoginStatus]=useState();
   let subtitle;
+  let user=window.sessionStorage.getItem("username");
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const linkStyle = {
     margin: "1rem",
@@ -75,7 +76,9 @@ export default function Popup1() {
    /*code for login ends here */
   return (
     <div>
-      <button className="btn active login w3-animate-zoom" onClick={openModal}><FaUser />Login</button>
+      <If condition={!user}>
+        <button className="btn active login w3-animate-zoom" onClick={openModal}><FaUser />Login</button>
+      </If>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}

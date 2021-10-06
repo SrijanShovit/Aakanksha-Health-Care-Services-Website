@@ -34,7 +34,7 @@ const Healthcamp = () => {
             <Header /> 
             <div className="container " align="left">
                 <div className="input-group searchbox p-5">
-                <input type="text" className="form-control w3-animate-zoom" placeholder="Zipcode | Search medicine , Camps , Health Brands"/>
+                <input type="text" className="form-control w3-animate-zoom" placeholder="Zipcode |  Camp Name"/>
                 <div className="input-group-append">
                     <button className="btn btn-secondary w3-animate-zoom" type="button">
                     <FaSearch/>
