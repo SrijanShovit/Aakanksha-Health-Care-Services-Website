@@ -70,6 +70,9 @@ exports.getUserInfo = asyncHandler(async (req, res, next) => {
   }
 
   let user = await User.findOne({ email }).select(fields);
+  if (!user) {
+    return next(new AppError(`No user found with the email ${email}.`));
+  }
 
   res.json({
     userInfo: user,
