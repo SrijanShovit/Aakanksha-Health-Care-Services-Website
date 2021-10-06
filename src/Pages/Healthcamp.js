@@ -6,6 +6,7 @@ import Popup from '../Components/popup'
 import Popup1 from '../Components/popuplogin'
 import { Link } from "react-router-dom";
 import Axios from 'axios';
+import { FaSearch } from "react-icons/fa";
 const Healthcamp = () => {
     const [data, setData] = useState([]);
     const [loading,setloading]=useState(false);
@@ -19,7 +20,7 @@ const Healthcamp = () => {
         const fetchData = async () => {
             Axios.post('http://localhost:5000/camp/getCampDetail',)
             .then((response)=>{
-               setData(response.data.camps);
+                setData(response.data.camps);
                setloading(true);
             })
         };
@@ -31,7 +32,15 @@ const Healthcamp = () => {
             <Popup />
             <Popup1 />
             <Header /> 
-            <div className="container" align="center">
+            <div className="container " align="left">
+                <div className="input-group searchbox p-5">
+                <input type="text" className="form-control w3-animate-zoom" placeholder="Zipcode | Search medicine , Camps , Health Brands"/>
+                <div className="input-group-append">
+                    <button className="btn btn-secondary w3-animate-zoom" type="button">
+                    <FaSearch/>
+                    </button>
+                </div>
+            </div>
                 <div className="col-lg-12 col-12 my-2 card">
                     <div className="row mt-3">
                         {
