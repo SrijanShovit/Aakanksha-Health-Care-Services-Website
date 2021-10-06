@@ -13,6 +13,7 @@ export default function Cart() {
     var totalPrice=0;
     const [data,setData]=useState([]);
     const email=window.sessionStorage.getItem("email");
+   
     useEffect(() => {
        
         const getCartData = async () => {
@@ -23,7 +24,9 @@ export default function Cart() {
                fields:["cartItems"]
             })
             .then((response)=>{
-               setData(response.data.userInfo.cartItems);
+               if(!response.data.message){
+                    setData(response.data.userInfo.cartItems);
+                }
             })
         };
         getCartData();
@@ -101,7 +104,8 @@ export default function Cart() {
                 </div>
             </div>
             {/* progressbar */}
-            <Container className="pt-5"> 
+          {email?
+           <Container className="pt-5"> 
                <Table responsive="sm" >
                     <thead>
                         <tr>
@@ -147,7 +151,10 @@ export default function Cart() {
                     <Link to="/delivery">  <Button className="seemore1" >Checkout</Button></Link>
                   
                 </div>
-            </Container>
+            </Container>:
+           
+                <Container className="text-center mb-5"><h5>Please Login to see cart details </h5></Container>}
+            
             <Footer/>
         </div>
     );
