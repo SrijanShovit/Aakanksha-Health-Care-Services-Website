@@ -10,7 +10,7 @@
 /* <-------------------------Navbar styling starts-------------------------------> */
 
 .subheader{
-  margin-top: 86px;
+ /* margin-top: 86px;*/
 }
 .navstyle{
   text-decoration: none;
@@ -52,11 +52,11 @@
   visibility: hidden;
   color:white;
   }
-.searchbox{
+/*.searchbox{
   width: 40% !important;
   transition: 0.8s;
 }
-.searchbox:hover{width:50% !important; }
+.searchbox:hover{width:50% !important; }*/
 .zipcode{
   width:30%;
 }
@@ -94,7 +94,7 @@
     
   }
   .subheader{
-    margin-top: 64px;
+   /* margin-top: 64px;*/
   }
 
 }
@@ -103,7 +103,9 @@
   transform: scale(1.1);
   border-radius: 20px;
   border:1px solid white;
-  outline:none;}
+  outline:none;
+}
+
   .userDiv{
     background-image: url("../src/Images/user.png");
     background-repeat: no-repeat;

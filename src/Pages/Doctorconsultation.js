@@ -401,7 +401,8 @@ import app from '../Images/appointment.png'
 import always from '../Images/24x7.jpg'
 import anytime from '../Images/anytime.png'
 import allcategory from '../Images/allcategory.jfif'
-
+import { FaSearch } from "react-icons/fa";
+import {Container} from "react-bootstrap";
 import InfoModal from "../Components/Bookapp/detailsForm"
 const Doctorconsultation = () => {
     return (
@@ -409,7 +410,16 @@ const Doctorconsultation = () => {
             <Popup />
             <Popup1 />
             <Header />
-
+            <Container>
+                <div className="input-group searchbox mt-3">
+                        <input type="text" className="form-control w3-animate-zoom" placeholder="Zipcode | Doctors Name"/>
+                    <div className="input-group-append">
+                        <button className="btn btn-secondary w3-animate-zoom" type="button">
+                        <FaSearch/>
+                        </button>
+                    </div>
+                </div>
+           </Container>
             <div className="container-fluid  w-100 ">
                 <div className="row">
 

@@ -4,7 +4,7 @@ import Footer from "../Components/Footer";
 import Popup from "../Components/popup";
 import Popup1 from "../Components/popuplogin";
 import Axios from "axios";
-
+import { FaSearch} from "react-icons/fa";
 import {
   Container,
   Row,
@@ -144,9 +144,17 @@ brandCheckHandlker=(e)=>{
         <Popup />
         <Popup1 />
         <Header />
-      
+         
 
         <Container className="py-5">
+           <div className="input-group searchbox">
+              <input type="text" className="form-control w3-animate-zoom" placeholder="Product name, Health Brands"/>
+              <div className="input-group-append">
+                <button className="btn btn-secondary w3-animate-zoom" type="button">
+                  <FaSearch/>
+                </button>
+              </div>
+           </div>
           <Row>
           <h6 className="text-center">{this.state.resposesmsg}</h6>
             <Col md="auto">
@@ -207,7 +215,7 @@ brandCheckHandlker=(e)=>{
                               </div>
                             </ListGroupItem>
                             <ListGroupItem>
-                              <div className="text-center p-3">
+                              <div className="text-center ">
                                 <Button
                                   className="seemore1"
                                   onClick={this.addToCart}

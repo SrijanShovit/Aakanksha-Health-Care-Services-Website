@@ -24,7 +24,7 @@ body {
 .signup{
   position:absolute;
   right:20px;
-  top: 95px;
+  top: 25px;
   text-shadow: 0 2px 5px white;
   z-index: 1;
   background: inherit;
@@ -34,7 +34,7 @@ body {
 .login{
   position:absolute;
   right:80px;
-  top: 95px;
+  top: 25px;
   text-shadow: 0 2px 5px white;
   z-index: 1;
   background: inherit;
