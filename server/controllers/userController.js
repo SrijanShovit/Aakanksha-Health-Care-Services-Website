@@ -57,17 +57,21 @@ exports.changePassword = asyncHandler(async (req, res, next) => {
 });
 
 exports.getUserInfo = asyncHandler(async (req, res, next) => {
-  let message = checkFields(req.body, ['email', 'fields']);
+  let message = checkFields(req.body, ['email']);
   if (message.length > 0) {
     return next(new AppError(message));
   }
 
-  let { email, fields } = req.body;
-
-  message = checkModelFields(User, req.body.fields);
-  if (message.length > 0) {
-    return next(new AppError(message));
+  let fields = [''];
+  if (req.body.hasOwnProperty('fields')) {
+    message = checkModelFields(User, req.body.fields);
+    if (message.length > 0) {
+      return next(new AppError(message));
+    }
+    fields = req.body.fields;
   }
+
+  let { email } = req.body;
 
   let user = await User.findOne({ email }).select(fields);
   if (!user) {
