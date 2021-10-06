@@ -6,19 +6,17 @@ const sendEmail = async (options) => {
       For Gmail -
       service: 'gmail',
       auth:{
-        user: 'email address',
-        pass: 'password of email'
+        user: process.env.EMAIL_ADDRESS,
+        pass: process.env.EMAIL_PASSWORD,
       }
     */
 
     // testing with mailtrap
     host: 'smtp.mailtrap.io',
-    port: 2525,
-
-    // enter mailtrap auth credentials to test with your mailtrap account
+    port: process.env.MAILTRAP_PORT,
     auth: {
-      user: '',
-      pass: '',
+      user: process.env.MAILTRAP_ID,
+      pass: process.env.MAILTRAP_PASSWORD,
     },
   });
 

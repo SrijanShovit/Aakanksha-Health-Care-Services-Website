@@ -1,9 +1,13 @@
 const express = require('express');
 require('colors');
+
+// import .env variables
+const dotenv = require('dotenv');
+dotenv.config({ path: './config/.env' });
+
 const db = require('./config/database');
 const cors = require('cors');
 const app = express();
-const dotenv = require('dotenv');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const xss = require('xss-clean');
@@ -11,7 +15,6 @@ const rateLimit = require('express-rate-limit');
 const hpp = require('hpp');
 const errorHandler = require('./middlewares/errorHandler');
 
-dotenv.config({ path: './congif/.env' });
 app.use(cors());
 
 app.use(hpp());
@@ -22,8 +25,8 @@ app.use(express.static('public'));
 
 // Database connection
 db.then(
-  app.listen(5000, () => {
-    console.log(`Listening to port 5000...`.cyan.bold);
+  app.listen(process.env.PORT, () => {
+    console.log(`Listening to port ${process.env.PORT}...`.cyan.bold);
   }),
   console.log('Connected to database.'.yellow.bold)
 ).catch((err) => {
