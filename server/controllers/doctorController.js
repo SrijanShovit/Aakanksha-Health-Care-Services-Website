@@ -3,6 +3,7 @@ const User = require('../models/User');
 const asyncHandler = require('../middlewares/asyncHandler');
 const checkFields = require('../middlewares/checkFields');
 const AppError = require('../utils/error');
+const getSearchResults = require('../middlewares/getSearchResults');
 
 exports.addDoctors = asyncHandler(async (req, res, next) => {
   let doctor = await Doctor.create(req.body);
@@ -50,4 +51,9 @@ exports.addAppointment = asyncHandler(async (req, res, next) => {
   res.status(200).json({
     message: 'Appointment added',
   });
+});
+
+exports.searchDoctors = asyncHandler(async (req, res, next) => {
+  let response = await getSearchResults({ ...req.body }, Doctor);
+  res.json(response);
 });

@@ -3,6 +3,7 @@ const User = require('../models/User');
 const asyncHandler = require('../middlewares/asyncHandler');
 const checkFields = require('../middlewares/checkFields');
 const AppError = require('../utils/error');
+const getSearchResults = require('../middlewares/getSearchResults');
 
 exports.addProducts = asyncHandler(async (req, res, next) => {
   let product = await Product.create(req.body);
@@ -184,4 +185,9 @@ exports.addOrder = asyncHandler(async (req, res, next) => {
     message: 'Order added successfully',
     ongoingOrders: user.ongoingOrders,
   });
+});
+
+exports.searchProducts = asyncHandler(async (req, res, next) => {
+  let response = await getSearchResults({ ...req.body }, Product);
+  res.json(response);
 });

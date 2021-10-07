@@ -5,15 +5,12 @@ const DoctorSchema = new mongoose.Schema({
   about: String,
   adrress: String,
   imageUrl: String,
-  appointments: [
-    {
-      firstName: String,
-      lastName: String,
-      reason: String,
-      date: String,
-      slot: String,
-    },
-  ],
+});
+
+DoctorSchema.index({
+  name: 'text',
+  about: 'text',
+  address: 'text',
 });
 
 module.exports = mongoose.model('doctor', DoctorSchema);
