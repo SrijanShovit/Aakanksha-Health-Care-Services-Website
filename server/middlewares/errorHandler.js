@@ -1,3 +1,5 @@
+// takes error object and returns error message in response
+
 const errorHandler = (err, req, res, next) => {
   let error = { ...err };
 

@@ -1,3 +1,5 @@
+// checks if all fields(array) are present in the body(object) and returns wrong fields in message(string)
+
 const checkFields = (body, fields) => {
   let message = '',
     reqFields = [];

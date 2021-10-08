@@ -1,3 +1,5 @@
+// sends email to user
+
 const nodemailer = require('nodemailer');
 
 const sendEmail = async (options) => {

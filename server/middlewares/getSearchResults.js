@@ -1,4 +1,4 @@
-const asyncHandler = require('../middlewares/asyncHandler');
+// gets search results for a collection(Products, Camps, Doctors) and returns search result(Object)
 
 const getSearchResults = async (body, model) => {
   if (!body.hasOwnProperty('searchQuery')) {
