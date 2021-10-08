@@ -21,30 +21,34 @@ import { Radio, RadioGroup } from "react-radio-group";
 export default class Products extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state =
+    {
       data: [],
       loading: false,
-      categorynames: {
+      categorynames:
+      {
         Nutrition: false,
         safety: false,
       },
       price: [],
       count: 0,
       show: false,
-      brandnames:{
+      brandnames:
+      {
         Boost:false,
         Horlicks:false,
         Muscleblaze:false,
         Apollo:false
-
-    },
-    resposesmsg:""
+      },
+    resposesmsg:"",
+    keyword:""
     };
     this.getProduct = this.getProduct.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.categoryCheckHandlker=this.categoryCheckHandlker.bind(this)
     this.brandCheckHandlker=this.brandCheckHandlker.bind(this)
     this.filterHandler = this.filterHandler.bind(this);
+    this.searchProduct = this.searchProduct.bind(this);
 
     this.style = { position: "fixed", left: "50%" };
   }
@@ -61,6 +65,25 @@ export default class Products extends React.Component {
       });
     });
   }
+   //function to search products
+   searchProduct(){
+    let keyword=this.state.keyword;
+    console.log("inside search");
+    Axios.post('http://localhost:5000/product/searchProducts',{
+      
+        "searchQuery":keyword,
+        "page":1,
+        "pageLimit":5
+       
+ 
+    }).then((response)=>{
+       console.log(response.data.results);
+       this.setState({
+        data: response.data.results,
+      });
+       
+    })
+ }
   //function for add product in cart
   addToCart = (e) => {
     e.target.classList.remove("seemore1");
@@ -144,19 +167,21 @@ brandCheckHandlker=(e)=>{
         <Popup />
         <Popup1 />
         <Header />
-         
-
         <Container className="py-5">
            <div className="input-group searchbox">
-              <input type="text" className="form-control w3-animate-zoom" placeholder="Product name, Health Brands"/>
+              <input type="text" className="form-control w3-animate-zoom" placeholder="Product name, Health Brands"  onChange={(e)=>this.setState(
+                {
+                  keyword:e.target.value
+                })
+               }/>
               <div className="input-group-append">
-                <button className="btn btn-secondary w3-animate-zoom" type="button">
+                <button className="btn btn-secondary w3-animate-zoom" type="button"  onClick={this.searchProduct}>
                   <FaSearch/>
                 </button>
               </div>
            </div>
           <Row>
-          <h6 className="text-center">{this.state.resposesmsg}</h6>
+          <h6 className="text-center  p-4">{this.state.resposesmsg}</h6>
             <Col md="auto">
               <div className="p-5">
                   <label><b>Select Category</b></label>
