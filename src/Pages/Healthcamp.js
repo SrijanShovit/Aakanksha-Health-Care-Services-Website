@@ -7,9 +7,11 @@ import Popup1 from '../Components/popuplogin'
 import { Link } from "react-router-dom";
 import Axios from 'axios';
 import { FaSearch } from "react-icons/fa";
+
 const Healthcamp = () => {
     const [data, setData] = useState([]);
     const [loading,setloading]=useState(false);
+    const [keyword,setKeyword]=useState("");
     const style = { position: "fixed",  left: "50%" };
     const linkStyle = {
         margin: "1rem",
@@ -26,7 +28,22 @@ const Healthcamp = () => {
         };
         fetchData();
       }, [setData]);
-   
+    //function to search products
+    const searchProduct=()=>{
+       
+        Axios.post('http://localhost:5000/camp/searchCamps',
+        {
+          "searchQuery":keyword,
+            "page":1,
+            "pageLimit":5
+         }).then((response)=>
+         {
+            /*if(response.data.results==""){
+                console.log(response.data.totalResults);
+            }*/
+            setData(response.data.results);
+        })
+     }
     return (
         <div>
             <Popup />
@@ -34,9 +51,11 @@ const Healthcamp = () => {
             <Header /> 
             <div className="container " align="left">
                 <div className="input-group searchbox p-5">
-                <input type="text" className="form-control w3-animate-zoom" placeholder="Zipcode |  Camp Name"/>
+                <input type="text" className="form-control w3-animate-zoom" placeholder="City |  Camp Name"  onChange={(e)=>{
+                                setKeyword(e.target.value);
+                            }}/>
                 <div className="input-group-append">
-                    <button className="btn btn-secondary w3-animate-zoom" type="button">
+                    <button className="btn btn-secondary w3-animate-zoom" type="button" onClick={searchProduct}>
                     <FaSearch/>
                     </button>
                 </div>
