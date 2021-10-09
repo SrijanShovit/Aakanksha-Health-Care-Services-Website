@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import {  NavLink } from "react-router-dom";
+import {  NavLink ,Link} from "react-router-dom";
 import { If } from 'rc-if-else';
 import {Container,Navbar,Nav,Dropdown} from "react-bootstrap";
 import "../App.css"
@@ -13,7 +13,7 @@ const Header = () => {
   function logout()
   {
     window.sessionStorage.clear();
-    window.location.reload();
+   
   }
 
   return (
@@ -81,7 +81,10 @@ const Header = () => {
                       <Dropdown.Item href="#/action-1">
                         Order</Dropdown.Item>
                       <Dropdown.Divider />
-                      <Dropdown.Item href="#/action-2" onClick={logout}>Logout</Dropdown.Item>
+                      <Dropdown.Item href="#/action-2" onClick={logout}>
+                      <Link className="navstyle" to="/" style={{color:"black"}}>Logout</Link>
+                      </Dropdown.Item>
+                        
                     </Dropdown.Menu>
                 </Dropdown>
             </If>
