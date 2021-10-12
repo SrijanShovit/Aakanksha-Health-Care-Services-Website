@@ -11,7 +11,7 @@ const ResetPassword = () => {
     const [newpass,setNewPass]=useState("");
     const params=useParams();
     const [resmsg,setResMsg]=useState("");
-    //console.log(JSON.stringify(params.token));
+    
     const resetPasswordHandler=()=>
     {
         
@@ -21,7 +21,6 @@ const ResetPassword = () => {
           newPassword:newpass
          }).then((response)=>
          {
-            console.log(response.data.message);
             setResMsg(response.data.message);
         })
      }
@@ -40,7 +39,6 @@ const ResetPassword = () => {
                         onChange={
                             (event)=>{
                                 setNewPass(event.target.value);
-                                console.log(newpass);
                             }
                         }/>
                     </Form.Group>
