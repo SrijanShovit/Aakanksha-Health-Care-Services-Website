@@ -9,20 +9,27 @@ import Axios from 'axios';
 
 const ResetPassword = () => {
     const [newpass,setNewPass]=useState("");
+    const [confirmpass,setConfirmPass]=useState("");
     const params=useParams();
     const [resmsg,setResMsg]=useState("");
     
     const resetPasswordHandler=()=>
     {
+        if(newpass!==confirmpass){
+            setResMsg("New password and Confirm Password does not match");
+        }
+        else{
+            Axios.post('http://localhost:5000/auth/resetPassword',
+            {
+              token:params.token,
+              newPassword:newpass
+             }).then((response)=>
+             {
+                setResMsg(response.data.message);
+            })
+
+        }
         
-        Axios.post('http://localhost:5000/auth/resetPassword',
-        {
-          token:params.token,
-          newPassword:newpass
-         }).then((response)=>
-         {
-            setResMsg(response.data.message);
-        })
      }
     return(
        
@@ -44,7 +51,10 @@ const ResetPassword = () => {
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Confirm Password</Form.Label>
-                        <Form.Control  />
+                        <Form.Control 
+                           onChange={(event)=>{
+                            setConfirmPass(event.target.value);
+                        }}/>
                     </Form.Group>
                     <h6 className="text-danger">{resmsg}</h6>
                     <Button   className=" seemore1 " onClick={resetPasswordHandler}>
