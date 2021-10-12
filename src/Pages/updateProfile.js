@@ -58,7 +58,6 @@ const UpdateProfile = () => {
                 setResMsg(response.data.message);
                 window.sessionStorage.setItem('username',response.data.user.username); 
                 setTimeout(() => {
-                    console.log('This will run after 1 second!')
                     {window.location.reload()}
                   }, 1000);
                
