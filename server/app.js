@@ -40,11 +40,11 @@ app.use(helmet());
 app.use(xss());
 
 // limit 100 requests per 10 mins
-const limiter = rateLimit({
+/*const limiter = rateLimit({
   windowMs: 10 * 60 * 1000,
   max: 100,
 });
-app.use(limiter);
+app.use(limiter);*/
 
 const productRoute = require('./routes/productRoute');
 const authRoute = require('./routes/authRoute');
