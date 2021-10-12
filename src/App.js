@@ -14,6 +14,7 @@ import Delivery from './Pages/Delivery'
 import Payment from './Pages/Payment'
 import Confirmation from './Pages/Confirmation'
 import About from './Pages/About'
+import resetPassword from './Pages/resetPassword'
 import {
   BrowserRouter as Router,
   Switch,
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/forgetpassword" component={ForgetPassword} />
         <Route path="/changepassword" component={ChangePassword} />
         <Route path="/about" component={About} />
+        <Route path="/resetPassword/:token" component={resetPassword} />
         <Route component={Notfound} />
       </Switch>
     </Router>

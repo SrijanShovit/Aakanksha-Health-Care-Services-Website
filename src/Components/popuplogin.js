@@ -101,7 +101,7 @@ export default function Popup1() {
           borderRadius:"20px"
 
         }}  variant="primary" onClick={login}>Submit</Button>
-        <Link to="/forgetpassword" style={linkStyle}>Forget Password </Link>
+        <Link to="/forgetpassword" style={linkStyle}>Forgot Password </Link>
 
         </form>
       </Modal>
