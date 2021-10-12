@@ -43,7 +43,7 @@ const App = () => {
         <Route path="/forgetpassword" component={ForgetPassword} />
         <Route path="/changepassword" component={ChangePassword} />
         <Route path="/about" component={About} />
-        <Route path="/resetPassword" component={resetPassword} />
+        <Route path="/resetPassword/:token" component={resetPassword} />
         <Route component={Notfound} />
       </Switch>
     </Router>

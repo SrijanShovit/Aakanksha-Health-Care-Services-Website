@@ -3,23 +3,28 @@ import Header from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Popup from '../Components/popup'
 import Popup1 from '../Components/popuplogin'
-import { Container ,Form,Row,Col,Button} from 'react-bootstrap';
+import { Container ,Form,Button} from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 import Axios from 'axios';
 
-const resetPassword = () => {
-   /* const [email,setEmail]=useState("");
+const ResetPassword = () => {
+    const [newpass,setNewPass]=useState("");
+    const params=useParams();
     const [resmsg,setResMsg]=useState("");
-    const sendEmailHandler=()=>{
+    //console.log(JSON.stringify(params.token));
+    const resetPasswordHandler=()=>
+    {
         
-        Axios.post('http://localhost:5000/auth/forgotPassword',
+        Axios.post('http://localhost:5000/auth/resetPassword',
         {
-          "email":email
+          token:params.token,
+          newPassword:newpass
          }).then((response)=>
          {
             console.log(response.data.message);
             setResMsg(response.data.message);
         })
-     }*/
+     }
     return(
        
         <div>
@@ -29,16 +34,22 @@ const resetPassword = () => {
              <Container className="p-5 container-width">
               <h5 className="text-center">Reset Password</h5>  
              <Form className="border border-info p-5">
-                    <Form.Group className="mb-3" controlId="formGridAddress2">
+                    <Form.Group className="mb-3" >
                         <Form.Label>New Password</Form.Label>
-                        <Form.Control  />
+                        <Form.Control  
+                        onChange={
+                            (event)=>{
+                                setNewPass(event.target.value);
+                                console.log(newpass);
+                            }
+                        }/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formGridAddress2">
+                    <Form.Group className="mb-3">
                         <Form.Label>Confirm Password</Form.Label>
                         <Form.Control  />
                     </Form.Group>
-                     
-                    <Button   className=" seemore1 " >
+                    <h6 className="text-danger">{resmsg}</h6>
+                    <Button   className=" seemore1 " onClick={resetPasswordHandler}>
                         Submit
                     </Button>
               </Form>
@@ -47,4 +58,4 @@ const resetPassword = () => {
         </div>
     );
 }
-export default resetPassword;
+export default ResetPassword;
