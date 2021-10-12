@@ -16,8 +16,7 @@ const ForgetPassword = () => {
           "email":email
          }).then((response)=>
          {
-            console.log(response.data.message);
-            setResMsg(response.data.message);
+           setResMsg(response.data.message);
         })
      }
     return(
@@ -27,42 +26,24 @@ const ForgetPassword = () => {
              <Popup1 />
              <Header/>
              <Container className="p-5 container-width">
-              {/*<h5 className="text-center">Reset Password</h5>  */} 
-             <Form className="border border-info p-5">
-                    <Row className="mb-3 ">
-                        <Form.Group as={Col} >
-                        <Form.Label>Please enter Email</Form.Label>
-                        <Form.Control type="text" onChange={(e)=>{
-                                setEmail(e.target.value);
-                            }}/>
-                        </Form.Group>
-                    </Row>
-                    {/*<Row className="text-center"><div>OR</div></Row>
-                    <Row className="mb-3">
-                        <Form.Group as={Col} >
-                        <Form.Label>Contact Number</Form.Label>
-                        <Form.Control   />
-                        </Form.Group>
+              
+                <Form className="border border-info p-5">
+                        <Row className="mb-3 ">
+                            <Form.Group as={Col} >
+                            <Form.Label>Please enter Email</Form.Label>
+                            <Form.Control type="text" onChange={(e)=>{
+                                    setEmail(e.target.value);
+                                }}/>
+                            </Form.Group>
+                        </Row>
+                        
+                        <h6 className="text-danger">{resmsg}</h6>
 
-                    </Row>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Old Password</Form.Label>
-                        <Form.Control  />
-                    </Form.Group>
+                        <Button   className=" seemore1 " onClick={sendEmailHandler}>
+                            Submit
+                        </Button>
+                </Form>
 
-                    <Form.Group className="mb-3" controlId="formGridAddress2">
-                        <Form.Label>New Password</Form.Label>
-                        <Form.Control  />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formGridAddress2">
-                        <Form.Label>Confirm Password</Form.Label>
-                        <Form.Control  />
-                    </Form.Group>*/}
-                     <h6 className="text-danger">{resmsg}</h6>
-                    <Button   className=" seemore1 " onClick={sendEmailHandler}>
-                        Submit
-                    </Button>
-              </Form>
              </Container>
              <Footer/>
         </div>
