@@ -475,6 +475,9 @@ body {
   }
 }
 
+form {
+  padding: 2vh 9px;
+}
 /* -------------------------progress bar styling ends--------------------  */
 
 /* -------------------------delivary page styling starts--------------------  */

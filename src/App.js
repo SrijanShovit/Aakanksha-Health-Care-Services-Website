@@ -14,6 +14,7 @@ import Delivery from './Pages/Delivery'
 import Payment from './Pages/Payment'
 import Confirmation from './Pages/Confirmation'
 import About from './Pages/About'
+import Placed from './Pages/Congratulations'
 import {
   BrowserRouter as Router,
   Switch,
@@ -37,6 +38,7 @@ const App = () => {
         <Route path="/delivery" component={Delivery} />
         <Route path="/pay" component={Payment} />
         <Route path="/confirm" component={Confirmation} />
+        <Route path="/placed" component={Placed} />
         <Route path="/location" component={Location} />
         <Route path="/updateProfile" component={UpdateProfile} />
         <Route path="/forgetpassword" component={ForgetPassword} />

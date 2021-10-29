@@ -1,11 +1,25 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Header from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Popup from '../Components/popup'
 import Popup1 from '../Components/popuplogin'
 import { Link } from "react-router-dom";
+import {TiTick} from "react-icons/ti"
+const Placed = () => {
 
-const Confirmation = () => {
+    const [payData,setPayData] = useState({
+        chname:'',
+        cardno: '',
+        enddate: '',
+        cvv:''
+    })
+
+    let name,value;
+    const postPayData = (e) => {
+          name = e.target.name;
+          value = e.target.value;
+          setPayData({...payData,[name]:value})
+    }
     return (
         <div>
              <Popup />
@@ -32,33 +46,21 @@ const Confirmation = () => {
             </div>
             {/* progressbar */}
 
-            <div className="container w-100">
-
-                <div className="row">
-                    <div className="col-12 col-lg-6">
-                        <h4>Delivery</h4>
-                    </div>
-                    <div className="col-12 col-lg-6">
-                        Cart
-                    </div>
-                </div>
+            <div className="container w-75">
 
             </div>
 
 
-            <div className="container w-50">
+            {TiTick}
+            <div className="container w-50" style={{backgroundColor:'#33c5c9',borderRadius:'5px',color:'#fff'}}>
                 
+                <div class="row mt-2 mb-5" style={{'paddingBottom':'1rem'}}>
 
-                <div class="row mt-2 mb-5">
 
+                    
 
-                    <div class="col" align="left">
-                        <Link to="/pay"><button type="button" className="btn btn-secondary btn-sm deliverybutton">Go Back</button></Link>
-
-                    </div>
-
-                    <div className="col deliverybutton" align="right">
-                        <Link to="/placed"><button type="button" className="btn btn-primary btn-sm deliverybutton">Confirm</button></Link>
+                    <div className="col deliverybutton" align="center">
+                        <Link to="/confirm"><button type="button" className="btn btn-primary btn-sm deliverybutton">Proceed</button></Link>
 
                     </div>
                 </div>
@@ -75,4 +77,4 @@ const Confirmation = () => {
     )
 }
 
-export default Confirmation
+export default Placed
