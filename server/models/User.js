@@ -122,4 +122,8 @@ UserSchema.methods.getResetPasswordToken = function () {
   return resetToken;
 };
 
+UserSchema.index({
+  email: 'text',
+});
+
 module.exports = mongoose.model('user', UserSchema);

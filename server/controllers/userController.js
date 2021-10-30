@@ -5,9 +5,28 @@ const checkModelFields = require('../middlewares/checkModelFields');
 const AppError = require('../utils/error');
 
 exports.updateUserInfo = asyncHandler(async (req, res, next) => {
-  req.body.password = undefined;
+  if (req.body.hasOwnProperty('password')) {
+    delete req.body.password;
+    return next(
+      new AppError(
+        'Password not applicable. Please use [change-password] option for changing password.'
+      )
+    );
+  }
 
   let message = checkFields(req.body, ['email']);
+  if (message.length > 0) {
+    return next(new AppError(message));
+  }
+
+  let bodyFieldsArray = Object.keys(req.body);
+  if (bodyFieldsArray.length === 1) {
+    return next(
+      new AppError('Please provide any {field: value} pair to be updated.')
+    );
+  }
+
+  message = checkModelFields(User, bodyFieldsArray);
   if (message.length > 0) {
     return next(new AppError(message));
   }

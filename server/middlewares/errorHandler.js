@@ -1,3 +1,5 @@
+// takes error object and returns error message in response
+
 const errorHandler = (err, req, res, next) => {
   let error = { ...err };
 
@@ -12,7 +14,7 @@ const errorHandler = (err, req, res, next) => {
       error.message = error.message.replace('Validation failed: ', '');
     }
   }
-  // console.log(err);
+  //console.log(err);
   res.status(error.statusCode).json({
     message: error.message || err.message,
   });

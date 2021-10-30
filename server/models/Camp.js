@@ -13,4 +13,6 @@ const CampSchema = new mongoose.Schema({
   description: String,
 });
 
+CampSchema.index({ name: 'text', city: 'text' });
+
 module.exports = mongoose.model('camp', CampSchema);

@@ -2,11 +2,14 @@ import React, { useState,useEffect } from "react";
 import { Button, Col, Container,Row,ButtonGroup,Spinner,Card,ListGroup,ListGroupItem } from "react-bootstrap";
 import Axios from "axios"
 import { Link} from "react-router-dom";
+import { FaSearch} from "react-icons/fa";
+
 const Homeproduct= () => 
 {
     const [data,setData]=useState([]);
     const [category,setCategory]=useState();
     const [loading,setloading]=useState(false);
+    const [keyword,setKeyword]=useState("");
     const style = { position: "fixed", top: "50%", left: "50%" };
     const linkStyle = {
         margin: "1rem",
@@ -16,7 +19,7 @@ const Homeproduct= () =>
     useEffect(()=>{
         getProduct('Nutrition');
     }, [])
-
+    //function to load product 
     const getProduct=(category)=>
     {
         
@@ -40,15 +43,44 @@ const Homeproduct= () =>
         })
        
     }
+    //function to search products
+    const searchProduct=()=>{
+       
+       Axios.post('http://localhost:5000/product/searchProducts',
+       {
+         "searchQuery":keyword,
+           "page":1,
+           "pageLimit":5
+        }).then((response)=>
+        {
+          setData(response.data.results);
+       })
+    }
    
     return(
         <div>
             <Container className="p-3">
-               <ButtonGroup className="m-3">
-                    <Button variant="secondary" onClick={()=>getProduct('Nutrition')}>Nutritious Products</Button>
-                    <Button variant="secondary"  onClick={()=>getProduct('safety')}>Safety Products</Button>
-                    <Button variant="secondary"  onClick={()=>getProduct('safety')}>Best Brands</Button>
-                </ButtonGroup>
+               <Row xs={1}  md={2}>
+                    <Col>   
+                        <ButtonGroup className="m-3">
+                        <Button variant="secondary" onClick={()=>getProduct('Nutrition')}>Nutritious Products</Button>
+                        <Button variant="secondary"  onClick={()=>getProduct('safety')}>Safety Products</Button>
+                        <Button variant="secondary"  onClick={()=>getProduct('safety')}>Best Brands</Button>
+                        </ButtonGroup>
+                    </Col>
+                    <Col>
+                    <div className="input-group searchbox mt-3">
+                            <input type="text" className="form-control w3-animate-zoom" placeholder="Product name, Health Brands" onChange={(e)=>{
+                                setKeyword(e.target.value);
+                            }}/>
+                            <div className="input-group-append">
+                                <button className="btn btn-secondary w3-animate-zoom" type="button" onClick={searchProduct}>
+                                <FaSearch/>
+                                </button>
+                            </div>
+                    </div>
+                    </Col>
+                </Row>
                 {loading?<Row xs={1} md={3} className="g-4  ">
                     {data.map(item => (
                         <Col sm={12} md={4} lg={3} xl={3}>

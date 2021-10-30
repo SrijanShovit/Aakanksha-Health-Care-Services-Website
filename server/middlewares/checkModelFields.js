@@ -1,3 +1,5 @@
+// checks if all fields(array) are present in a model(Model) and returns wrong fields message(string)
+
 const checkModelFields = (model, fields) => {
   const schemaFields = Object.keys(model.schema.tree);
   let message = '',
