@@ -3,6 +3,8 @@ import { Button, Col, Container,Row,ButtonGroup,Spinner,Card,ListGroup,ListGroup
 import Axios from "axios"
 import { Link} from "react-router-dom";
 import { FaSearch} from "react-icons/fa";
+import style from "./css/style.css"
+
 
 const Homeproduct= () => 
 {
@@ -16,6 +18,13 @@ const Homeproduct= () =>
         textDecoration: "none",
         color: 'black'
       };
+
+      
+
+      
+    
+      
+    
     useEffect(()=>{
         getProduct('Nutrition');
     }, [])
@@ -59,10 +68,10 @@ const Homeproduct= () =>
    
     return(
         <div>
-            <Container className="p-3">
+            <Container>
                <Row xs={1}  md={2}>
                     <Col>   
-                        <ButtonGroup className="m-3">
+                        <ButtonGroup >
                         <Button variant="secondary" onClick={()=>getProduct('Nutrition')}>Nutritious Products</Button>
                         <Button variant="secondary"  onClick={()=>getProduct('safety')}>Safety Products</Button>
                         <Button variant="secondary"  onClick={()=>getProduct('safety')}>Best Brands</Button>
@@ -86,15 +95,15 @@ const Homeproduct= () =>
                         <Col sm={12} md={4} lg={3} xl={3}>
                             <Card className="my-3 p-3 rounded m-3">
                                 <Card.Img src={item.imageUrl} alt="productImage" variant="top"/>
-                                <ListGroup variant="flush">
-                                    <ListGroupItem>
-                                        <div className="productname"><span>{item.name}</span></div>
-                                   </ListGroupItem>
+                                <Card.Body variant="flush">
+                                    <Card.Title>
+                                        <div><span>{item.name}</span></div>
+                                   </Card.Title>
                                 
-                                    <ListGroupItem>
-                                    <div className="productprice">Price:<strong>{item.price}$</strong></div>
-                                    </ListGroupItem>
-                                </ListGroup>
+                                    <Card.Text>
+                                    <div className="productprice" >Price:<strong>{item.price}$</strong></div>
+                                    </Card.Text>
+                                </Card.Body>
                                 
                                 
                             </Card>
@@ -112,7 +121,7 @@ const Homeproduct= () =>
                             
                         }}>
                             <Button 
-                               className="seemore1">
+                               className="seemore1 ">
                                 <p>View All</p>
                              
                             </Button>

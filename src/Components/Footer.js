@@ -77,11 +77,8 @@ const Footer = () => {
           <Col sm>
             <Row className="social-media">
               <Col>
-              <a href="https://www.facebook.com/AAKANKSHAcompany"><FaFacebook color="#3b5998"/></a>
-                
-              </Col>
-              <Col>
-              <a href="https://www.linkedin.com/company/aakankshaecommerce/?viewAsMember=true"> <FaLinkedin color="#0e76a8"/></a>
+              
+                <FaFacebook color="#3b5998"/>
                 
               </Col>
               <Col>

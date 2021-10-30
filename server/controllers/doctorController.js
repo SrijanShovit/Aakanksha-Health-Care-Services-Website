@@ -1,9 +1,9 @@
 const Doctor = require('../models/Doctor');
 const User = require('../models/User');
 const asyncHandler = require('../middlewares/asyncHandler');
-const checkFields = require('../middlewares/checkFields');
+const checkFields = require('../helpers/checkFields');
 const AppError = require('../utils/error');
-const getSearchResults = require('../middlewares/getSearchResults');
+const getSearchResults = require('../helpers/getSearchResults');
 
 exports.addDoctors = asyncHandler(async (req, res, next) => {
   let doctor = await Doctor.create(req.body);

@@ -1,4 +1,5 @@
 const Razorpay = require('Razorpay');
+const crypto = require('crypto');
 
 const razorpayInstance = new Razorpay({
   key_id: process.env.RAZORPAY_KEY,

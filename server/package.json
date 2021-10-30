@@ -20,10 +20,11 @@
     "express-rate-limit": "^5.4.0",
     "helmet": "^4.6.0",
     "hpp": "^0.2.3",
+    "ical-generator": "^3.0.1",
     "mongoose": "^6.0.8",
     "mongoose-double": "0.0.1",
     "nodemailer": "^6.6.5",
-    "nodemon": "^2.0.13",
+    "nodemon": "^2.0.14",
     "razorpay": "^2.0.7",
     "xss-clean": "^0.1.1"
   },
