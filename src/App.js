@@ -18,7 +18,7 @@ import About from './Pages/About'
 import Placed from './Pages/Congratulations'
 import AboutAakanksha from './Pages/AboutAakanksha'
 import ReachOut from './Pages/ReachOut'
-=======
+
 import resetPassword from './Pages/resetPassword'
 
 import {
