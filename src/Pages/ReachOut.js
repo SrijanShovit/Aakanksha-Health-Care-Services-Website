@@ -1,55 +1,84 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Header from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Popup from '../Components/popup'
 import Popup1 from '../Components/popuplogin'
 
 const ReachOut = () => {
+
+  const [reachData,setReachData] = useState({
+    rname:'',
+    remail: '',
+    rcomments: '',
+    
+})
+
+let name,value;
+const postReachData = (e) => {
+      name = e.target.name;
+      value = e.target.value;
+      setReachData({...reachData,[name]:value})
+}
     return (
         <>
         <Popup />
         <Popup1 />
         <Header /> 
-        <div className="container w-75">
+
+        
+        <div className="container w-50 my-5" style={{boxShadow:'0 5px 8px 0 rgba(0,0,0,0.6)'}}>
             
+        <div className="container mt-3 py-3" align="center">
+          <h5>Reach Out to Us!! We are always there for you</h5>
+        </div>
             <form>
-        <div className="row mb-3">
-          <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email</label>
+        
+        
+        <fieldset className="row mb-3">
+          
+          <div className="col-12 col-lg-6">
+          <div className="row mb-3">
+          <label htmlFor="inputEmail3" 
+          
+          name="rname"
+                            value={reachData.rname}
+                            onChange={postReachData}
+          className="col-sm-2 col-form-label">Name</label>
           <div className="col-sm-10">
-            <input type="email" className="form-control" id="inputEmail3" />
+            <input type="text" className="form-control" id="inputEmail3" />
           </div>
           
         </div>
-        
-        <div className="row mb-3">
-          <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password</label>
+            
+          </div>
+          <div className="col-12 col-lg-6">
+          <div className="row mb-3">
+          <label htmlFor="inputEmail3" 
+           name="remail"
+           value={reachData.remail}
+           onChange={postReachData}
+          className="col-sm-2 col-form-label">Email</label>
           <div className="col-sm-10">
-            <input type="password" className="form-control" id="inputPassword3" />
+            <input type="email" className="form-control" id="inputEmail3" />
           </div>
         </div>
-        <fieldset className="row mb-3">
-          <legend className="col-form-label col-sm-2 pt-0">Radios</legend>
-          <div className="col-sm-10">
-            <div className="form-check">
-              <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1" defaultValue="option1" defaultChecked />
-              <label className="form-check-label" htmlFor="gridRadios1">
-                First radio
-              </label>
-            </div>
             
           </div>
         </fieldset>
-        <div className="row mb-3">
-          <div className="col-sm-10 offset-sm-2">
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox" id="gridCheck1" />
-              <label className="form-check-label" htmlFor="gridCheck1">
-                Example checkbox
-              </label>
-            </div>
-          </div>
-        </div>
-        <button type="submit" className="btn btn-primary">Sign in</button>
+        <div className="form-floating">
+        <textarea className="form-control" 
+         name="rmessage"
+         value={reachData.rmessage}
+         onChange={postReachData}
+        placeholder="Leave a comment here" id="floatingTextarea2" style={{height: '100px'}} defaultValue={""} />
+        <label htmlFor="floatingTextarea2">Your Comments/Message</label>
+      </div>
+      <div className="container"  align="right" >
+        <button type="submit"className="btn btn-primary my-2"
+        onClick={(e)=>postReachData(e)}
+        >Submit</button>
+
+      </div>
       </form>
         </div>
         <Footer/>
