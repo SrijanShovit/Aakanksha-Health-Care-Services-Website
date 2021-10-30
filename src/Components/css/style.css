@@ -54,3 +54,10 @@ body {
 .productdiscripation{
   font-family: 'Montserrat', sans-serif;
 }
+.gradiant-border {
+  border: solid 5px transparent;
+  border-radius: 10px;
+  background-image: linear-gradient(white,white),linear-gradient(315deg,#833ab4,#fd1d1d 50%,#fcb045);
+  background-origin: border-box;
+  background-clip: content-box,border-box;
+}

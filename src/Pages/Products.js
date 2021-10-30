@@ -4,6 +4,7 @@ import Footer from "../Components/Footer";
 import Popup from "../Components/popup";
 import Popup1 from "../Components/popuplogin";
 import Axios from "axios";
+
 import { FaSearch} from "react-icons/fa";
 import {
   Container,
@@ -212,7 +213,7 @@ brandCheckHandlker=(e)=>{
               )}
 
               {this.state.loading ? (
-                <Row xs={1} md={3} className="g-4">
+                <Row xs={12} sm={12} md={6} lg={4} xl={2} >
                   {this.state.data.map((item) => {
                     return (
                       <Col sm={12} md={4} lg={3} xl={3}>
@@ -222,24 +223,24 @@ brandCheckHandlker=(e)=>{
                             src={item.imageUrl}
                             alt="productImage"
                           />
-                          <ListGroup variant="flush">
-                            <ListGroupItem>
+                          <Card.Body variant="flush">
+                            <Card.Title>
                               <div className="productname">
                                 <span> {item.name}</span>
                               </div>
-                            </ListGroupItem>
+                            </Card.Title>
 
-                            <ListGroupItem>
+                            <Card.Text>
                               <div className="productdescription">
                                 <span>Description: {item.description}</span>
                               </div>
-                            </ListGroupItem>
-                            <ListGroupItem>
+                            </Card.Text>
+                            <Card.Text>
                               <div className="productprice">
                                 <span>Price:{item.price}$</span>
                               </div>
-                            </ListGroupItem>
-                            <ListGroupItem>
+                            </Card.Text>
+                            <Card.Text>
                               <div className="text-center ">
                                 <Button
                                   className="seemore1"
@@ -249,8 +250,8 @@ brandCheckHandlker=(e)=>{
                                   Add to Cart
                                 </Button>
                               </div>
-                            </ListGroupItem>
-                          </ListGroup>
+                            </Card.Text>
+                          </Card.Body>
                         </Card>
                       </Col>
                     );

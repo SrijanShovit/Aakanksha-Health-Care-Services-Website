@@ -1,17 +1,21 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+
+
+
 
 *{
   padding:0px;
   margin: 0px;
   box-sizing: border-box;
+  font-family: "Roboto",sans-serif;
 
 }
 
 /* <-------------------------Navbar styling starts-------------------------------> */
 
-.subheader{
- /* margin-top: 86px;*/
-}
+
 .navstyle{
   text-decoration: none;
   list-style-type: none;
@@ -43,7 +47,7 @@
   transition: 2s;
 }
 
-.logo:hover{transform: scale(-1);}
+.logo:hover{transform: scale(0.7);}
 
 .navbar-dark .navbar-nav .nav-link {
     color:white !important;
@@ -475,6 +479,9 @@ body {
   }
 }
 
+form {
+  padding: 2vh 9px;
+}
 /* -------------------------progress bar styling ends--------------------  */
 
 /* -------------------------delivary page styling starts--------------------  */
@@ -486,3 +493,9 @@ body {
   width:100%;
   height:200px;
 }
+
+/* -------------------------about company page styling starts--------------------   */
+.aboutnavitem:hover{
+  border-bottom: 2px solid grey;
+}
+

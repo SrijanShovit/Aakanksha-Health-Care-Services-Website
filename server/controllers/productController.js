@@ -4,6 +4,7 @@ const asyncHandler = require('../middlewares/asyncHandler');
 const checkFields = require('../middlewares/checkFields');
 const AppError = require('../utils/error');
 const getSearchResults = require('../middlewares/getSearchResults');
+const { verifyOrder, getOrderDetails } = require('../middlewares/payment');
 
 exports.addProducts = asyncHandler(async (req, res, next) => {
   let product = await Product.create(req.body);
@@ -163,31 +164,56 @@ exports.changeQuantity = asyncHandler(async (req, res, next) => {
   });
 });
 
-exports.addOrder = asyncHandler(async (req, res, next) => {
-  let message = checkFields({ ...req.body }, ['email', 'orderDetails']);
+exports.searchProducts = asyncHandler(async (req, res, next) => {
+  let response = await getSearchResults({ ...req.body }, Product);
+  res.json(response);
+});
+
+exports.createOrder = asyncHandler(async (req, res, next) => {
+  let message = checkFields({ ...req.body }, ['totalPrice', 'currency']);
   if (message.length > 0) {
     return next(new AppError(message));
   }
 
-  user = await User.findOneAndUpdate(
-    { email: req.body.email },
-    { $push: { ongoingOrders: req.body.orderDetails } },
-    { new: true }
-  ).select('ongoingOrders');
-
-  if (!user) {
-    return next(
-      new AppError(`No user found with the email ${req.body.email}.`)
-    );
+  let orderDetails = await getOrderDetails(
+    req.body.totalPrice,
+    req.body.currency
+  );
+  if (orderDetails.hasOwnProperty('error')) {
+    return next(err);
   }
-
-  res.json({
-    message: 'Order added successfully',
-    ongoingOrders: user.ongoingOrders,
-  });
+  res.json(orderDetails);
 });
 
-exports.searchProducts = asyncHandler(async (req, res, next) => {
-  let response = await getSearchResults({ ...req.body }, Product);
-  res.json(response);
+exports.verifyAndAddOrder = asyncHandler(async (req, res, next) => {
+  let message = checkFields({ ...req.body }, [
+    'email',
+    'orderDetails',
+    'order_id',
+    'payment_id',
+  ]);
+  if (message.length > 0) {
+    return next(new AppError(message));
+  }
+
+  let user = await User.findOne({ email: req.body.email });
+  if (!user) {
+    return `No user found with the email ${req.body.email}.`;
+  }
+
+  const { order_id, payment_id } = req.body,
+    razorpay_signature = req.headers['x-razorpay-signature'];
+
+  if (verifyOrder(order_id, payment_id, razorpay_signature)) {
+    // add order to database
+    await User.findOneAndUpdate(
+      { email: req.body.email },
+      { $push: { ongoingOrders: req.body.orderDetails } },
+      { new: true }
+    );
+
+    res.json({ success: true, message: 'Payment has been verified.' });
+  } else {
+    res.json({ success: false, message: 'Payment verification failed.' });
+  }
 });

@@ -51,7 +51,7 @@ const Payment = () => {
             </div>
 
 
-            <div className="container w-50">
+            <div className="container w-50" style={{backgroundColor:'#33c5c9',borderRadius:'5px',color:'#fff'}}>
                 <form>
                     <div class="row">
                         <div class="col">
@@ -93,7 +93,7 @@ const Payment = () => {
                 
                 </form>
 
-                <div class="row mt-2 mb-5">
+                <div class="row mt-2 mb-5" style={{'paddingBottom':'1rem'}}>
 
 
                     <div class="col" align="left">

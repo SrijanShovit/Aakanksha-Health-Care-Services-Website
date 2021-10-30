@@ -71,14 +71,12 @@ exports.forgotPassword = asyncHandler(async (req, res, next) => {
   await user.save();
 
   //Create reset url
-  const resetUrl = `${req.protocol}://${req.get(
-    'host'
-  )}/resetPassword/${resetToken}`;
+  const resetUrl = `${process.env.RESET_PASSWORD_URL}/${resetToken}`;
 
   try {
     await sendEmail({
-      organisationName: 'AAKANKSHA HEALTHCARE SERVICES',
-      organisationEmail: 'noreply@aakanksha.com',
+      organisationName: process.env.COMPANY_NAME,
+      organisationEmail: process.env.NO_REPLY_EMAIL,
       userEmail: user.email,
       subject: 'Password reset link',
       message: `You are receiving this email because you (or someone else) has requested the reset of password for your account on AAKANKSHA HEALTHCARE SERVICES. Please click this link for password reset, it's valid for 10 minutes - ${resetUrl}`,

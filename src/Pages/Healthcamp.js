@@ -60,8 +60,8 @@ const Healthcamp = () => {
                     </button>
                 </div>
             </div>
-                <div className="col-lg-12 col-12 my-2 card">
-                    <div className="row mt-3">
+                <div className="col-lg-12 col-12 my-5 card" align="center" style={{backgroundColor:'rgb(237 243 255)'}}>
+                    <div className="row m-3" align="center">
                         {
                             loading?
                             data.map( item => 
