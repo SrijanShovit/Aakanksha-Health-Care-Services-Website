@@ -1,6 +1,6 @@
 const Camp = require('../models/Camp');
 const asyncHandler = require('../middlewares/asyncHandler');
-const getSearchResults = require('../middlewares/getSearchResults');
+const getSearchResults = require('../helpers/getSearchResults');
 
 exports.addCamps = asyncHandler(async (req, res, next) => {
   // Insert multiple camps data, input should be an array
