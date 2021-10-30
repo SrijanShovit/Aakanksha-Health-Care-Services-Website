@@ -1,7 +1,7 @@
 const asyncHandler = require('../middlewares/asyncHandler');
 const User = require('../models/User');
-const checkFields = require('../middlewares/checkFields');
-const checkModelFields = require('../middlewares/checkModelFields');
+const checkFields = require('../helpers/checkFields');
+const checkModelFields = require('../helpers/checkModelFields');
 const AppError = require('../utils/error');
 
 exports.updateUserInfo = asyncHandler(async (req, res, next) => {

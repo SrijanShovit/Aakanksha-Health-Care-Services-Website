@@ -1,10 +1,10 @@
 const Product = require('../models/Product');
 const User = require('../models/User');
 const asyncHandler = require('../middlewares/asyncHandler');
-const checkFields = require('../middlewares/checkFields');
+const checkFields = require('../helpers/checkFields');
 const AppError = require('../utils/error');
-const getSearchResults = require('../middlewares/getSearchResults');
-const { verifyOrder, getOrderDetails } = require('../middlewares/payment');
+const getSearchResults = require('../helpers/getSearchResults');
+const { verifyOrder, getOrderDetails } = require('../helpers/payment');
 
 exports.addProducts = asyncHandler(async (req, res, next) => {
   let product = await Product.create(req.body);
@@ -180,7 +180,14 @@ exports.createOrder = asyncHandler(async (req, res, next) => {
     req.body.currency
   );
   if (orderDetails.hasOwnProperty('error')) {
-    return next(err);
+    if (orderDetails.error.hasOwnProperty('error')) {
+      return next(new AppError(`${orderDetails.error.error.description}`));
+    }
+    return next(
+      new AppError(
+        `Error creating order. Please check payment credentials or try again later.`
+      )
+    );
   }
   res.json(orderDetails);
 });

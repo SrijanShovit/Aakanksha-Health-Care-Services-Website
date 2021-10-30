@@ -14,7 +14,7 @@ const errorHandler = (err, req, res, next) => {
       error.message = error.message.replace('Validation failed: ', '');
     }
   }
-  //console.log(err);
+  // console.log(err);
   res.status(error.statusCode).json({
     message: error.message || err.message,
   });
