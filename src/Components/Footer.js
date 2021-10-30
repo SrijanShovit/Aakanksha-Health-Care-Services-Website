@@ -10,15 +10,15 @@ const Footer = () => {
         <Row>
           <Col sm>
             
-              <h6 className="text-uppercase font-weight-bold text-center">About</h6>
+              <h6 className="text-uppercase font-weight-bold text-center text-light">About</h6>
               <hr className="bg-success mb-1 mt-0 d-inline-block mx-auto"  />
               <ul>
-                <li><a href="/aboutcompany"><h6>
+                <li><a href="/aboutcompany"><h6 className='text-light'>
                 About Aakanksha Company
                   </h6></a> </li>
               </ul>
               <ul>
-                <li><a href="/about"><h6>
+                <li><a href="/about"><h6 className='text-light'>
                 About Aakanksha's Healthcare Services
                   </h6></a> </li>
               </ul>
@@ -32,7 +32,7 @@ const Footer = () => {
                
           </Col>
           <Col sm>
-              <h6 className="text-uppercase font-weight-bold text-center">Features</h6>
+              <h6 className="text-uppercase font-weight-bold text-center text-light">Features</h6>
               <hr className="bg-success mb-1 mt-0 d-inline-block mx-auto" />
               <ul >
                 <li className="my-2"><a href="#">Medical Safety Product</a></li>
@@ -41,7 +41,7 @@ const Footer = () => {
               </ul>
           </Col>
           <Col sm>
-              <h6 className="text-uppercase font-weight-bold text-center">Useful links</h6>
+              <h6 className="text-uppercase font-weight-bold text-center text-light">Useful links</h6>
               <hr className="bg-success mb-1 mt-0 d-inline-block mx-auto"  />
               <ul>
                 <li className="my-2"><a href="#">Knock Knock Medico</a></li>
@@ -50,7 +50,7 @@ const Footer = () => {
               </ul>
           </Col>
           <Col sm>
-          <h6 className="text-uppercase font-weight-bold text-center">Contact</h6>
+          <h6 className="text-uppercase font-weight-bold text-center text-light">Contact</h6>
                 <hr className="bg-success mb-1 mt-0 d-inline-block mx-auto"  />
                 <ul>
                 <li className="my-2"> <i className="fa fa-home  mr-3" aria-hidden="true" /> Delhi,India</li>
