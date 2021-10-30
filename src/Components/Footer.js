@@ -1,6 +1,7 @@
 import React from 'react'
 import {Container,Row,Col} from "react-bootstrap";
-import { FaFacebook,FaLinkedin,FaInstagramSquare,FaTwitterSquare } from "react-icons/fa";
+import { FaFacebook,FaLinkedin,FaInstagramSquare,FaTwitterSquare,FaYoutubeSquare } from "react-icons/fa";
+import {Link} from 'react-router-dom'
 
 const Footer = () => {
     return (
@@ -8,12 +9,27 @@ const Footer = () => {
       <div className="footer p-4 w3-animate-zoom bg-dark text-light"  fluid="lg">
         <Row>
           <Col sm>
+            
               <h6 className="text-uppercase font-weight-bold text-center">About</h6>
               <hr className="bg-success mb-1 mt-0 d-inline-block mx-auto"  />
+              <ul>
+                <li><a href="/aboutcompany"><h6>
+                About Aakanksha Company
+                  </h6></a> </li>
+              </ul>
+              <ul>
+                <li><a href="/about"><h6>
+                About Aakanksha's Healthcare Services
+                  </h6></a> </li>
+              </ul>
               <p className="mt-2">AAKANKSHA is an MSME consumer service E-commerce company started with the intention of making
                 people's life more comfortable. We provide a door-to-door delivery service facility .We provide a wide range
                 of services and products.</p>
               <a href="/about">More.....</a>  
+              <br />
+              <br />
+              
+               
           </Col>
           <Col sm>
               <h6 className="text-uppercase font-weight-bold text-center">Features</h6>
@@ -40,7 +56,11 @@ const Footer = () => {
                 <li className="my-2"> <i className="fa fa-home  mr-3" aria-hidden="true" /> Delhi,India</li>
                 <li className="my-2"><i className="fa fa-envelope" aria-hidden="true" /> helthcare@gmail.com</li>
                 <li className="my-2"><i className="fa fa-phone" aria-hidden="true" /> + 01 234 567 88</li>
+                <Link to='/reachout'><li className="my-2">Reach Out To Us</li></Link>
+                
+                
               </ul>
+             
           </Col>
     
         </Row>
@@ -57,16 +77,24 @@ const Footer = () => {
           <Col sm>
             <Row className="social-media">
               <Col>
-                <FaFacebook color="#3b5998"/>
+              <a href="https://www.facebook.com/AAKANKSHAcompany"><FaFacebook color="#3b5998"/></a>
+                
               </Col>
               <Col>
-                 <FaLinkedin color="#0e76a8"/>
+              <a href="https://www.linkedin.com/company/aakankshaecommerce/?viewAsMember=true"> <FaLinkedin color="#0e76a8"/></a>
+                
               </Col>
               <Col>
-                 <FaInstagramSquare color="#fb3958"/>
+              <a href="https://www.instagram.com/aakankshacompany/"><FaInstagramSquare color="#fb3958"/></a>
+                 
               </Col>
               <Col>
-                <FaTwitterSquare color="#00acee"/>
+              <a href="https://twitter.com/AAKANKS57852311"><FaTwitterSquare color="#00acee"/></a>
+                
+              </Col>
+              <Col>
+              <a href="https://www.youtube.com/channel/UCQ79LZ_IrnxzkFL5MZxxOeg"><FaYoutubeSquare color="red"/></a>
+                
               </Col>
             </Row>
           </Col>
