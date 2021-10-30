@@ -5,6 +5,8 @@ import Popup from '../Components/popup'
 import Popup1 from '../Components/popuplogin'
 import { Link } from "react-router-dom";
 
+import cartstage1 from '../Images/cart.jpeg'
+
 
 
 const Delivery = () => {
@@ -32,7 +34,12 @@ const Delivery = () => {
             <Popup />
             <Popup1 />
             <Header />
-
+{/* 
+            <div className="stage1">
+                <div style={{width:'20px',height:'20px'}}>
+                    <img src={cartstage1} alt="stage1" />
+                </div>
+            </div> */}
             {/* progressbar */}
             <div className="container px-1 px-md-4 pt-3 mx-auto w-75">
                 <div className="card-progress">
@@ -53,7 +60,7 @@ const Delivery = () => {
             </div>
             {/* progressbar */}
 
-            <div className="container w-50">
+            <div className="container w-50" style={{backgroundColor:'#33c5c9',borderRadius:'5px',color:'#fff'}}>
                 <form>
                     <div class="row">
                         <div class="col">
@@ -135,7 +142,7 @@ const Delivery = () => {
                     </div>
                 </form>
 
-                <div class="row mt-2 mb-5">
+                <div class="row mt-2 mb-5" style={{ paddingBottom:'1rem'}}>
 
 
                     <div class="col" align="left">
