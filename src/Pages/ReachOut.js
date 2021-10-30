@@ -11,13 +11,16 @@ const ReachOut = () => {
         <Popup1 />
         <Header /> 
         <div className="container w-75">
+            
             <form>
         <div className="row mb-3">
           <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email</label>
           <div className="col-sm-10">
             <input type="email" className="form-control" id="inputEmail3" />
           </div>
+          
         </div>
+        
         <div className="row mb-3">
           <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password</label>
           <div className="col-sm-10">
@@ -33,18 +36,7 @@ const ReachOut = () => {
                 First radio
               </label>
             </div>
-            <div className="form-check">
-              <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2" defaultValue="option2" />
-              <label className="form-check-label" htmlFor="gridRadios2">
-                Second radio
-              </label>
-            </div>
-            <div className="form-check disabled">
-              <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios3" defaultValue="option3" disabled />
-              <label className="form-check-label" htmlFor="gridRadios3">
-                Third disabled radio
-              </label>
-            </div>
+            
           </div>
         </fieldset>
         <div className="row mb-3">

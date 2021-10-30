@@ -180,7 +180,7 @@ exports.createOrder = asyncHandler(async (req, res, next) => {
     req.body.currency
   );
   if (orderDetails.hasOwnProperty('error')) {
-    return next(err);
+    return next();
   }
   res.json(orderDetails);
 });
