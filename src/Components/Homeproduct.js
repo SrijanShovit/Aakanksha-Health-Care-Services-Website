@@ -4,6 +4,7 @@ import Axios from "axios"
 import { Link} from "react-router-dom";
 import { FaSearch} from "react-icons/fa";
 import style from "./css/style.css"
+import "./css/link.css"
 
 
 const Homeproduct= () => 
@@ -119,9 +120,8 @@ const Homeproduct= () =>
                                 category:category
                             }
                             
-                        }}>
-                            <Button 
-                               className="seemore1 ">
+                        }}className="link-bg">
+                            <Button >
                                 <p>View All</p>
                              
                             </Button>
