@@ -1,5 +1,5 @@
 import React ,{useState,useEffect}from 'react';
-import {Button, Spinner} from "react-bootstrap";
+import {Button, Spinner,} from "react-bootstrap";
 import Header from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Popup from '../Components/popup'
@@ -7,17 +7,15 @@ import Popup1 from '../Components/popuplogin'
 import { Link } from "react-router-dom";
 import Axios from 'axios';
 import { FaSearch } from "react-icons/fa";
+import "../Components/css/link.css"
 
 const Healthcamp = () => {
     const [data, setData] = useState([]);
     const [loading,setloading]=useState(false);
     const [keyword,setKeyword]=useState("");
     const style = { position: "fixed",  left: "50%" };
-    const linkStyle = {
-        margin: "1rem",
-        textDecoration: "none",
-        color: "#fff"
-      };
+   
+      
        useEffect(() => {
         const fetchData = async () => {
             Axios.post('http://localhost:5000/camp/getCampDetail',)
@@ -79,10 +77,15 @@ const Healthcamp = () => {
                                                     {item.description}
                                                 </p>
                                             </div>
-                                            <div align="right">
-                                                <Button  className="btn btn-primary seemore1 mx-3 my-2">
-                                                  <Link to="/location" style={linkStyle}>  Go to Location</Link>
-                                                </Button>
+                                            <div className="link-bg">
+                                                
+                                                  <Link to="/location" className="link-bg2">
+                                                      <Button>
+                                                      Go to Location
+
+                                                      </Button>
+                                                    </Link>
+                                                
                                                 </div>
                                         </div>
                                     </>
