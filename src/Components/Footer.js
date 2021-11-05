@@ -71,6 +71,9 @@ const Footer = () => {
           <Col  sm >
             <p>Terms and conditions</p>
           </Col> 
+          <Col  sm >
+            <p>Privacy policy</p>
+          </Col> 
           <Col sm>
             <p>©2021 Aakanksha.
             <a href="#">All Rights Reserved.</a>

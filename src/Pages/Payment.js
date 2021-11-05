@@ -27,12 +27,12 @@ const Payment = () => {
             <Header /> 
 
              {/* progressbar */}
-             <div className="container px-1 px-md-4 pt-3 mx-auto w-75">
+             {/* <div className="container px-1 px-md-4 pt-3 mx-auto w-75">
                 <div className="card-progress">
                     <div className="row d-flex justify-content-between px-3 top">
 
                     </div> {/* Add class 'active' to progress */}
-                    <div className="row d-flex justify-content-center">
+                    {/* <div className="row d-flex justify-content-center">
                         <div className="col-12">
                             <ul id="progressbar" className="text-center">
                                 <li className="active step0" />
@@ -42,8 +42,8 @@ const Payment = () => {
                             </ul>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div> */}
+           
             {/* progressbar */}
 
             <div className="container w-75">

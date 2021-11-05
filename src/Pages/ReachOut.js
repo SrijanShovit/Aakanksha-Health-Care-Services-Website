@@ -7,8 +7,8 @@ import Popup1 from '../Components/popuplogin'
 const ReachOut = () => {
 
   const [reachData,setReachData] = useState({
-    rname:'',
-    remail: '',
+    name:'',
+    email: '',
     rcomments: '',
     
 })
@@ -40,12 +40,12 @@ const postReachData = (e) => {
           <div className="row mb-3">
           <label htmlFor="inputEmail3" 
           
-          name="rname"
-                            value={reachData.rname}
+          name="name"
+                            value={reachData.name}
                             onChange={postReachData}
           className="col-sm-2 col-form-label">Name</label>
           <div className="col-sm-10">
-            <input type="text" className="form-control" id="inputEmail3" />
+             <input type="text" className="form-control" id="inputEmail3" />
           </div>
           
         </div>
@@ -54,8 +54,8 @@ const postReachData = (e) => {
           <div className="col-12 col-lg-6">
           <div className="row mb-3">
           <label htmlFor="inputEmail3" 
-           name="remail"
-           value={reachData.remail}
+           name="email"
+           value={reachData.email}
            onChange={postReachData}
           className="col-sm-2 col-form-label">Email</label>
           <div className="col-sm-10">
@@ -67,15 +67,15 @@ const postReachData = (e) => {
         </fieldset>
         <div className="form-floating">
         <textarea className="form-control" 
-         name="rmessage"
-         value={reachData.rmessage}
+         name="rcomments"
+         value={reachData.rcomments}
          onChange={postReachData}
         placeholder="Leave a comment here" id="floatingTextarea2" style={{height: '100px'}} defaultValue={""} />
         <label htmlFor="floatingTextarea2">Your Comments/Message</label>
       </div>
       <div className="container"  align="right" >
         <button type="submit"className="btn btn-primary my-2"
-        onClick={(e)=>postReachData(e)}
+        
         >Submit</button>
 
       </div>
