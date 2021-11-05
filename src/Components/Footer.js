@@ -57,6 +57,8 @@ const Footer = () => {
                 <li className="my-2"><i className="fa fa-envelope" aria-hidden="true" /> helthcare@gmail.com</li>
                 <li className="my-2"><i className="fa fa-phone" aria-hidden="true" /> + 01 234 567 88</li>
                 <Link to='/reachout'><li className="my-2">Reach Out To Us</li></Link>
+                <br />
+                <button type="button" className="btn btn-light">Subscribe to our newsletter</button>
                 
                 
               </ul>
