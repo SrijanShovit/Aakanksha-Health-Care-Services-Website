@@ -23,7 +23,13 @@ const UserSchema = new mongoose.Schema({
   DOB: String,
   profilePicUrl: String,
   cartItems: {
-    type: [{ productDetails: Object, quantity: { type: Number, default: 1 } }],
+    type: [
+      {
+        productId: { type: mongoose.Schema.ObjectId, ref: 'Product' },
+        productDetails: Object,
+        quantity: { type: Number, default: 1 },
+      },
+    ],
     _id: false,
   },
   appointments: {
@@ -37,47 +43,18 @@ const UserSchema = new mongoose.Schema({
   ongoingOrders: {
     type: [
       {
+        orderId: String,
         productDetails: {
           _id: false,
-          required: [true, 'Please provide productDetails in orderDetails.'],
           type: [
             {
-              productName: {
-                type: String,
-                required: [
-                  true,
-                  'Please provide productName for all products in productDetails',
-                ],
-              },
-              price: {
-                type: Number,
-                required: [
-                  true,
-                  'Please provide price for all products in productDetails',
-                ],
-              },
-              quantity: {
-                type: Number,
-                required: [
-                  true,
-                  'Please provide quantity for all products in productDetails',
-                ],
-              },
-              subPrice: {
-                type: Number,
-                required: [
-                  true,
-                  'Please provide subPrice for all products in productDetails',
-                ],
-              },
+              productId: mongoose.Schema.ObjectId,
+              quantity: Number,
+              subPrice: Number,
             },
           ],
         },
-        totalPrice: {
-          type: Number,
-          required: [true, 'Please provide totalPrice'],
-        },
-        deliveryDate: String,
+        totalPrice: Number,
       },
     ],
     _id: false,

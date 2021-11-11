@@ -14,6 +14,13 @@ const errorHandler = (err, req, res, next) => {
       error.message = error.message.replace('Validation failed: ', '');
     }
   }
+
+  if (err.code === 11000) {
+    error.message = `Duplicate value entered for '${JSON.stringify(
+      err.keyValue
+    )}'`;
+  }
+
   // console.log(err);
   res.status(error.statusCode).json({
     message: error.message || err.message,

@@ -3,6 +3,7 @@ const User = require('../models/User');
 const checkFields = require('../helpers/checkFields');
 const checkModelFields = require('../helpers/checkModelFields');
 const AppError = require('../utils/error');
+const Product = require('../models/Product');
 
 exports.updateUserInfo = asyncHandler(async (req, res, next) => {
   if (req.body.hasOwnProperty('password')) {
@@ -91,10 +92,25 @@ exports.getUserInfo = asyncHandler(async (req, res, next) => {
   }
 
   let { email } = req.body;
-
   let user = await User.findOne({ email }).select(fields);
+
   if (!user) {
     return next(new AppError(`No user found with the email ${email}.`));
+  }
+
+  if (fields.includes('cartItems')) {
+    let cartItemsId = [];
+    user.cartItems.forEach((item) => {
+      cartItemsId.push(item.productId);
+    });
+    let items = await Product.find({
+      _id: { $in: cartItemsId },
+    });
+
+    let i = 0;
+    user.cartItems.forEach((item) => {
+      item['productDetails'] = items[i++];
+    });
   }
 
   res.json({

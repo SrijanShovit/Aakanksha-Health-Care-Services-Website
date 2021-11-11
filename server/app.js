@@ -16,7 +16,6 @@ const hpp = require('hpp');
 const errorHandler = require('./middlewares/errorHandler');
 
 app.use(cors());
-
 app.use(hpp());
 
 app.use(express.json());

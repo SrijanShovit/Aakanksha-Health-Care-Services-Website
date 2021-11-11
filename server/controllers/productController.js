@@ -79,9 +79,7 @@ exports.addToCart = asyncHandler(async (req, res, next) => {
   let found = false;
 
   cartItems.forEach((item) => {
-    if (
-      JSON.stringify(item.productDetails._id) == JSON.stringify(product._id)
-    ) {
+    if (JSON.stringify(item.productId) == JSON.stringify(product._id)) {
       found = true;
     }
   });
@@ -89,12 +87,12 @@ exports.addToCart = asyncHandler(async (req, res, next) => {
   // if product found in the cart, increase the quantity by 1
   if (found) {
     await User.findOneAndUpdate(
-      { _id: user._id, 'cartItems.productDetails._id': product._id },
+      { _id: user._id, 'cartItems.productId': product._id },
       { $inc: { 'cartItems.$.quantity': 1 } }
     );
   } else {
     await User.findByIdAndUpdate(user._id, {
-      $push: { cartItems: { productDetails: product } },
+      $push: { cartItems: { productId: product._id } },
     });
   }
 
@@ -125,7 +123,7 @@ exports.removeFromCart = asyncHandler(async (req, res, next) => {
   }
 
   await User.findByIdAndUpdate(user._id, {
-    $pull: { cartItems: { productDetails: product } },
+    $pull: { cartItems: { productId: product._id } },
   });
 
   res.status(200).json({
@@ -141,8 +139,8 @@ exports.changeQuantity = asyncHandler(async (req, res, next) => {
 
   let productName = req.body.productName,
     email = req.body.email;
-  let product = await Product.findOne({ name: productName }),
-    user = await User.findOne({ email });
+  let product = await Product.findOne({ name: productName }).select('_id');
+  let user = await User.findOne({ email });
 
   if (!product) {
     return next(new AppError(`No product found with the name ${productName}.`));
@@ -155,7 +153,7 @@ exports.changeQuantity = asyncHandler(async (req, res, next) => {
   let quantity = req.body.quantity;
 
   await User.findOneAndUpdate(
-    { _id: user._id, 'cartItems.productDetails._id': product._id },
+    { _id: user._id, 'cartItems.productId': product._id },
     { $set: { 'cartItems.$.quantity': quantity } }
   );
 
@@ -195,9 +193,9 @@ exports.createOrder = asyncHandler(async (req, res, next) => {
 exports.verifyAndAddOrder = asyncHandler(async (req, res, next) => {
   let message = checkFields({ ...req.body }, [
     'email',
-    'orderDetails',
     'order_id',
     'payment_id',
+    'totalPrice',
   ]);
   if (message.length > 0) {
     return next(new AppError(message));
@@ -208,11 +206,24 @@ exports.verifyAndAddOrder = asyncHandler(async (req, res, next) => {
     return `No user found with the email ${req.body.email}.`;
   }
 
-  const { order_id, payment_id } = req.body,
-    razorpay_signature = req.headers['x-razorpay-signature'];
+  const { order_id, payment_id, totalPrice } = req.body;
+
+  if (!req.headers.hasOwnProperty('x-razorpay-signature')) {
+    return next(
+      new AppError(
+        `Please provide the razorpay signature in header as {x-razorpay-signature: .....}`
+      )
+    );
+  }
+  const razorpay_signature = req.headers['x-razorpay-signature'];
 
   if (verifyOrder(order_id, payment_id, razorpay_signature)) {
     // add order to database
+    let order = {
+      orderId: order_id,
+      totalPrice: totalPrice,
+      productDetails,
+    };
     await User.findOneAndUpdate(
       { email: req.body.email },
       { $push: { ongoingOrders: req.body.orderDetails } },
