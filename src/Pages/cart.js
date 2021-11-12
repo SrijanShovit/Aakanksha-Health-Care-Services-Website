@@ -3,6 +3,7 @@ import Header from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Popup from '../Components/popup'
 import Popup1 from '../Components/popuplogin'
+import CartStages from '../Components/CartStages'
 import Delivery from '../Pages/Delivery'
 import { Container, Table, Button } from 'react-bootstrap';
 import Axios from 'axios';
@@ -211,15 +212,9 @@ const handleDelivery = (e) => {
             <Popup />
             <Popup1 />
             <Header />
+            <CartStages/>
 
-            <div className="container">
-                <div className="row">
-                    Cart
-                    Submit Adress
-                    Make Payment
-                    Successfully paid
-                </div>
-            </div>
+          
            
             {email ?
                 <Container className="pt-5 cartbox">
