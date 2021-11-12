@@ -21,7 +21,8 @@ import ReachOut from './Pages/ReachOut'
 
 import resetPassword from './Pages/resetPassword'
 
-import docApp from './Components/Bookapp/detailsForm'
+import docApp from './Components/Bookapp/BookappPage'
+import './Components/Bookapp/index.css'
 
 
 import {
