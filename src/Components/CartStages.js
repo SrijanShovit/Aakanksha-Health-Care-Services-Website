@@ -48,7 +48,7 @@ const CartStages = () => {
                         <div className="featurecircle container box">
                             <img src={success} className="d-block mt-3 avatar" alt="doctorwelcomes" />
                             <h6>
-                                Make safe payment
+                                Get payment confirmed
                             </h6>
 
                         </div>
