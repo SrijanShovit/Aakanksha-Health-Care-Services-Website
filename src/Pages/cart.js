@@ -16,8 +16,33 @@ import { Link } from 'react-router-dom'
 export default function Cart() {
     var totalPrice = 0;
     const [data, setData] = useState([]);
+    const [resmsg,setResMsg]=useState("");
     const email = window.sessionStorage.getItem("email");
 
+    const [deliveryData,setDeliveryData] = useState({
+        deliveryadd : ''        
+    })
+
+    let name,value;
+    const AddressData = (e) => {
+      name = e.target.name;
+      value = e.target.value;
+      setDeliveryData({...deliveryData,[name]:value})
+}
+
+//function to submit form delivery address in backend
+const handleDelivery = (e) => {
+    e.preventDefault()
+    const {deliveryadd} = deliveryData
+    Axios.post('',
+    {
+      "address":deliveryadd
+     }).then((response)=>
+     {
+       setResMsg(response.data.message);
+    })
+  
+  }
     useEffect(() => {
 
         const getCartData = async () => {
@@ -187,28 +212,17 @@ export default function Cart() {
             <Popup1 />
             <Header />
 
-
-            {/* progressbar */}
-            <div className="container px-1 px-md-4 py-5 mx-auto">
-                <div className="card-progress">
-                    <div className="row d-flex justify-content-between px-3 top">
-
-                    </div> {/* Add class 'active' to progress */}
-                    <div className="row d-flex justify-content-center">
-                        <div className="col-12">
-                            <ul id="progressbar" className="text-center">
-                                <li className="active step0" />
-                                <li className="step0" />
-                                <li className="step0" />
-                                <li className="step0" />
-                            </ul>
-                        </div>
-                    </div>
+            <div className="container">
+                <div className="row">
+                    Cart
+                    Submit Adress
+                    Make Payment
+                    Successfully paid
                 </div>
             </div>
-            {/* progressbar */}
+           
             {email ?
-                <Container className="pt-5">
+                <Container className="pt-5 cartbox">
                     <Table responsive="sm" >
                         <thead>
                             <tr>
@@ -249,10 +263,22 @@ export default function Cart() {
                             );
                         })}
                     </Table>
+                    <div className="container my-3">
+                    <div class="col">
+                            Enter Address for delivery
+                            <input type="text" class="form-control"
+                             name="deliveryadd"
+                             value={deliveryData.deliveryadd}
+                             onChange={AddressData}/>
+                             
+                        </div>
+                        
+                    </div>
                     <div align="end">
+                        <Button className="seemore1 my-3" id="pay-button" onClick={(e)=>handleDelivery} >Submit Address</Button>
                         <div className="p-1"><b>Grand Total: </b>{totalPrice}$</div>
-                        <Button className="seemore1" id="pay-button" onClick={displayRazorpay} >Checkout</Button>
 
+                        <Button className="seemore1 my-3" id="pay-button" onClick={displayRazorpay} >Checkout</Button>
                     </div>
                 </Container> :
 
