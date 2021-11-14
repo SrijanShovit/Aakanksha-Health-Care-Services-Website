@@ -1,9 +1,26 @@
-import React from 'react'
+import React,{useState} from 'react';
 import {Container,Row,Col} from "react-bootstrap";
 import { FaFacebook,FaLinkedin,FaInstagramSquare,FaTwitterSquare,FaYoutubeSquare } from "react-icons/fa";
 import {Link} from 'react-router-dom'
+import Axios from 'axios';
 
 const Footer = () => {
+
+  const [resmsg,setResMsg]=useState("");
+  //function to send email to backend on clicking button
+  const subscribeHandler = () => {
+    const email = window.sessionStorage.getItem("email");
+    Axios.post('',
+            {
+                "email": email,
+               
+            })
+            .then((response)=>
+            {
+            
+                setResMsg(response.data.message);
+            })
+  }
     return (
     <>
       <div className="footer p-4 w3-animate-zoom bg-dark text-light"  fluid="lg">
@@ -47,6 +64,7 @@ const Footer = () => {
                 <li className="my-2"><a href="#">Knock Knock Medico</a></li>
                 <li className="my-2"><a href="#">Doctors' Consultation</a></li>
                 <li className="my-2"><a href="#">Medical Camp Location</a></li>
+               
               </ul>
           </Col>
           <Col sm>
@@ -57,6 +75,10 @@ const Footer = () => {
                 <li className="my-2"><i className="fa fa-envelope" aria-hidden="true" /> helthcare@gmail.com</li>
                 <li className="my-2"><i className="fa fa-phone" aria-hidden="true" /> + 01 234 567 88</li>
                 <Link to='/reachout'><li className="my-2">Reach Out To Us</li></Link>
+                <br />
+                <button type="button" className="btn btn-light"
+                onClick={()=>subscribeHandler}
+                >Subscribe to our newsletter</button>
                 
                 
               </ul>
@@ -68,6 +90,9 @@ const Footer = () => {
         <Container><hr className="bg-success" /></Container>
           <Col  sm >
             <p>Terms and conditions</p>
+          </Col> 
+          <Col  sm >
+            <p>Privacy policy</p>
           </Col> 
           <Col sm>
             <p>©2021 Aakanksha.

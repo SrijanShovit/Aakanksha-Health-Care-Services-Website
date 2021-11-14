@@ -3,9 +3,10 @@ import Header from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Popup from '../Components/popup'
 import Popup1 from '../Components/popuplogin'
+import Axios from 'axios';
 
 const ReachOut = () => {
-
+  const [resmsg,setResMsg]=useState("");
   const [reachData,setReachData] = useState({
     rname:'',
     remail: '',
@@ -18,6 +19,22 @@ const postReachData = (e) => {
       name = e.target.name;
       value = e.target.value;
       setReachData({...reachData,[name]:value})
+}
+
+//function to submit form details in backend
+const handleReachOut = (e) => {
+  e.preventDefault()
+  const {rname,remail,rcomments} = reachData
+  Axios.post('',
+  {
+    "email":remail,
+    "name": rname,
+    "message": rcomments
+   }).then((response)=>
+   {
+     setResMsg(response.data.message);
+  })
+
 }
     return (
         <>
@@ -41,11 +58,13 @@ const postReachData = (e) => {
           <label htmlFor="inputEmail3" 
           
           name="rname"
-                            value={reachData.rname}
-                            onChange={postReachData}
+                        
           className="col-sm-2 col-form-label">Name</label>
           <div className="col-sm-10">
-            <input type="text" className="form-control" id="inputEmail3" />
+             <input type="text" className="form-control" id="inputEmail3" 
+                       name="rname"
+                       value={reachData.rname}
+                       onChange={postReachData}/>
           </div>
           
         </div>
@@ -55,11 +74,14 @@ const postReachData = (e) => {
           <div className="row mb-3">
           <label htmlFor="inputEmail3" 
            name="remail"
-           value={reachData.remail}
-           onChange={postReachData}
+          //  value={reachData.remail}
+          //  onChange={postReachData}
           className="col-sm-2 col-form-label">Email</label>
           <div className="col-sm-10">
-            <input type="email" className="form-control" id="inputEmail3" />
+            <input type="email" className="form-control" id="inputEmail3"
+            name="remail"
+            value={reachData.remail}
+            onChange={postReachData} />
           </div>
         </div>
             
@@ -67,15 +89,16 @@ const postReachData = (e) => {
         </fieldset>
         <div className="form-floating">
         <textarea className="form-control" 
-         name="rmessage"
-         value={reachData.rmessage}
+         name="rcomments"
+         value={reachData.rcomments}
          onChange={postReachData}
         placeholder="Leave a comment here" id="floatingTextarea2" style={{height: '100px'}} defaultValue={""} />
         <label htmlFor="floatingTextarea2">Your Comments/Message</label>
       </div>
       <div className="container"  align="right" >
         <button type="submit"className="btn btn-primary my-2"
-        onClick={(e)=>postReachData(e)}
+        onClick={(e)=>handleReachOut}
+        
         >Submit</button>
 
       </div>

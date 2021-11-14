@@ -1,6 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Roboto:wght@300;400;500&display=swap');
 
 
 
@@ -9,7 +7,7 @@
   padding:0px;
   margin: 0px;
   box-sizing: border-box;
-  font-family: "Roboto",sans-serif;
+  font-family: "Josefin-Sans",sans-serif;
 
 }
 
@@ -499,3 +497,9 @@ form {
   border-bottom: 2px solid grey;
 }
 
+/* ----------------------cart design starts-------------------- */
+.cartbox{
+  box-shadow: 0 8px 8px 5px rgba(70, 58, 58, 0.6);
+  margin:15px;
+}
+/* ----------------------cart design ends-------------------- */

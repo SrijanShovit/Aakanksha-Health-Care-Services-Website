@@ -21,6 +21,9 @@ import ReachOut from './Pages/ReachOut'
 
 import resetPassword from './Pages/resetPassword'
 
+import docApp from './Components/Bookapp/BookappPage'
+import './Components/Bookapp/index.css'
+
 
 import {
   BrowserRouter as Router,
@@ -56,6 +59,7 @@ const App = () => {
         <Route path="/reachout" component={ReachOut} />
 
         <Route path="/resetPassword/:token" component={resetPassword} />
+        <Route path="/bookingappointment" component={docApp} />
 
         <Route component={Notfound} />
       </Switch>

@@ -390,13 +390,11 @@
 
 
 import React,{useState,useEffect} from 'react'
+
 import Header from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Popup from '../Components/popup'
 import Popup1 from '../Components/popuplogin'
-//import doctor1 from '../Images/doctor1.jpg'
-//import doctor2 from '../Images/doctor2.jpg'
-//import doctor3 from '../Images/doctor3.jpg'
 import app from '../Images/appointment.png'
 import always from '../Images/24x7.jpg'
 import anytime from '../Images/anytime.png'
@@ -405,6 +403,7 @@ import { FaSearch } from "react-icons/fa";
 import {Container,Spinner} from "react-bootstrap";
 import InfoModal from "../Components/Bookapp/detailsForm"
 import Axios from 'axios';
+import { Link } from 'react-router-dom'
 const Doctorconsultation = () => {
     const [data, setData] = useState([]);
     const [loading,setloading]=useState(false);
@@ -553,14 +552,15 @@ const Doctorconsultation = () => {
                                             {item.about},<br /> {item.address}
 
                                             </p>
-                                            {/*<p style={{ padding: "3px" }}>
-                                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio accusamus cum neque cumque veniam repellendus nihil corrupti, earum delectus laborum tempore perspiciatis autem exercitationem? Voluptas corrupti, ut laborum repudiandae nihil repellat quae inventore ad blanditiis delectus deleniti, provident vitae magnam voluptatum eius, dolor facilis tempora minus fuga. Quidem, facilis illum.
-                                           </p>*/}
+                                            
                                         </div>
 
                                         <div align="right">
 
+                                            <Link to='/bookingappointment'>
+                                                
                                             <button type="button" className="btn btn-primary seemore1 mx-3 my-2">Book Appointment</button>
+                                            </Link>
 
 
                                         </div>
