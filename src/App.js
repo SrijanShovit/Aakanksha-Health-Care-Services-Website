@@ -23,6 +23,7 @@ import resetPassword from './Pages/resetPassword'
 
 import docApp from './Components/Bookapp/BookappPage'
 import './Components/Bookapp/index.css'
+import KnockKnockstore from './Pages/KnockKnockstore'
 
 
 import {
@@ -41,6 +42,8 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         {/* <Route path="/medico" component={Knockknockmedico} /> */}
+        <Route path="/medicostore" component={KnockKnockstore} />
+        {/* <Route path="/medicostore" component={Knockknockmedico} /> */}
         <Route path="/doctors" component={Doctors} />
         <Route path="/camp" component={Healthcamp} />
         <Route path="/products" component={Products} />
