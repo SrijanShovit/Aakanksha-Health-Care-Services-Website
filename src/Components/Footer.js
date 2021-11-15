@@ -61,7 +61,7 @@ const Footer = () => {
               <h6 className="text-uppercase font-weight-bold text-center text-light">Useful links</h6>
               <hr className="bg-success mb-1 mt-0 d-inline-block mx-auto"  />
               <ul>
-                <li className="my-2"><a href="#">Knock Knock Medico</a></li>
+                <li className="my-2"><Link to="/medicostore">Knock Knock Medico</Link></li>
                 <li className="my-2"><a href="#">Doctors' Consultation</a></li>
                 <li className="my-2"><a href="#">Medical Camp Location</a></li>
                
