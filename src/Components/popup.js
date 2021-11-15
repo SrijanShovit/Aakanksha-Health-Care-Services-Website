@@ -31,6 +31,7 @@ export default function Popup() {
   const [number,setNumber]=useState();
   const [confirm,confirmPassword]=useState();
   let subtitle;
+  let user=window.sessionStorage.getItem("username");
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
@@ -47,7 +48,7 @@ export default function Popup() {
     window.location.reload();
   }
   const register=()=>{
-    console.log(username);
+    
    Axios.post('http://localhost:5000/auth/register',{
        username:username,
        password:password,
@@ -59,7 +60,9 @@ export default function Popup() {
 }
   return (
     <div>
-      <button className="btn signup active  w3-animate-zoom" onClick={openModal}><FaUser />Signup</button>
+      <If condition={!user}>
+         <button className="btn signup active  w3-animate-zoom" onClick={openModal}><FaUser />Signup</button>
+      </If>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -69,13 +72,11 @@ export default function Popup() {
       >
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Signup</h2>
         <button className="close btn" onClick={closeModal}>X</button>
-
-
-        <If condition={status}>
+      <If condition={status}>
           <h6>
             {status}
           </h6>
-        </If>
+      </If>
         <form className="w3-animate-zoom">
           <input type="text" Placeholder="Full Name" className="ip" onChange={(event)=>{
             setUsername(event.target.value);

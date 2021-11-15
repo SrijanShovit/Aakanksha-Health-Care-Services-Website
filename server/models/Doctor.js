@@ -3,17 +3,14 @@ const mongoose = require('mongoose');
 const DoctorSchema = new mongoose.Schema({
   name: String,
   about: String,
-  adrress: String,
+  address: String,
   imageUrl: String,
-  appointments: [
-    {
-      firstName: String,
-      lastName: String,
-      reason: String,
-      date: String,
-      slot: String,
-    },
-  ],
+});
+
+DoctorSchema.index({
+  name: 'text',
+  about: 'text',
+  address: 'text',
 });
 
 module.exports = mongoose.model('doctor', DoctorSchema);

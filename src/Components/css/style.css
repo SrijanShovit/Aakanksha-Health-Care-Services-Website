@@ -24,7 +24,7 @@ body {
 .signup{
   position:absolute;
   right:20px;
-  top: 95px;
+  top: 25px;
   text-shadow: 0 2px 5px white;
   z-index: 1;
   background: inherit;
@@ -34,11 +34,23 @@ body {
 .login{
   position:absolute;
   right:80px;
-  top: 95px;
+  top: 25px;
   text-shadow: 0 2px 5px white;
   z-index: 1;
   background: inherit;
   color: white !important;
   margin-right: 20px;
 
+}
+.productname{
+  font-family: 'Patua One', cursive;
+  text-align: center;
+}
+.productprice{
+  font-family: 'Lato', sans-serif;
+  color: rgb(4, 49, 250);
+  
+}
+.productdiscripation{
+  font-family: 'Montserrat', sans-serif;
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Carousels from '../Components/Carousels'
@@ -8,7 +8,8 @@ import Accordion from '../Components/Accordion'
 import Homeproduct from '../Components/Homeproduct'
 
 const Home = () => {
-    return (
+    
+return (
         <>
             <Popup />
             <Popup1 />

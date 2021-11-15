@@ -1,107 +1,102 @@
 import React ,{useState,useEffect}from 'react';
-import {Button, Container,Card,Row,Col,Spinner} from "react-bootstrap";
+import {Button, Spinner,} from "react-bootstrap";
 import Header from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Popup from '../Components/popup'
-import doctor1 from '../Images/doctor1.jpg'
 import Popup1 from '../Components/popuplogin'
+import { Link } from "react-router-dom";
 import Axios from 'axios';
+import { FaSearch } from "react-icons/fa";
+import "../Components/css/link.css"
+
 const Healthcamp = () => {
     const [data, setData] = useState([]);
     const [loading,setloading]=useState(false);
+    const [keyword,setKeyword]=useState("");
     const style = { position: "fixed",  left: "50%" };
+   
+      
        useEffect(() => {
         const fetchData = async () => {
             Axios.post('http://localhost:5000/camp/getCampDetail',)
             .then((response)=>{
-               setData(response.data.camps);
+                setData(response.data.camps);
                setloading(true);
             })
         };
         fetchData();
       }, [setData]);
+    //function to search products
+    const searchProduct=()=>{
+       
+        Axios.post('http://localhost:5000/camp/searchCamps',
+        {
+          "searchQuery":keyword,
+            "page":1,
+            "pageLimit":5
+         }).then((response)=>
+         {
+            /*if(response.data.results==""){
+                console.log(response.data.totalResults);
+            }*/
+            setData(response.data.results);
+        })
+     }
     return (
-    <div>
-        <Popup />
-        <Popup1 />
-        <Header /> 
-        <Container className="pt-5">
-           {loading? 
-            <Row xs={1} md={3} className="g-4">
-               {data.map(item => (
-                    <Col>
-                        <Card>
-                            <Card.Img variant="top" src={item.imageUrl} />
-                            <Card.Body>
-                                <Card.Title>{item.name}</Card.Title>
-                                <Card.Text>
-                                <div className="descDiv">{item.description}</div>
-                                <span>{item.city}</span>
-                                </Card.Text>
-                                <Button variant="primary" >
-                                Go to Location
-                                </Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                ))}
-           </Row>:<Spinner animation="border" style={style}/>}
-
-        </Container>
-
-        <div className="container" align="center">
-                        <div className="col-lg-12 col-12 my-2 card">
-
-                            <div className="row mt-3">
-                               
-
-                                    {
-                                        data.map( item => 
-                                        (
-                                            <>
-                                            <div className="container"></div>
+        <div>
+            <Popup />
+            <Popup1 />
+            <Header /> 
+            <div className="container " align="left">
+                <div className="input-group searchbox p-5">
+                <input type="text" className="form-control w3-animate-zoom" placeholder="City |  Camp Name"  onChange={(e)=>{
+                                setKeyword(e.target.value);
+                            }}/>
+                <div className="input-group-append">
+                    <button className="btn btn-secondary w3-animate-zoom" type="button" onClick={searchProduct}>
+                    <FaSearch/>
+                    </button>
+                </div>
+            </div>
+                <div className="col-lg-12 col-12 my-5 card" align="center" style={{backgroundColor:'rgb(237 243 255)'}}>
+                    <div className="row m-3" align="center">
+                        {
+                            loading?
+                            data.map( item => 
+                                (
+                                    <>
+                                        <div className="container"></div>
                                             <div className="col-lg-4 col-12 doctordetail doctorphoto" style={{ padding: "5px" }} align="center">
-                                                
                                             <img src={item.imageUrl} className="d-block mt-3 cardgroup" alt="medicine" />
-                                </div>
-                                <div className="col-lg-8 col-12" align="center">
+                                        </div>
+                                        <div className="col-lg-8 col-12" align="center">
+                                            <div className="card-body mt-3" align="left">
+                                                <h5 className="card-title">{item.name}</h5>
+                                                <h6>{item.city}</h6>
+                                                <p className="card-text description">
+                                                    {item.description}
+                                                </p>
+                                            </div>
+                                            <div className="link-bg">
+                                                
+                                                  <Link to="/location" className="link-bg2">
+                                                      <Button>
+                                                      Go to Location
 
-                                    <div className="card-body mt-3" align="left">
-                                        <h5 className="card-title">{item.name}</h5>
-                                        <h6>{item.city}</h6>
-
-                                        <p className="card-text description">
-                                            {item.description}
-
-                                        </p>
-                                        <p style={{ padding: "3px" }}>
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio accusamus cum neque cumque veniam repellendus nihil corrupti, earum delectus laborum tempore perspiciatis autem exercitationem? Voluptas corrupti, ut laborum repudiandae nihil repellat quae inventore ad blanditiis delectus deleniti, provident vitae magnam voluptatum eius, dolor facilis tempora minus fuga. Quidem, facilis illum.
-                                        </p>
-                                    </div>
-
-                                    <div align="right">
-
-                                        <button type="button" className="btn btn-primary seemore1 mx-3 my-2">Go to Location</button>
-                                            
-                                    </div>
-                                    </div>
+                                                      </Button>
+                                                    </Link>
+                                                
+                                                </div>
+                                        </div>
                                     </>
-                                            )
-                                        )
-
-                                    }
-                                    
-
-
-                                
-                            </div>
-                        </div>
-
+                                )
+                            ):<Spinner animation="border" style={style}/>
+                       }
                     </div>
-
-
-        <Footer/>
-    </div>
+                </div>
+            </div>
+            <Footer/>
+       </div>
     );
     
 }
