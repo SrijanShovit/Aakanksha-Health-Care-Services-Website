@@ -216,17 +216,34 @@ exports.verifyAndAddOrder = asyncHandler(async (req, res, next) => {
     );
   }
   const razorpay_signature = req.headers['x-razorpay-signature'];
-
   if (verifyOrder(order_id, payment_id, razorpay_signature)) {
     // add order to database
+    let productDetails = [];
+    user.cartItems.forEach((item) => {
+      productDetails.push({
+        productId: item.productId,
+        quantity: item.quantity,
+      });
+    });
+
+    let productIds = user.cartItems.map((item) => item.productId);
+    let productPrices = await Product.find({ _id: productIds }).select('price');
+
+    let i = 0;
+    productDetails.forEach((item) => {
+      item.subPrice = item.quantity * productPrices[i++].price;
+    });
+
     let order = {
       orderId: order_id,
       totalPrice: totalPrice,
       productDetails,
     };
+
     await User.findOneAndUpdate(
       { email: req.body.email },
-      { $push: { ongoingOrders: req.body.orderDetails } },
+      { $push: { ongoingOrders: order } },
+      { $set: { cartItems: [] } },
       { new: true }
     );
 

@@ -55,6 +55,7 @@ const UserSchema = new mongoose.Schema({
           ],
         },
         totalPrice: Number,
+        address: String,
       },
     ],
     _id: false,
