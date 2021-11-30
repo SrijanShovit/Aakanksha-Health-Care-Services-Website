@@ -6,6 +6,7 @@
     "price": 18,
     "imageUrl": "../images/mask.jpg",
     "description": "give full protection",
+    "localStore": "61a06702862344b233cd3b9f",
     "__v": 0
   },
   {
@@ -15,6 +16,8 @@
     "price": 19,
     "imageUrl": "../images/gloves.jpg",
     "description": "for your safety",
+    "localStore": "61a06702862344b233cd3b9f",
+
     "__v": 0
   },
   {
@@ -24,6 +27,8 @@
     "price": 18,
     "imageUrl": "../images/protein.jpg",
     "description": "Whey protein shakes",
+    "localStore": "61a06702862344b233cd3b9f",
+
     "__v": 0
   },
   {
@@ -33,6 +38,8 @@
     "price": 19,
     "imageUrl": "../images/horlicks.jpg",
     "description": "Horlicks for women",
+    "localStore": "61a06702862344b233cd3ba1",
+
     "__v": 0
   },
   {
@@ -42,6 +49,8 @@
     "price": 19,
     "imageUrl": "../images/boost.jpg",
     "description": "Energy drinks for men",
+    "localStore": "61a06702862344b233cd3ba1",
+
     "__v": 0
   },
   {
@@ -51,6 +60,8 @@
     "price": 19,
     "imageUrl": "../images/horlicks.jpg",
     "description": "Horlicks for women",
+    "localStore": "61a06702862344b233cd3ba1",
+
     "__v": 0
   },
   {
@@ -60,6 +71,8 @@
     "price": 19,
     "imageUrl": "../images/horlicks.jpg",
     "description": "Horlicks for women",
+    "localStore": "61a06702862344b233cd3ba0",
+
     "__v": 0
   },
   {
@@ -69,6 +82,8 @@
     "price": 19,
     "imageUrl": "../images/horlicks.jpg",
     "description": "Horlicks for women",
+    "localStore": "61a06702862344b233cd3ba0",
+
     "__v": 0
   },
   {
@@ -78,6 +93,8 @@
     "price": 19,
     "imageUrl": "../images/horlicks.jpg",
     "description": "Horlicks for women",
+    "localStore": "61a06702862344b233cd3ba4",
+
     "__v": 0
   },
   {
@@ -87,6 +104,8 @@
     "price": 19,
     "imageUrl": "../images/horlicks.jpg",
     "description": "Horlicks for women",
+    "localStore": "61a06702862344b233cd3ba5",
+
     "__v": 0
   },
   {
@@ -96,6 +115,8 @@
     "price": 19,
     "imageUrl": "../images/horlicks.jpg",
     "description": "Horlicks for women",
+    "localStore": "61a06702862344b233cd3ba5",
+
     "__v": 0
   },
   {
@@ -105,6 +126,8 @@
     "price": 19,
     "imageUrl": "../images/horlicks.jpg",
     "description": "Horlicks for women",
+    "localStore": "61a06702862344b233cd3ba5",
+
     "__v": 0
   },
   {
@@ -114,6 +137,8 @@
     "price": 19,
     "imageUrl": "../images/horlicks.jpg",
     "description": "Horlicks for women",
+    "localStore": "61a06702862344b233cd3ba3",
+
     "__v": 0
   },
   {
@@ -123,6 +148,8 @@
     "price": 19,
     "imageUrl": "../images/horlicks.jpg",
     "description": "Horlicks for women",
+    "localStore": "61a06702862344b233cd3ba3",
+
     "__v": 0
   },
   {
@@ -132,6 +159,8 @@
     "price": 19,
     "imageUrl": "../images/horlicks.jpg",
     "description": "Horlicks for women",
+    "localStore": "61a06702862344b233cd3ba2",
+
     "__v": 0
   }
 ]

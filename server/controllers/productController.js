@@ -5,12 +5,13 @@ const checkFields = require('../helpers/checkFields');
 const AppError = require('../utils/error');
 const getSearchResults = require('../helpers/getSearchResults');
 const { verifyOrder, getOrderDetails } = require('../helpers/payment');
+require('../models/LocalStore');
 
 exports.addProducts = asyncHandler(async (req, res, next) => {
-  let product = await Product.create(req.body);
-
+  let products = await Product.create(req.body);
   res.status(200).json({
-    product,
+    message: `${products.length} products added.`,
+    products,
   });
 });
 
@@ -44,7 +45,7 @@ exports.getProductDetail = asyncHandler(async (req, res, next) => {
     });
   }
 
-  let products = await query;
+  let products = await query.populate('localStore', 'name address');
 
   res.status(200).json({
     numberOfProducts: products.length,

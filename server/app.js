@@ -50,6 +50,7 @@ const authRoute = require('./routes/authRoute');
 const campRoute = require('./routes/campRoute');
 const doctorRoute = require('./routes/doctorRoute');
 const userRoute = require('./routes/userRoute');
+const localStoreRoute = require('./routes/localStoreRoute');
 
 // Mount routers
 app.use('/product', productRoute);
@@ -57,5 +58,6 @@ app.use('/auth', authRoute);
 app.use('/camp', campRoute);
 app.use('/doctor', doctorRoute);
 app.use('/user', userRoute);
+app.use('/localStore', localStoreRoute);
 
 app.use(errorHandler);

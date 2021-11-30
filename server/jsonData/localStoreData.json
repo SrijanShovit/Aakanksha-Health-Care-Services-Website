@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Store1",
+    "address": "Address1",
+    "products": [],
+    "_id": "61a06702862344b233cd3b9f",
+    "__v": 0
+  },
+  {
+    "name": "Store2",
+    "address": "Address2",
+    "products": [],
+    "_id": "61a06702862344b233cd3ba0",
+    "__v": 0
+  },
+  {
+    "name": "Store3",
+    "address": "Address3",
+    "products": [],
+    "_id": "61a06702862344b233cd3ba1",
+    "__v": 0
+  },
+  {
+    "name": "Store4",
+    "address": "Address4",
+    "products": [],
+    "_id": "61a06702862344b233cd3ba2",
+    "__v": 0
+  },
+  {
+    "name": "Store5",
+    "address": "Address5",
+    "products": [],
+    "_id": "61a06702862344b233cd3ba3",
+    "__v": 0
+  },
+  {
+    "name": "Store6",
+    "address": "Address6",
+    "products": [],
+    "_id": "61a06702862344b233cd3ba4",
+    "__v": 0
+  },
+  {
+    "name": "Store7",
+    "address": "Address7",
+    "products": [],
+    "_id": "61a06702862344b233cd3ba5",
+    "__v": 0
+  }
+]

@@ -105,7 +105,7 @@ exports.getUserInfo = asyncHandler(async (req, res, next) => {
     });
     let items = await Product.find({
       _id: { $in: cartItemsId },
-    });
+    }).populate('localStore', 'name address');
 
     let i = 0;
     user.cartItems.forEach((item) => {

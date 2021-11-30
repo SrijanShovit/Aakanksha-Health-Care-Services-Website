@@ -1,4 +1,5 @@
 // gets search results for a collection(Products, Camps, Doctors) and returns search result(Object)
+const Product = require('../models/Product');
 
 const getSearchResults = async (body, model) => {
   if (!body.hasOwnProperty('searchQuery')) {
@@ -14,12 +15,18 @@ const getSearchResults = async (body, model) => {
     page = body.page || 1,
     pageLimit = body.pageLimit || 10;
 
-  let results = await model
+  let query = model
     .find({
       $text: { $search: `${searchQuery}` },
     })
     .skip(pageLimit * (page - 1))
     .limit(pageLimit);
+
+  if (model === Product) {
+    query.populate('localStore', 'name address');
+  }
+
+  let results = await query;
 
   return {
     page,
