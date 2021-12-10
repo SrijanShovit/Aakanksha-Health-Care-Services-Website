@@ -5,7 +5,7 @@ import Popup from "../Components/popup";
 import Popup1 from "../Components/popuplogin";
 import Axios from "axios";
 
-import { FaSearch} from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import {
   Container,
   Row,
@@ -18,36 +18,32 @@ import {
 } from "react-bootstrap";
 import { Radio, RadioGroup } from "react-radio-group";
 
-
 export default class Products extends React.Component {
   constructor(props) {
     super(props);
-    this.state =
-    {
+    this.state = {
       data: [],
       loading: false,
-      categorynames:
-      {
+      categorynames: {
         Nutrition: false,
         safety: false,
       },
       price: [],
       count: 0,
       show: false,
-      brandnames:
-      {
-        Boost:false,
-        Horlicks:false,
-        Muscleblaze:false,
-        Apollo:false
+      brandnames: {
+        Boost: false,
+        Horlicks: false,
+        Muscleblaze: false,
+        Apollo: false,
       },
-    resposesmsg:"",
-    keyword:""
+      resposesmsg: "",
+      keyword: "",
     };
     this.getProduct = this.getProduct.bind(this);
     this.addToCart = this.addToCart.bind(this);
-    this.categoryCheckHandlker=this.categoryCheckHandlker.bind(this)
-    this.brandCheckHandlker=this.brandCheckHandlker.bind(this)
+    this.categoryCheckHandlker = this.categoryCheckHandlker.bind(this);
+    this.brandCheckHandlker = this.brandCheckHandlker.bind(this);
     this.filterHandler = this.filterHandler.bind(this);
     this.searchProduct = this.searchProduct.bind(this);
 
@@ -66,25 +62,21 @@ export default class Products extends React.Component {
       });
     });
   }
-   //function to search products
-   searchProduct(){
-    let keyword=this.state.keyword;
+  //function to search products
+  searchProduct() {
+    let keyword = this.state.keyword;
     console.log("inside search");
-    Axios.post('http://localhost:5000/product/searchProducts',{
-      
-        "searchQuery":keyword,
-        "page":1,
-        "pageLimit":5
-       
- 
-    }).then((response)=>{
-       console.log(response.data.results);
-       this.setState({
+    Axios.post("http://localhost:5000/product/searchProducts", {
+      searchQuery: keyword,
+      page: 1,
+      pageLimit: 5,
+    }).then((response) => {
+      console.log(response.data.results);
+      this.setState({
         data: response.data.results,
       });
-       
-    })
- }
+    });
+  }
   //function for add product in cart
   addToCart = (e) => {
     e.target.classList.remove("seemore1");
@@ -118,41 +110,41 @@ export default class Products extends React.Component {
   }
 
   //function to get clicked checkbox value
-  categoryCheckHandlker=(e)=>{
-    var {name,checked}=e.target;
-    this.setState((e)=>{
-        var selectedcategory=e.categorynames;
-        return selectedcategory[name]=checked;
+  categoryCheckHandlker = (e) => {
+    var { name, checked } = e.target;
+    this.setState((e) => {
+      var selectedcategory = e.categorynames;
+      return (selectedcategory[name] = checked);
     });
-
-}
-brandCheckHandlker=(e)=>{
-    var {name,checked}=e.target;
-    this.setState((e)=>{
-        var selectedbrand=e.brandnames;
-        return selectedbrand[name]=checked;
+  };
+  brandCheckHandlker = (e) => {
+    var { name, checked } = e.target;
+    this.setState((e) => {
+      var selectedbrand = e.brandnames;
+      return (selectedbrand[name] = checked);
     });
-
-}
+  };
 
   //function for filter data
   filterHandler() {
     var category = Object.keys(this.state.categorynames).filter(
       (x) => this.state.categorynames[x]
     );
-    var brand=Object.keys(this.state.brandnames).filter((x)=>this.state.brandnames[x]);
-    if (this.state.price>0) {
+    var brand = Object.keys(this.state.brandnames).filter(
+      (x) => this.state.brandnames[x]
+    );
+    if (this.state.price > 0) {
       var price = this.state.price.split(",").map((n) => parseInt(n, 10));
     }
 
     Axios.post("http://localhost:5000/product/getProductDetail", {
       category: category,
       priceRange: price,
-      brand:brand
+      brand: brand,
     }).then((response) => {
       this.setState({
-        resposesmsg:response.data.message
-    });
+        resposesmsg: response.data.message,
+      });
       this.setState({
         data: response.data.products,
       });
@@ -169,40 +161,109 @@ brandCheckHandlker=(e)=>{
         <Popup1 />
         <Header />
         <Container className="py-5">
-           <div className="input-group searchbox">
-              <input type="text" className="form-control w3-animate-zoom" placeholder="Product name, Health Brands"  onChange={(e)=>this.setState(
-                {
-                  keyword:e.target.value
+          <div className="input-group searchbox">
+            <input
+              type="text"
+              className="form-control w3-animate-zoom"
+              placeholder="Product name, Health Brands"
+              onChange={(e) =>
+                this.setState({
+                  keyword: e.target.value,
                 })
-               }/>
-              <div className="input-group-append">
-                <button className="btn btn-secondary w3-animate-zoom" type="button"  onClick={this.searchProduct}>
-                  <FaSearch/>
-                </button>
-              </div>
-           </div>
+              }
+            />
+            <div className="input-group-append">
+              <button
+                className="btn btn-secondary w3-animate-zoom"
+                type="button"
+                onClick={this.searchProduct}
+              >
+                <FaSearch />
+              </button>
+            </div>
+          </div>
           <Row>
-          <h6 className="text-center  p-4">{this.state.resposesmsg}</h6>
+            <h6 className="text-center  p-4">{this.state.resposesmsg}</h6>
             <Col md="auto">
               <div className="p-5">
-                  <label><b>Select Category</b></label>
-                  <div><input type="checkbox" name="Nutrition" onChange={this.categoryCheckHandlker}/> Nutritious</div>
-                  <div><input type="checkbox" name="safety" onChange={this.categoryCheckHandlker}/> safety</div>
-                  <label><b>Select Brand</b></label>
-                  <div><input type="checkbox"  name="Apollo"  onChange={this.brandCheckHandlker}/> Apollo </div>
-                  <div><input type="checkbox"  name="Muscleblaze"  onChange={this.brandCheckHandlker}/> Muscleblaze</div>
-                  <div><input type="checkbox"  name="Boost"  onChange={this.brandCheckHandlker}/> Boost</div>
-                   <div><input type="checkbox"  name="Horlicks"  onChange={this.brandCheckHandlker}/> Horlicks</div>
-                  <RadioGroup name="price">
-                    <label><b>Price:</b></label>
-                    <div className="radio-button-background">
-                        <Radio  className="radio-button" value={[10,50]} onChange={(e)=>this.setState({price:e.target.value})} />10$-50$ 
-                    </div>
-                    <div className="radio-button-background">
-                      <Radio  className="radio-button" value={[50,100]} onChange={(e)=>this.setState({price:e.target.value})}/>50$-100$ 
-                    </div>
-                  </RadioGroup>
-                  <Button className="seemore1" onClick={this.filterHandler}>Apply Filter</Button>
+                <label>
+                  <b>Select Category</b>
+                </label>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="Nutrition"
+                    onChange={this.categoryCheckHandlker}
+                  />{" "}
+                  Nutritious
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="safety"
+                    onChange={this.categoryCheckHandlker}
+                  />{" "}
+                  safety
+                </div>
+                <label>
+                  <b>Select Brand</b>
+                </label>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="Apollo"
+                    onChange={this.brandCheckHandlker}
+                  />{" "}
+                  Apollo{" "}
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="Muscleblaze"
+                    onChange={this.brandCheckHandlker}
+                  />{" "}
+                  Muscleblaze
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="Boost"
+                    onChange={this.brandCheckHandlker}
+                  />{" "}
+                  Boost
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="Horlicks"
+                    onChange={this.brandCheckHandlker}
+                  />{" "}
+                  Horlicks
+                </div>
+                <RadioGroup name="price">
+                  <label>
+                    <b>Price:</b>
+                  </label>
+                  <div className="radio-button-background">
+                    <Radio
+                      className="radio-button"
+                      value={[10, 50]}
+                      onChange={(e) => this.setState({ price: e.target.value })}
+                    />
+                    10$-50$
+                  </div>
+                  <div className="radio-button-background">
+                    <Radio
+                      className="radio-button"
+                      value={[50, 100]}
+                      onChange={(e) => this.setState({ price: e.target.value })}
+                    />
+                    50$-100$
+                  </div>
+                </RadioGroup>
+                <Button className="seemore1" onClick={this.filterHandler}>
+                  Apply Filter
+                </Button>
               </div>
             </Col>
             <Col>
@@ -213,7 +274,7 @@ brandCheckHandlker=(e)=>{
               )}
 
               {this.state.loading ? (
-                <Row xs={12} sm={12} md={6} lg={4} xl={2} >
+                <Row xs={12} sm={12} md={6} lg={4} xl={2}>
                   {this.state.data.map((item) => {
                     return (
                       <Col sm={12} md={4} lg={3} xl={3}>
@@ -238,6 +299,18 @@ brandCheckHandlker=(e)=>{
                             <Card.Text>
                               <div className="productprice">
                                 <span>Price:{item.price}$</span>
+                              </div>
+                            </Card.Text>
+                            <Card.Text>
+                              <div>
+                                Store Name:
+                                <strong>{item.localStore.name}</strong>
+                              </div>
+                            </Card.Text>
+                            <Card.Text>
+                              <div>
+                                Store Address:
+                                <strong>{item.localStore.address}</strong>
                               </div>
                             </Card.Text>
                             <Card.Text>
